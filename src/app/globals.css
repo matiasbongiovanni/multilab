@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Multilab Design Tokens — Figma spec */
+  --color-ml-primary:       #4CAF50;
+  --color-ml-primary-dark:  #2E7D32;
+  --color-ml-primary-light: #81C784;
+  --color-ml-white:         #FFFFFF;
+  --color-ml-gray-light:    #F5F5F5;
+  --color-ml-gray-mid:      #E0E0E0;
+  --color-ml-text:          #1A1A1A;
+  --color-ml-text-muted:    #616161;
+  --color-ml-surface:       #FFFFFF;
+  --color-ml-destructive:   #dc2626;
+
+  /* Typography — Inter from next/font */
+  --font-inter: var(--font-inter), "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  background-color: #ffffff;
+  color: #1A1A1A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter);
+}
+
+/* Focus visible ring for accessibility */
+*:focus-visible {
+  outline: 3px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #4CAF50;
+  color: #ffffff;
+  border-radius: 0 0 0.25rem 0.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Marquee animation for brand slider */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
