@@ -28,7 +28,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -44,10 +44,10 @@ export default function Navbar() {
   return (
     <header
       className={[
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E0E0E0]"
-          : "bg-white/90 backdrop-blur-sm",
+          ? "bg-[#0A1F0F]/95 backdrop-blur-xl shadow-lg shadow-black/40 border border-[#4CAF50]/15"
+          : "bg-[#0A1F0F]/75 backdrop-blur-xl border border-white/10",
       ].join(" ")}
       role="banner"
     >
@@ -55,7 +55,7 @@ export default function Navbar() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Navegación principal"
       >
-        <div className="flex items-center justify-between h-16 lg:h-18">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             href="/"
@@ -63,7 +63,6 @@ export default function Navbar() {
             aria-label="Multilab — inicio"
           >
             <div className="flex items-center gap-2">
-              {/* Logo isotipo */}
               <svg
                 width="36"
                 height="36"
@@ -72,7 +71,6 @@ export default function Navbar() {
                 aria-hidden="true"
               >
                 <rect width="36" height="36" rx="8" fill="#4CAF50" />
-                {/* Tubo de ensayo */}
                 <path
                   d="M13 8h4v13a4 4 0 01-8 0V8h4z"
                   fill="white"
@@ -84,7 +82,6 @@ export default function Navbar() {
                   strokeWidth="1"
                   opacity="0.5"
                 />
-                {/* Microscopio simplificado */}
                 <circle cx="25" cy="14" r="4" fill="white" opacity="0.9" />
                 <path
                   d="M23 18v6M27 18v6M21 24h8"
@@ -93,7 +90,7 @@ export default function Navbar() {
                   strokeLinecap="round"
                 />
               </svg>
-              <span className="font-black text-xl text-[#1A1A1A] tracking-tight">
+              <span className="font-black text-xl text-white tracking-tight">
                 MULTI<span className="text-[#4CAF50]">LAB</span>
               </span>
             </div>
@@ -108,8 +105,8 @@ export default function Navbar() {
                 className={[
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150",
                   isActive(link.href)
-                    ? "text-[#4CAF50] bg-[#F5F5F5]"
-                    : "text-[#1A1A1A] hover:text-[#4CAF50] hover:bg-[#F5F5F5]",
+                    ? "text-[#4CAF50] bg-white/5"
+                    : "text-white/70 hover:text-white hover:bg-white/5",
                 ].join(" ")}
                 aria-current={isActive(link.href) ? "page" : undefined}
               >
@@ -125,8 +122,8 @@ export default function Navbar() {
                 className={[
                   "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150",
                   isServiciosActive
-                    ? "text-[#4CAF50] bg-[#F5F5F5]"
-                    : "text-[#1A1A1A] hover:text-[#4CAF50] hover:bg-[#F5F5F5]",
+                    ? "text-[#4CAF50] bg-white/5"
+                    : "text-white/70 hover:text-white hover:bg-white/5",
                 ].join(" ")}
                 aria-expanded={isServiciosOpen}
                 aria-haspopup="true"
@@ -151,7 +148,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -8, scale: 0.96 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-1 w-60 bg-white rounded-xl shadow-lg border border-[#E0E0E0] py-1.5 z-50"
+                    className="absolute top-full left-0 mt-2 w-60 bg-[#0D2818] rounded-xl shadow-xl border border-[#4CAF50]/20 py-1.5 z-50"
                     role="menu"
                   >
                     {serviciosLinks.map((link) => (
@@ -162,8 +159,8 @@ export default function Navbar() {
                         className={[
                           "flex items-center px-4 py-2.5 text-sm transition-colors duration-100",
                           isActive(link.href)
-                            ? "text-[#4CAF50] bg-[#F5F5F5] font-medium"
-                            : "text-[#1A1A1A] hover:text-[#4CAF50] hover:bg-[#F5F5F5]",
+                            ? "text-[#4CAF50] bg-white/5 font-medium"
+                            : "text-white/70 hover:text-white hover:bg-white/5",
                         ].join(" ")}
                       >
                         {link.label}
@@ -179,7 +176,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/login"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#4CAF50] text-white text-sm font-semibold rounded-lg hover:bg-[#2E7D32] transition-colors duration-150 shadow-sm hover:shadow-md min-h-[40px]"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#4CAF50] text-white text-sm font-semibold rounded-lg hover:bg-[#5CC05F] transition-colors duration-150 shadow-sm hover:shadow-md min-h-[40px]"
             >
               <svg
                 width="16"
@@ -200,7 +197,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-[#1A1A1A] hover:bg-[#F5F5F5] transition-colors"
+              className="lg:hidden p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors"
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -233,7 +230,7 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="lg:hidden overflow-hidden border-t border-[#E0E0E0]"
+              className="lg:hidden overflow-hidden border-t border-white/10"
               role="navigation"
               aria-label="Menú móvil"
             >
@@ -245,8 +242,8 @@ export default function Navbar() {
                     className={[
                       "flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                       isActive(link.href)
-                        ? "text-[#4CAF50] bg-[#F5F5F5]"
-                        : "text-[#1A1A1A] hover:text-[#4CAF50] hover:bg-[#F5F5F5]",
+                        ? "text-[#4CAF50] bg-white/5"
+                        : "text-white/70 hover:text-white hover:bg-white/5",
                     ].join(" ")}
                     aria-current={isActive(link.href) ? "page" : undefined}
                   >
@@ -254,7 +251,7 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <div className="px-4 py-1">
-                  <p className="text-xs font-semibold text-[#616161] uppercase tracking-wider mb-1">
+                  <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-1">
                     Servicios
                   </p>
                   {serviciosLinks.map((link) => (
@@ -264,8 +261,8 @@ export default function Navbar() {
                       className={[
                         "flex items-center px-3 py-2.5 rounded-lg text-sm transition-colors",
                         isActive(link.href)
-                          ? "text-[#4CAF50] bg-[#F5F5F5] font-medium"
-                          : "text-[#1A1A1A] hover:text-[#4CAF50] hover:bg-[#F5F5F5]",
+                          ? "text-[#4CAF50] bg-white/5 font-medium"
+                          : "text-white/60 hover:text-white hover:bg-white/5",
                       ].join(" ")}
                     >
                       {link.label}
@@ -275,7 +272,7 @@ export default function Navbar() {
                 <div className="px-4 pt-2 pb-3">
                   <Link
                     href="/login"
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#4CAF50] text-white text-sm font-semibold rounded-lg hover:bg-[#2E7D32] transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#4CAF50] text-white text-sm font-semibold rounded-lg hover:bg-[#5CC05F] transition-colors"
                   >
                     <svg
                       width="16"

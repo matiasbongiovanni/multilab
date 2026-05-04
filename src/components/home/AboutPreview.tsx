@@ -73,7 +73,7 @@ export default function AboutPreview() {
 
   return (
     <section
-      className="py-20 lg:py-28 bg-white"
+      className="py-20 lg:py-28 bg-[#0D2818]"
       aria-labelledby="about-preview-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,9 +101,9 @@ export default function AboutPreview() {
             </div>
 
             {/* Badge flotante */}
-            <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-lg border border-[#E0E0E0] px-5 py-4">
+            <div className="absolute -bottom-5 -right-5 bg-[#112B1A] rounded-2xl shadow-lg border border-[#4CAF50]/20 px-5 py-4">
               <p className="font-black text-3xl text-[#4CAF50]">+10</p>
-              <p className="text-xs text-[#616161] mt-0.5 font-medium">Años de experiencia</p>
+              <p className="text-xs text-white/50 mt-0.5 font-medium">Años de experiencia</p>
             </div>
           </motion.div>
 
@@ -120,24 +120,24 @@ export default function AboutPreview() {
             </span>
             <h2
               id="about-preview-heading"
-              className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] leading-tight"
+              className="text-3xl sm:text-4xl font-bold text-white leading-tight"
             >
               Laboratorio de confianza desde 2014
             </h2>
-            <p className="text-[#616161] leading-relaxed">
-              Multilab fue fundado por la <strong className="text-[#1A1A1A] font-semibold">Lic. Cinthia Degliangioli</strong> con el objetivo de brindar servicios analíticos de alta calidad al alcance de todos. Contamos con equipamiento de última generación y un equipo comprometido con la excelencia técnica.
+            <p className="text-white/55 leading-relaxed">
+              Multilab fue fundado por la <strong className="text-white font-semibold">Lic. Cinthia Degliangioli</strong> con el objetivo de brindar servicios analíticos de alta calidad al alcance de todos. Contamos con equipamiento de última generación y un equipo comprometido con la excelencia técnica.
             </p>
 
             {/* Valores */}
             <div className="space-y-4 pt-2">
               {values.map((value) => (
                 <div key={value.title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#dcfce7] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#4CAF50]/10 flex items-center justify-center shrink-0">
                     {value.icon}
                   </div>
                   <div>
-                    <p className="font-bold text-[#1A1A1A] text-sm">{value.title}</p>
-                    <p className="text-xs text-[#616161] mt-0.5 leading-relaxed">
+                    <p className="font-bold text-white/90 text-sm">{value.title}</p>
+                    <p className="text-xs text-white/50 mt-0.5 leading-relaxed">
                       {value.desc}
                     </p>
                   </div>

@@ -47,19 +47,19 @@ export default function Hero() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Overlay oscuro semitransparente de izquierda a derecha */}
+        {/* Overlay verde-oscuro semitransparente de izquierda a derecha */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.25) 100%)",
+              "linear-gradient(to right, rgba(4,18,10,0.88) 0%, rgba(4,18,10,0.60) 55%, rgba(4,18,10,0.30) 100%)",
           }}
           aria-hidden="true"
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-0 min-h-screen flex items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-0 min-h-screen flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 items-center w-full">
 
           {/* Left: texto display */}

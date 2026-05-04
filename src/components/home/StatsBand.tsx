@@ -67,11 +67,11 @@ export default function StatsBand() {
     <section
       ref={ref}
       className="py-14 lg:py-16"
-      style={{ backgroundColor: "#4CAF50" }}
+      style={{ backgroundColor: "#0D2818" }}
       aria-label="Estadísticas de Multilab"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/25">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#4CAF50]/20">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
@@ -79,7 +79,7 @@ export default function StatsBand() {
             >
               {/* Número animado */}
               <p
-                className="font-black text-white leading-none"
+                className="font-black text-[#4CAF50] leading-none"
                 style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
                 aria-label={`${stat.prefix}${stat.value}${stat.suffix} ${stat.label}`}
               >
@@ -93,7 +93,7 @@ export default function StatsBand() {
               </p>
               {/* Label */}
               <p
-                className="text-white/80 text-sm sm:text-base font-medium text-center max-w-[160px]"
+                className="text-white/55 text-sm sm:text-base font-medium text-center max-w-[160px]"
                 aria-hidden="true"
               >
                 {stat.label}

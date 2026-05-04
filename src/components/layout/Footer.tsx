@@ -68,7 +68,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-[#1A1A1A] text-[#616161] mt-auto"
+      className="bg-[#071410] text-white/40 mt-auto"
       role="contentinfo"
       aria-label="Pie de página"
     >

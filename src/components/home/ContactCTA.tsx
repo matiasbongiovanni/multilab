@@ -9,13 +9,13 @@ export default function ContactCTA() {
   return (
     <section
       className="py-20 lg:py-24 relative overflow-hidden"
-      style={{ backgroundColor: "#4CAF50" }}
+      style={{ backgroundColor: "#0D3A1A" }}
       aria-labelledby="cta-heading"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full" />
-        <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-white/5 rounded-full" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#4CAF50]/8 rounded-full" />
+        <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-[#4CAF50]/8 rounded-full" />
         <svg
           className="absolute inset-0 w-full h-full opacity-5"
           xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ export default function ContactCTA() {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center gap-6"
         >
-          <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
+          <div className="w-16 h-16 rounded-2xl bg-[#4CAF50]/20 flex items-center justify-center backdrop-blur-sm">
             <svg
               width="32"
               height="32"
@@ -78,7 +78,7 @@ export default function ContactCTA() {
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#2E7D32] font-bold rounded-xl hover:bg-[#F5F5F5] transition-all duration-200 shadow-md hover:shadow-lg min-h-[52px] text-base"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#4CAF50] text-white font-bold rounded-xl hover:bg-[#5CC05F] transition-all duration-200 shadow-md hover:shadow-lg min-h-[52px] text-base"
             >
               Contactar ahora
               <svg

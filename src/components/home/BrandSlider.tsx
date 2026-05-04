@@ -13,18 +13,17 @@ const brands = [
   { name: "Granja Orgánica Norte" },
 ];
 
-// Duplicamos para loop seamless
 const allBrands = [...brands, ...brands];
 
 export default function BrandSlider() {
   return (
     <section
       className="py-12 lg:py-14 overflow-hidden"
-      style={{ backgroundColor: "#F5F5F5" }}
+      style={{ backgroundColor: "#0D2818" }}
       aria-label="Instituciones y clientes asociados"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-[#616161]">
+        <p className="text-center text-sm font-semibold uppercase tracking-widest text-white/35">
           Trabajamos con instituciones del sector salud, educación e industria
         </p>
       </div>
@@ -38,13 +37,13 @@ export default function BrandSlider() {
         <div
           className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(to right, #F5F5F5, transparent)",
+            background: "linear-gradient(to right, #0D2818, transparent)",
           }}
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(to left, #F5F5F5, transparent)",
+            background: "linear-gradient(to left, #0D2818, transparent)",
           }}
         />
 
@@ -58,14 +57,14 @@ export default function BrandSlider() {
               {/* Isotipo placeholder */}
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: "#E0E0E0" }}
+                style={{ backgroundColor: "rgba(76,175,80,0.15)" }}
               >
                 <svg
                   width="14"
                   height="14"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#616161"
+                  stroke="#4CAF50"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -73,7 +72,7 @@ export default function BrandSlider() {
                   <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                 </svg>
               </div>
-              <span className="text-sm font-semibold text-[#1A1A1A] whitespace-nowrap">
+              <span className="text-sm font-semibold text-white/60 whitespace-nowrap">
                 {brand.name}
               </span>
               {/* Separador */}

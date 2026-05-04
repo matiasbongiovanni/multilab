@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Multilab Design Tokens — Figma spec */
+  /* Multilab Design Tokens — Dark Green Premium */
   --color-ml-primary:       #4CAF50;
   --color-ml-primary-dark:  #2E7D32;
-  --color-ml-primary-light: #81C784;
-  --color-ml-white:         #FFFFFF;
-  --color-ml-gray-light:    #F5F5F5;
-  --color-ml-gray-mid:      #E0E0E0;
-  --color-ml-text:          #1A1A1A;
-  --color-ml-text-muted:    #616161;
-  --color-ml-surface:       #FFFFFF;
+  --color-ml-primary-light: #5CC05F;
+  --color-ml-bg-deep:       #071410;
+  --color-ml-bg-section:    #0A1F0F;
+  --color-ml-bg-alt:        #0D2818;
+  --color-ml-card:          #112B1A;
+  --color-ml-card-hover:    #1a3a27;
+  --color-ml-text:          #F0FFF4;
+  --color-ml-text-muted:    rgba(240,255,244,0.55);
+  --color-ml-surface:       #112B1A;
   --color-ml-destructive:   #dc2626;
 
   /* Typography — Inter from next/font */
@@ -23,8 +25,8 @@ html {
 
 body {
   font-family: var(--font-inter);
-  background-color: #ffffff;
-  color: #1A1A1A;
+  background-color: #071410;
+  color: #F0FFF4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

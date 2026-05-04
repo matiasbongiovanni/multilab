@@ -83,7 +83,7 @@ export default function FAQBot() {
     <>
       {/* Acordeon FAQ estático */}
       <section
-        className="py-20 lg:py-24 bg-[#F5F5F5]"
+        className="py-20 lg:py-24 bg-[#0A1F0F]"
         aria-labelledby="faq-heading"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,15 +99,15 @@ export default function FAQBot() {
             </span>
             <h2
               id="faq-heading"
-              className="text-3xl sm:text-4xl font-bold text-[#1A1A1A]"
+              className="text-3xl sm:text-4xl font-bold text-white"
             >
               Preguntas frecuentes
             </h2>
-            <p className="mt-4 text-[#616161]">
+            <p className="mt-4 text-white/55">
               Si no encontrás lo que buscás,{" "}
               <a
                 href="/contacto"
-                className="text-[#4CAF50] underline underline-offset-2 hover:text-[#2E7D32]"
+                className="text-[#4CAF50] underline underline-offset-2 hover:text-[#5CC05F]"
               >
                 contactanos
               </a>
@@ -134,15 +134,15 @@ export default function FAQBot() {
                     "px-5 py-4 rounded-xl text-left",
                     "transition-all duration-200",
                     expandedFAQ === index
-                      ? "bg-white border-2 border-[#4CAF50] shadow-sm"
-                      : "bg-white border-2 border-transparent hover:border-[#E0E0E0]",
+                      ? "bg-[#1a3a27] border-2 border-[#4CAF50] shadow-md shadow-black/20"
+                      : "bg-[#112B1A] border-2 border-[#4CAF50]/10 hover:border-[#4CAF50]/35",
                   ].join(" ")}
                   aria-expanded={expandedFAQ === index}
                   aria-controls={`faq-answer-${index}`}
                 >
                   <span
                     className={`font-semibold text-sm sm:text-base transition-colors duration-150 ${
-                      expandedFAQ === index ? "text-[#4CAF50]" : "text-[#1A1A1A]"
+                      expandedFAQ === index ? "text-[#4CAF50]" : "text-white/85"
                     }`}
                   >
                     {faq.question}
@@ -173,7 +173,7 @@ export default function FAQBot() {
                       role="region"
                       aria-label={`Respuesta: ${faq.question}`}
                     >
-                      <div className="px-5 py-4 text-sm text-[#616161] leading-relaxed bg-white rounded-b-xl -mt-1 border-x-2 border-b-2 border-[#E0E0E0]">
+                      <div className="px-5 py-4 text-sm text-white/50 leading-relaxed bg-[#0D2818] rounded-b-xl -mt-1 border-x-2 border-b-2 border-[#4CAF50]/15">
                         {faq.answer}
                       </div>
                     </motion.div>

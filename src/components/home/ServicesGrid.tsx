@@ -172,7 +172,7 @@ export default function ServicesGrid() {
   return (
     <section
       id="servicios"
-      className="py-20 lg:py-28 bg-white"
+      className="py-20 lg:py-28 bg-[#0A1F0F]"
       aria-labelledby="servicios-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -189,11 +189,11 @@ export default function ServicesGrid() {
           </span>
           <h2
             id="servicios-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight"
           >
             Análisis para cada necesidad
           </h2>
-          <p className="mt-4 text-lg text-[#616161] max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-white/55 max-w-2xl mx-auto">
             Seis áreas especializadas para ofrecer soluciones integrales a clínicas,
             veterinarias, industrias y particulares.
           </p>
@@ -214,8 +214,8 @@ export default function ServicesGrid() {
                 href={service.href}
                 className={[
                   "group flex flex-col gap-4 p-6 lg:p-7 h-full",
-                  "bg-[#F5F5F5] rounded-2xl border-2 border-transparent",
-                  "hover:bg-white hover:shadow-lg hover:border-[#4CAF50]",
+                  "bg-[#112B1A] rounded-2xl border-2 border-[#4CAF50]/10",
+                  "hover:bg-[#1a3a27] hover:shadow-lg hover:shadow-black/30 hover:border-[#4CAF50]/60",
                   "transition-all duration-250",
                 ].join(" ")}
                 aria-label={`Ver servicio: ${service.title}`}
@@ -229,10 +229,10 @@ export default function ServicesGrid() {
 
                 {/* Texto */}
                 <div className="flex flex-col gap-2 flex-1">
-                  <h3 className="text-xl font-bold text-[#1A1A1A] group-hover:text-[#4CAF50] transition-colors duration-150">
+                  <h3 className="text-xl font-bold text-white/90 group-hover:text-[#4CAF50] transition-colors duration-150">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-[#616161] leading-relaxed">
+                  <p className="text-sm text-white/50 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
