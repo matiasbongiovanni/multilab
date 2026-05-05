@@ -57,28 +57,25 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-[#04120A]/70 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
-          : "bg-transparent border-b border-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
+        ? "bg-[#04120A]/70 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+        : "bg-transparent border-b border-transparent"
+        }`}
       role="banner"
     >
       <nav
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         aria-label="Navegación principal"
       >
-        <div className={`flex items-center justify-between transition-all duration-500 ${
-          isScrolled ? "py-2" : "py-4"
-        }`}>
+        <div className={`flex items-center justify-between transition-all duration-500 ${isScrolled ? "py-2" : "py-4"
+          }`}>
           {/* Logo */}
           <Link href="/" aria-label="Ir al inicio" className="relative z-10 shrink-0">
             <motion.img
               src={Logo.src}
               alt="Logo Multilab"
-              className={`w-auto object-contain transition-all duration-500 ${
-                isScrolled ? "h-14" : "h-20"
-              }`}
+              className={`w-auto object-contain transition-all duration-500 ${isScrolled ? "h-40" : "h-46"
+                }`}
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.2 }}
             />
@@ -90,11 +87,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 rounded-lg ${
-                  isActive(link.href)
-                    ? "text-[#4CAF50]"
-                    : "text-white/70 hover:text-white hover:bg-white/5"
-                }`}
+                className={`relative px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 rounded-lg ${isActive(link.href)
+                  ? "text-[#4CAF50]"
+                  : "text-white/70 hover:text-white hover:bg-white/5"
+                  }`}
                 aria-current={isActive(link.href) ? "page" : undefined}
               >
                 {link.label}
@@ -113,19 +109,17 @@ export default function Navbar() {
               <button
                 onClick={() => setIsServiciosOpen(!isServiciosOpen)}
                 onBlur={() => setTimeout(() => setIsServiciosOpen(false), 200)}
-                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 rounded-lg ${
-                  isServiciosActive
-                    ? "text-[#4CAF50]"
-                    : "text-white/70 hover:text-white hover:bg-white/5"
-                }`}
+                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium tracking-wide transition-colors duration-300 rounded-lg ${isServiciosActive
+                  ? "text-[#4CAF50]"
+                  : "text-white/70 hover:text-white hover:bg-white/5"
+                  }`}
                 aria-expanded={isServiciosOpen}
                 aria-haspopup="true"
               >
                 Ver servicios
                 <svg
-                  className={`w-3.5 h-3.5 transition-transform duration-300 ${
-                    isServiciosOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-3.5 h-3.5 transition-transform duration-300 ${isServiciosOpen ? "rotate-180" : ""
+                    }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -154,15 +148,13 @@ export default function Navbar() {
                         key={link.href}
                         href={link.href}
                         role="menuitem"
-                        className={`flex items-center gap-3 px-5 py-3 text-sm transition-all duration-200 ${
-                          isActive(link.href)
-                            ? "text-[#4CAF50] bg-[#4CAF50]/10 font-semibold"
-                            : "text-white/60 hover:text-white hover:bg-white/5 hover:pl-7"
-                        }`}
+                        className={`flex items-center gap-3 px-5 py-3 text-sm transition-all duration-200 ${isActive(link.href)
+                          ? "text-[#4CAF50] bg-[#4CAF50]/10 font-semibold"
+                          : "text-white/60 hover:text-white hover:bg-white/5 hover:pl-7"
+                          }`}
                       >
-                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors ${
-                          isActive(link.href) ? "bg-[#4CAF50]" : "bg-white/20"
-                        }`} />
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 transition-colors ${isActive(link.href) ? "bg-[#4CAF50]" : "bg-white/20"
+                          }`} />
                         {link.label}
                       </Link>
                     ))}
@@ -181,7 +173,7 @@ export default function Navbar() {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" />
               </svg>
-              Iniciar Sesión
+              Portal de cliente
             </Link>
 
             {/* Mobile hamburger */}
@@ -225,11 +217,10 @@ export default function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        className={`flex items-center px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-200 ${
-                          isActive(link.href)
-                            ? "text-[#4CAF50] bg-[#4CAF50]/10"
-                            : "text-white/70 hover:text-white hover:bg-white/5"
-                        }`}
+                        className={`flex items-center px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-200 ${isActive(link.href)
+                          ? "text-[#4CAF50] bg-[#4CAF50]/10"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
+                          }`}
                       >
                         {link.label}
                       </Link>
@@ -252,15 +243,13 @@ export default function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
-                        className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-200 ${
-                          isActive(link.href)
-                            ? "text-[#4CAF50] bg-[#4CAF50]/10 font-semibold"
-                            : "text-white/50 hover:text-white hover:bg-white/5"
-                        }`}
+                        className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all duration-200 ${isActive(link.href)
+                          ? "text-[#4CAF50] bg-[#4CAF50]/10 font-semibold"
+                          : "text-white/50 hover:text-white hover:bg-white/5"
+                          }`}
                       >
-                        <span className={`w-1 h-1 rounded-full ${
-                          isActive(link.href) ? "bg-[#4CAF50]" : "bg-white/20"
-                        }`} />
+                        <span className={`w-1 h-1 rounded-full ${isActive(link.href) ? "bg-[#4CAF50]" : "bg-white/20"
+                          }`} />
                         {link.label}
                       </Link>
                     ))}
