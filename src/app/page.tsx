@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
-import StatsBand from "@/components/home/StatsBand";
 import BrandSlider from "@/components/home/BrandSlider";
 import ServicesGrid from "@/components/home/ServicesGrid";
+import StatsBand from "@/components/home/StatsBand";
 import AboutPreview from "@/components/home/AboutPreview";
+import ProcessSteps from "@/components/home/ProcessSteps";
 import FAQBot from "@/components/home/FAQBot";
 import ContactCTA from "@/components/home/ContactCTA";
 
@@ -48,22 +49,44 @@ const jsonLd = {
 
 export default function HomePage() {
   return (
-    <>
+    <div className="bg-[#04120A] min-h-screen text-white font-sans selection:bg-[#4CAF50]/30 relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
+      {/* ═══ AMBIENT LIGHTS ═══ */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-[20%] -left-40 w-[500px] h-[500px] bg-[#4CAF50]/6 rounded-full blur-[200px] animate-glow-drift" />
+        <div className="absolute top-[50%] -right-32 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[180px] animate-glow-drift-slow" />
+        <div className="absolute top-[75%] left-1/3 w-[350px] h-[350px] bg-[#4CAF50]/4 rounded-full blur-[200px] animate-glow-pulse" />
+      </div>
+
       <Navbar />
-      <main id="main-content">
+      <main id="main-content" className="relative z-[1] flex flex-col w-full">
         <Hero />
-        <StatsBand />
+        {/* White section divider */}
+        <div className="max-w-6xl mx-auto w-full px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
         <BrandSlider />
+        <div className="max-w-6xl mx-auto w-full px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+        </div>
         <ServicesGrid />
+        <StatsBand />
+        <div className="max-w-6xl mx-auto w-full px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+        </div>
         <AboutPreview />
+        <ProcessSteps />
+        <div className="max-w-6xl mx-auto w-full px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+        </div>
         <FAQBot />
         <ContactCTA />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

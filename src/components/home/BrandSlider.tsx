@@ -1,85 +1,72 @@
-// Server Component — no "use client" needed, pure CSS animation
+"use client";
 
-const brands = [
-  { name: "Hospital Municipal San Martín" },
-  { name: "Clínica del Valle" },
-  { name: "Veterinaria Pampas" },
-  { name: "Municipalidad de La Plata" },
-  { name: "UNLP — Fac. de Ciencias Exactas" },
-  { name: "Bromatología Regional" },
-  { name: "Agua y Saneamiento S.A." },
-  { name: "Centro Diagnóstico Integral" },
-  { name: "Frigorífico El Ombú" },
-  { name: "Granja Orgánica Norte" },
+import { motion, useReducedMotion } from "framer-motion";
+
+const clients = [
+  { name: "Adolfo Cassaro e Hijos SRL", logo: "https://www.cassaro.com.ar/assets/images/cassaro-754x98.png" },
+  { name: "Clínica de ojos Reyes Giobellina", logo: "https://reyes-giobellina.com.ar/wp-content/uploads/2020/09/web-logo-rg.png" },
+  { name: "Cantesur SA", logo: null },
+  { name: "La Casa de las Chopperas SRL", logo: null },
+  { name: "Ledesma SAIC", logo: null },
+  { name: "Dicca ICSA", logo: null },
+  { name: "Cia. Cervecera Argentina SRL", logo: null },
+  { name: "Alimentación del Centro SA", logo: null },
+  { name: "Canteras Diquecito SA", logo: null },
 ];
 
-const allBrands = [...brands, ...brands];
-
 export default function BrandSlider() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
-      className="py-12 lg:py-14 overflow-hidden"
-      style={{ backgroundColor: "#0D2818" }}
-      aria-label="Instituciones y clientes asociados"
+      id="clientes"
+      className="relative py-20 lg:py-24 overflow-hidden"
+      aria-label="Empresas e instituciones que confían en nosotros"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <p className="text-center text-sm font-semibold uppercase tracking-widest text-white/35">
-          Trabajamos con instituciones del sector salud, educación e industria
-        </p>
-      </div>
+      {/* White subtle divider */}
+      <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      {/* Marquee container */}
-      <div
-        className="relative"
-        aria-hidden="true"
+      <motion.div
+        initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+        whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="max-w-7xl mx-auto px-4 mb-14"
       >
-        {/* Fade edges */}
-        <div
-          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{
-            background: "linear-gradient(to right, #0D2818, transparent)",
-          }}
-        />
-        <div
-          className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{
-            background: "linear-gradient(to left, #0D2818, transparent)",
-          }}
-        />
+        <div className="flex flex-col items-center gap-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4CAF50]" />
+            <span className="text-[#4CAF50] text-[10px] font-bold uppercase tracking-[0.2em]">
+              Confían en nosotros
+            </span>
+          </div>
+          <p className="text-center text-white/50 text-sm font-medium max-w-md">
+            Empresas e instituciones que eligen nuestros servicios de análisis
+          </p>
+        </div>
+      </motion.div>
 
-        {/* Track */}
-        <div className="flex animate-marquee whitespace-nowrap">
-          {allBrands.map((brand, i) => (
+      {/* Marquee */}
+      <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+        <div className="flex animate-marquee whitespace-nowrap items-center">
+          {[...clients, ...clients].map((client, i) => (
             <div
               key={i}
-              className="inline-flex items-center gap-3 mx-6 shrink-0"
+              className="inline-flex items-center justify-center mx-12 shrink-0 min-w-[180px] grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
             >
-              {/* Isotipo placeholder */}
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: "rgba(76,175,80,0.15)" }}
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#4CAF50"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-                </svg>
-              </div>
-              <span className="text-sm font-semibold text-white/60 whitespace-nowrap">
-                {brand.name}
-              </span>
-              {/* Separador */}
-              <span
-                className="ml-6 w-1.5 h-1.5 rounded-full shrink-0"
-                style={{ backgroundColor: "#4CAF50" }}
-              />
+              {client.logo ? (
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-12 object-contain max-w-[220px] invert brightness-200"
+                />
+              ) : (
+                <span className="text-base font-bold text-white tracking-wide">
+                  {client.name}
+                </span>
+              )}
             </div>
           ))}
         </div>

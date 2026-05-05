@@ -1,347 +1,172 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-
-const textVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
+  const fadeUp = (delay: number = 0) =>
+    shouldReduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 30 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
+        };
+
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden pt-16"
-      aria-label="Presentación de Multilab"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      aria-labelledby="hero-heading"
     >
-      {/* Background image fullbleed */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1920&q=80"
-          alt="Laboratorio de análisis — Multilab"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* Overlay verde-oscuro semitransparente de izquierda a derecha */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(4,18,10,0.88) 0%, rgba(4,18,10,0.60) 55%, rgba(4,18,10,0.30) 100%)",
-          }}
-          aria-hidden="true"
+      {/* ── Background Image ── */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=1920&auto=format&fit=crop"
+          alt=""
+          className="w-full h-full object-cover object-center"
+          loading="eager"
+          fetchPriority="high"
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-0 min-h-screen flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-10 lg:gap-16 items-center w-full">
+      {/* Dark overlay gradients */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#04120A] via-[#04120A]/85 to-[#04120A]/50" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#04120A] via-transparent to-[#04120A]/40" />
 
-          {/* Left: texto display */}
-          <motion.div
-            variants={shouldReduceMotion ? {} : containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col gap-6"
-          >
-            {/* Texto display MULTI LAB */}
-            <motion.div
-              variants={shouldReduceMotion ? {} : textVariants}
-              className="leading-none"
-            >
-              <h1
-                aria-label="Multilab — Laboratorio de análisis"
-                style={{
-                  fontSize: "clamp(80px, 12vw, 140px)",
-                  fontWeight: 900,
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.02em",
-                  color: "#FFFFFF",
-                }}
-              >
-                MULTI
-                <br />
-                <span style={{ color: "#4CAF50" }}>LAB</span>
-              </h1>
-            </motion.div>
+      {/* Ambient light effects */}
+      <div className="absolute top-20 right-1/4 w-[400px] h-[400px] bg-[#4CAF50]/10 rounded-full blur-[180px] pointer-events-none z-[2] animate-glow-drift" />
+      <div className="absolute bottom-40 left-10 w-[300px] h-[300px] bg-white/5 rounded-full blur-[150px] pointer-events-none z-[2] animate-glow-drift-slow" />
+      <div className="absolute top-1/2 right-10 w-[200px] h-[200px] bg-[#4CAF50]/6 rounded-full blur-[120px] pointer-events-none z-[2] animate-glow-pulse" />
 
-            {/* Descripcion */}
-            <motion.p
-              variants={shouldReduceMotion ? {} : textVariants}
-              className="text-white/85 text-lg lg:text-xl leading-relaxed max-w-xl"
-            >
-              Laboratorio de análisis clínicos, veterinarios, calidad de agua e higiene,
-              bajo la dirección de la{" "}
-              <strong className="text-white font-semibold">
-                Lic. Cinthia Degliangioli
-              </strong>
-              . Precisión técnica y resultados confiables en cada análisis.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              variants={shouldReduceMotion ? {} : textVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-2"
-            >
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-[#4CAF50] text-white font-bold rounded-xl hover:bg-[#2E7D32] transition-all duration-200 shadow-lg hover:shadow-xl min-h-[52px] text-base"
-              >
-                Solicitar turno
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 border-2 border-white/70 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-200 min-h-[52px] text-base backdrop-blur-sm"
-              >
-                Ver mis estudios
-              </Link>
-            </motion.div>
-
-            {/* Trust indicators */}
-            <motion.div
-              variants={shouldReduceMotion ? {} : textVariants}
-              className="flex flex-wrap gap-x-6 gap-y-3 pt-2"
-              aria-label="Indicadores de confianza"
-            >
-              {[
-                "Análisis certificados",
-                "Resultados en 24–48 hs",
-                "Portal digital seguro",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="flex items-center gap-2 text-sm text-white/80"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#4CAF50"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
-                  {item}
-                </span>
-              ))}
-            </motion.div>
+      {/* ── Content ── */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24">
+        <div className="max-w-3xl">
+          {/* Badge */}
+          <motion.div {...fadeUp(0.1)}>
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[#4CAF50] animate-pulse" />
+              <span className="text-[#4CAF50] text-[11px] font-bold uppercase tracking-[0.2em]">
+                Laboratorio de Análisis
+              </span>
+            </div>
           </motion.div>
 
-          {/* Right: Bento card flotante */}
-          <motion.div
-            variants={shouldReduceMotion ? {} : cardVariants}
-            initial="hidden"
-            animate="visible"
-            className="hidden lg:block"
-            aria-label="Portal de pacientes — vista previa"
+          {/* H1 — MULTILAB big */}
+          <motion.h1
+            {...fadeUp(0.2)}
+            id="hero-heading"
+            className="font-black tracking-tighter text-white leading-[0.95] mb-6"
           >
-            <div
-              className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/30 p-7 overflow-hidden"
-              style={{ boxShadow: "0 24px 48px rgba(0,0,0,0.3)" }}
+            <span
+              className="block"
+              style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}
             >
-              {/* Header de la card */}
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <p className="text-xs text-[#616161] font-semibold uppercase tracking-wide">
-                    Portal de pacientes
-                  </p>
-                  <p className="text-lg font-bold text-[#1A1A1A] mt-0.5">
-                    Tus estudios disponibles
-                  </p>
-                </div>
-                <div className="w-10 h-10 rounded-xl bg-[#F5F5F5] flex items-center justify-center">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#4CAF50"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-              </div>
+              MULTI
+              <span className="text-[#4CAF50]">LAB</span>
+            </span>
+            <span
+              className="block text-white/90 font-light tracking-tight mt-2"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)" }}
+            >
+              Ciencia, precisión{" "}
+              <span className="text-white font-semibold">y confianza</span>
+            </span>
+          </motion.h1>
 
-              {/* Mock study items */}
-              <div className="space-y-3">
-                {[
-                  { tipo: "Hemograma completo", fecha: "10/04/2026", disponible: true },
-                  { tipo: "Perfil lipídico", fecha: "08/04/2026", disponible: true },
-                  { tipo: "Glucemia en ayunas", fecha: "01/04/2026", disponible: false },
-                ].map((study, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-between p-3.5 bg-[#F5F5F5] rounded-xl border border-[#E0E0E0]"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shrink-0">
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#4CAF50"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                        >
-                          <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-[#1A1A1A]">
-                          {study.tipo}
-                        </p>
-                        <p className="text-xs text-[#616161]">{study.fecha}</p>
-                      </div>
-                    </div>
-                    <span
-                      className={[
-                        "flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full",
-                        study.disponible
-                          ? "text-[#2E7D32] bg-[#dcfce7]"
-                          : "text-[#ca8a04] bg-[#fef9c3]",
-                      ].join(" ")}
-                    >
-                      <span
-                        className={[
-                          "w-1.5 h-1.5 rounded-full",
-                          study.disponible ? "bg-[#2E7D32]" : "bg-[#ca8a04]",
-                        ].join(" ")}
-                        aria-hidden="true"
-                      />
-                      {study.disponible ? "Listo" : "En proceso"}
-                    </span>
-                  </div>
-                ))}
-              </div>
+          {/* White line accent */}
+          <motion.div {...fadeUp(0.3)}>
+            <div className="w-20 h-[2px] bg-white/30 mb-8" />
+          </motion.div>
 
-              {/* CTA de la card */}
-              <Link
-                href="/login"
-                className="mt-5 flex items-center justify-center gap-2 w-full py-3 bg-[#4CAF50] text-white text-sm font-bold rounded-xl hover:bg-[#2E7D32] transition-colors duration-150"
+          {/* Paragraph */}
+          <motion.p
+            {...fadeUp(0.35)}
+            className="text-white/60 text-lg lg:text-xl leading-relaxed max-w-2xl font-light mb-10"
+          >
+            Somos un laboratorio de vanguardia dedicado a la protección de la
+            vida. Unimos la consultoría técnica con un diagnóstico de alta
+            precisión en análisis clínicos, veterinarios y ambientales.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div {...fadeUp(0.5)} className="flex flex-col sm:flex-row gap-4 mb-16">
+            <Link
+              href="/contacto"
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#4CAF50] text-white font-bold rounded-xl hover:bg-[#3d8c40] transition-all duration-300 shadow-[0_0_30px_rgba(76,175,80,0.2)] hover:shadow-[0_0_40px_rgba(76,175,80,0.4)] hover:-translate-y-0.5 min-h-[52px] text-base"
+            >
+              Solicitar cotización
+              <svg
+                width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"
+                strokeLinejoin="round"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden="true"
               >
-                Acceder a mis estudios
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Link>
 
-            {/* Floating badge */}
-            <motion.div
-              animate={shouldReduceMotion ? {} : { y: [-4, 4, -4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-6 bg-white rounded-2xl shadow-xl border border-[#E0E0E0] px-4 py-3 flex items-center gap-3"
-              aria-hidden="true"
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-0.5 min-h-[52px] backdrop-blur-sm text-base"
             >
-              <div className="w-9 h-9 bg-[#dcfce7] rounded-xl flex items-center justify-center">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#2E7D32"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
+              Ver mis resultados
+            </Link>
+          </motion.div>
+
+          {/* Trust indicators — white accents */}
+          <motion.div {...fadeUp(0.65)} className="flex flex-wrap gap-x-8 gap-y-3">
+            {["Diagnóstico de precisión", "Trazabilidad absoluta", "+10 años de experiencia"].map(
+              (item) => (
+                <span
+                  key={item}
+                  className="flex items-center gap-2.5 text-sm text-white/50 font-medium"
                 >
-                  <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-xs font-bold text-[#1A1A1A]">Resultados seguros</p>
-                <p className="text-xs text-[#616161]">Portal privado cifrado</p>
-              </div>
-            </motion.div>
+                  <span className="w-5 h-5 rounded-full border border-white/20 flex items-center justify-center">
+                    <svg
+                      width="10" height="10" viewBox="0 0 24 24" fill="none"
+                      stroke="white" strokeWidth="3" strokeLinecap="round"
+                      strokeLinejoin="round" aria-hidden="true"
+                    >
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                  </span>
+                  {item}
+                </span>
+              )
+            )}
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* ── Explore Arrow ── */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-white/60"
-        initial={shouldReduceMotion ? {} : { opacity: 0, y: 10 }}
-        animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
-        aria-hidden="true"
+        initial={shouldReduceMotion ? {} : { opacity: 0 }}
+        animate={shouldReduceMotion ? {} : { opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <span className="text-xs font-medium uppercase tracking-widest">
-          Explorar
-        </span>
-        <motion.div
-          animate={shouldReduceMotion ? {} : { y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        <a
+          href="#clientes"
+          className="flex flex-col items-center gap-2 text-white/40 hover:text-white transition-colors duration-300"
+          aria-label="Explorar más secciones"
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </motion.div>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.25em]">
+            Explorar
+          </span>
+          <div className="animate-float-bounce">
+            <svg
+              width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+              strokeLinejoin="round" aria-hidden="true"
+            >
+              <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+            </svg>
+          </div>
+        </a>
       </motion.div>
     </section>
   );
