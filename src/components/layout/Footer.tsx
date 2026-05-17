@@ -20,7 +20,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#04120A] text-white/40 mt-auto overflow-hidden" role="contentinfo" aria-label="Pie de página">
+    <footer className="relative bg-white text-[#1a2e1a]/50 mt-auto overflow-hidden border-t border-green-100" role="contentinfo" aria-label="Pie de página">
       {/* Top gradient divider */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#4CAF50]/30 to-transparent" />
 
@@ -34,11 +34,11 @@ export default function Footer() {
             <p className="text-sm leading-relaxed max-w-xs mb-4">
               Laboratorio de análisis clínicos, veterinarios, calidad de agua e higiene. Precisión y confianza en cada resultado.
             </p>
-            <p className="text-xs text-white/20 mb-6">Lic. Cinthia Degliangioli — Directora Técnica</p>
+            <p className="text-xs text-[#1a2e1a]/30 mb-6">Lic. Cinthia Degliangioli — Directora Técnica</p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a key={social.label} href={social.href} aria-label={social.label}
-                  className="w-10 h-10 rounded-xl bg-white/5 hover:bg-[#4CAF50] text-white/40 hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(76,175,80,0.3)]">
+                  className="w-10 h-10 rounded-xl bg-green-50 border border-green-100 hover:bg-[#2E7D32] text-[#2E7D32] hover:text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(46,125,50,0.3)]">
                   {social.icon}
                 </a>
               ))}
@@ -47,12 +47,12 @@ export default function Footer() {
 
           {/* Servicios */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-5 uppercase tracking-wider font-sans">Servicios</h3>
+            <h3 className="text-[#1a2e1a] font-semibold text-sm mb-5 uppercase tracking-wider font-sans">Servicios</h3>
             <ul className="space-y-3">
               {serviciosLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm hover:text-[#4CAF50] transition-colors duration-200 inline-flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-white/20 group-hover:bg-[#4CAF50] transition-colors" />
+                  <Link href={link.href} className="text-sm hover:text-[#2E7D32] transition-colors duration-200 inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 rounded-full bg-green-300 group-hover:bg-[#2E7D32] transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -62,7 +62,7 @@ export default function Footer() {
 
           {/* Institucional */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-5 uppercase tracking-wider font-sans">Institucional</h3>
+            <h3 className="text-[#1a2e1a] font-semibold text-sm mb-5 uppercase tracking-wider font-sans">Institucional</h3>
             <ul className="space-y-3">
               {[
                 { label: "Quiénes somos", href: "/quienes-somos" },
@@ -70,8 +70,8 @@ export default function Footer() {
                 { label: "Portal de pacientes", href: "/login" },
               ].map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm hover:text-[#4CAF50] transition-colors duration-200 inline-flex items-center gap-2 group">
-                    <span className="w-1 h-1 rounded-full bg-white/20 group-hover:bg-[#4CAF50] transition-colors" />
+                  <Link href={link.href} className="text-sm hover:text-[#2E7D32] transition-colors duration-200 inline-flex items-center gap-2 group">
+                    <span className="w-1 h-1 rounded-full bg-green-300 group-hover:bg-[#2E7D32] transition-colors" />
                     {link.label}
                   </Link>
                 </li>
@@ -81,23 +81,23 @@ export default function Footer() {
 
           {/* Contacto */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-5 uppercase tracking-wider font-sans">Contacto</h3>
+            <h3 className="text-[#1a2e1a] font-semibold text-sm mb-5 uppercase tracking-wider font-sans">Contacto</h3>
             <address className="not-italic space-y-4 text-sm">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#4CAF50]/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.92 15z" /></svg>
+                <div className="w-8 h-8 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.92 15z" /></svg>
                 </div>
                 <span>Consultar por WhatsApp</span>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#4CAF50]/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                <div className="w-8 h-8 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                 </div>
-                <Link href="/contacto" className="hover:text-[#4CAF50] transition-colors">contacto@multilab.com.ar</Link>
+                <Link href="/contacto" className="hover:text-[#2E7D32] transition-colors">contacto@multilab.com.ar</Link>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-[#4CAF50]/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+                <div className="w-8 h-8 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
                 </div>
                 <span>Lun–Vie 8:00–17:00 hs</span>
               </div>
@@ -106,11 +106,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/20">&copy; {currentYear} Multilab — Lic. Cinthia Degliangioli. Todos los derechos reservados.</p>
-          <p className="text-xs text-white/20">
+        <div className="mt-14 pt-8 border-t border-green-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-[#1a2e1a]/30">&copy; {currentYear} Multilab — Lic. Cinthia Degliangioli. Todos los derechos reservados.</p>
+          <p className="text-xs text-[#1a2e1a]/30">
             Desarrollado por{" "}
-            <a href="https://sideasconsultores.com.ar" target="_blank" rel="noopener noreferrer" className="hover:text-[#4CAF50] transition-colors font-medium">SIDEAS Consultores</a>
+            <a href="https://sideasconsultores.com.ar" target="_blank" rel="noopener noreferrer" className="hover:text-[#2E7D32] transition-colors font-medium">SIDEAS Consultores</a>
           </p>
         </div>
       </div>

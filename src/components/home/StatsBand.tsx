@@ -125,7 +125,7 @@ export default function StatsBand() {
       aria-label="Estadísticas de Multilab"
     >
       {/* Background glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#4CAF50]/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-100/60 to-transparent pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
@@ -136,16 +136,16 @@ export default function StatsBand() {
               whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-sm hover:border-[#4CAF50]/20 transition-all duration-500 group"
+              className="flex flex-col items-center text-center p-6 rounded-2xl bg-white border border-green-100 hover:border-green-300 hover:bg-green-50/50 transition-all duration-500 group shadow-sm"
             >
               {/* Icon */}
-              <div className="w-12 h-12 rounded-xl bg-[#4CAF50]/10 flex items-center justify-center text-[#4CAF50] mb-5 group-hover:bg-[#4CAF50]/20 transition-colors duration-300">
+              <div className="w-12 h-12 rounded-xl bg-green-50 border border-green-200 flex items-center justify-center text-[#2E7D32] mb-5 group-hover:bg-[#2E7D32] group-hover:text-white group-hover:border-[#2E7D32] transition-all duration-300">
                 {stat.icon}
               </div>
 
               {/* Counter */}
               <p
-                className="font-black text-[#4CAF50] leading-none mb-2"
+                className="font-black text-[#2E7D32] leading-none mb-2"
                 style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
                 aria-label={`${stat.prefix}${stat.value}${stat.suffix} ${stat.label}`}
               >
@@ -159,7 +159,7 @@ export default function StatsBand() {
               </p>
 
               {/* Label */}
-              <p className="text-white/45 text-sm font-medium" aria-hidden="true">
+              <p className="text-[#1a2e1a]/50 text-sm font-medium" aria-hidden="true">
                 {stat.label}
               </p>
             </motion.div>

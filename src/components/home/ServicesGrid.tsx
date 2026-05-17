@@ -80,8 +80,8 @@ export default function ServicesGrid() {
       aria-labelledby="servicios-heading"
     >
       {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#4CAF50]/5 rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#4CAF50]/3 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#4CAF50]/6 rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-100/80 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -92,27 +92,27 @@ export default function ServicesGrid() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#4CAF50]" />
-            <span className="text-[#4CAF50] text-[10px] font-bold uppercase tracking-[0.2em] font-sans">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
+            <span className="text-[#2E7D32] text-[10px] font-bold uppercase tracking-[0.2em] font-sans">
               Nuestros Ejes Estratégicos
             </span>
           </div>
 
           <h2
             id="servicios-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1a2e1a] leading-tight tracking-tight"
           >
             Ciencias aplicadas a la{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CAF50] to-[#81C784]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] to-[#4CAF50]">
               prevención
             </span>
           </h2>
 
-          {/* White accent */}
-          <div className="w-16 h-[2px] bg-white/20 mx-auto mt-6" />
+          {/* Green accent */}
+          <div className="w-16 h-[2px] bg-green-300 mx-auto mt-6" />
 
-          <p className="mt-6 text-lg text-white/50 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="mt-6 text-lg text-[#1a2e1a]/55 max-w-2xl mx-auto font-light leading-relaxed">
             Operamos bajo una visión sistémica donde la salud ambiental, la
             inocuidad y el bienestar humano convergen en un diagnóstico único de
             alta precisión.
@@ -133,29 +133,29 @@ export default function ServicesGrid() {
             >
               <Link
                 href={service.href}
-                className="group flex flex-col gap-6 p-8 lg:p-10 h-full rounded-3xl bg-white/[0.03] border border-white/8 backdrop-blur-sm hover:bg-white/[0.07] hover:border-[#4CAF50]/30 transition-all duration-500 relative overflow-hidden"
+                className="group flex flex-col gap-6 p-8 lg:p-10 h-full rounded-3xl bg-white border border-green-100 hover:bg-green-50/50 hover:border-green-300 transition-all duration-500 relative overflow-hidden shadow-sm hover:shadow-md hover:shadow-green-100"
                 aria-label={`Ver detalle de: ${service.title}`}
               >
                 {/* Hover glow */}
-                <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#4CAF50]/10 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#4CAF50]/8 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Icon */}
-                <div className="relative w-16 h-16 rounded-2xl bg-[#4CAF50]/10 border border-[#4CAF50]/20 flex items-center justify-center shrink-0 text-[#4CAF50] group-hover:bg-[#4CAF50] group-hover:text-white group-hover:border-[#4CAF50] transition-all duration-400 group-hover:shadow-[0_0_25px_rgba(76,175,80,0.3)]">
+                <div className="relative w-16 h-16 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 text-[#2E7D32] group-hover:bg-[#2E7D32] group-hover:text-white group-hover:border-[#2E7D32] transition-all duration-400 group-hover:shadow-[0_0_25px_rgba(46,125,50,0.3)]">
                   {service.icon}
                 </div>
 
                 {/* Content */}
                 <div className="relative flex flex-col gap-3 flex-1">
-                  <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-[#4CAF50] transition-colors duration-300 font-sans">
+                  <h3 className="text-xl lg:text-2xl font-bold text-[#1a2e1a] group-hover:text-[#2E7D32] transition-colors duration-300 font-sans">
                     {service.title}
                   </h3>
-                  <p className="text-white/45 leading-relaxed font-light text-[15px]">
+                  <p className="text-[#1a2e1a]/50 leading-relaxed font-light text-[15px]">
                     {service.description}
                   </p>
                 </div>
 
                 {/* CTA link */}
-                <div className="relative flex items-center gap-2 text-sm font-semibold mt-auto pt-4 text-white/30 group-hover:text-[#4CAF50] transition-colors duration-300">
+                <div className="relative flex items-center gap-2 text-sm font-semibold mt-auto pt-4 text-[#1a2e1a]/30 group-hover:text-[#2E7D32] transition-colors duration-300">
                   <span>Conocer más</span>
                   <svg
                     width="16"

@@ -49,17 +49,34 @@ const jsonLd = {
 
 export default function HomePage() {
   return (
-    <div className="bg-[#04120A] min-h-screen text-white font-sans selection:bg-[#4CAF50]/30 relative">
+    <div className="min-h-screen text-white font-sans selection:bg-[#2d6bb5]/40 relative">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
+      {/* ═══ BACKGROUND IMAGE (fixed, covers full page) ═══ */}
+      <div
+        className="fixed inset-0 z-[-2] bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1920&q=80')",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ═══ BLUE OVERLAY (navy, 82% opacity) ═══ */}
+      <div
+        className="fixed inset-0 z-[-1]"
+        style={{ background: "rgba(13, 31, 60, 0.82)" }}
+        aria-hidden="true"
+      />
+
       {/* ═══ AMBIENT LIGHTS ═══ */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-[20%] -left-40 w-[500px] h-[500px] bg-[#4CAF50]/6 rounded-full blur-[200px] animate-glow-drift" />
-        <div className="absolute top-[50%] -right-32 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[180px] animate-glow-drift-slow" />
-        <div className="absolute top-[75%] left-1/3 w-[350px] h-[350px] bg-[#4CAF50]/4 rounded-full blur-[200px] animate-glow-pulse" />
+        <div className="absolute top-[20%] -left-40 w-[500px] h-[500px] bg-[#2d6bb5]/8 rounded-full blur-[200px] animate-glow-drift" />
+        <div className="absolute top-[50%] -right-32 w-[400px] h-[400px] bg-[#1a9cdc]/5 rounded-full blur-[180px] animate-glow-drift-slow" />
+        <div className="absolute top-[75%] left-1/3 w-[350px] h-[350px] bg-[#2d6bb5]/6 rounded-full blur-[200px] animate-glow-pulse" />
       </div>
 
       <Navbar />

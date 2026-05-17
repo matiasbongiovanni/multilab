@@ -52,14 +52,14 @@ export default function ProcessSteps() {
       aria-labelledby="process-heading"
     >
       {/* Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#4CAF50]/5 rounded-full blur-[200px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#4CAF50]/6 rounded-full blur-[200px] pointer-events-none" />
 
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
         aria-hidden="true"
         style={{
-          backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(rgba(46,125,50,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(46,125,50,0.2) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -73,24 +73,24 @@ export default function ProcessSteps() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#4CAF50]" />
-            <span className="text-[#4CAF50] text-[10px] font-bold uppercase tracking-[0.2em] font-sans">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
+            <span className="text-[#2E7D32] text-[10px] font-bold uppercase tracking-[0.2em] font-sans">
               Proceso Simple
             </span>
           </div>
 
           <h2
             id="process-heading"
-            className="text-4xl sm:text-5xl font-bold text-white leading-tight tracking-tight"
+            className="text-4xl sm:text-5xl font-bold text-[#1a2e1a] leading-tight tracking-tight"
           >
             Cómo{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CAF50] to-[#81C784]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] to-[#4CAF50]">
               trabajamos
             </span>
           </h2>
 
-          <p className="mt-6 text-lg text-white/50 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="mt-6 text-lg text-[#1a2e1a]/55 max-w-xl mx-auto font-light leading-relaxed">
             Tres pasos simples para obtener resultados precisos y confiables.
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export default function ProcessSteps() {
         {/* Steps */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-0 relative">
           {/* Connecting line (desktop only) */}
-          <div className="hidden lg:block absolute top-[72px] left-[16.6%] right-[16.6%] h-px bg-gradient-to-r from-[#4CAF50]/30 via-[#4CAF50]/50 to-[#4CAF50]/30 z-0" />
+          <div className="hidden lg:block absolute top-[72px] left-[16.6%] right-[16.6%] h-px bg-gradient-to-r from-[#2E7D32]/20 via-[#4CAF50]/40 to-[#2E7D32]/20 z-0" />
 
           {steps.map((step, i) => (
             <motion.div
@@ -111,24 +111,24 @@ export default function ProcessSteps() {
             >
               {/* Step circle */}
               <div className="relative z-10 mb-8">
-                <div className="w-[88px] h-[88px] rounded-full bg-[#04120A] border-2 border-[#4CAF50]/30 flex items-center justify-center text-[#4CAF50] group-hover:border-[#4CAF50] group-hover:shadow-[0_0_30px_rgba(76,175,80,0.2)] transition-all duration-500">
+                <div className="w-[88px] h-[88px] rounded-full bg-white border-2 border-green-200 flex items-center justify-center text-[#2E7D32] group-hover:border-[#2E7D32] group-hover:bg-green-50 group-hover:shadow-[0_0_30px_rgba(46,125,50,0.15)] transition-all duration-500 shadow-md shadow-green-100">
                   {step.icon}
                 </div>
                 {/* Number badge */}
-                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#4CAF50] text-white text-xs font-bold flex items-center justify-center shadow-[0_0_15px_rgba(76,175,80,0.3)]">
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#2E7D32] text-white text-xs font-bold flex items-center justify-center shadow-[0_0_15px_rgba(46,125,50,0.3)]">
                   {step.number}
                 </div>
               </div>
 
               {/* Content */}
               <div className="max-w-[280px] lg:px-6">
-                <h3 className="text-2xl font-bold text-white mb-1 font-sans">
+                <h3 className="text-2xl font-bold text-[#1a2e1a] mb-1 font-sans">
                   {step.title}
                 </h3>
-                <p className="text-[#4CAF50] text-sm font-medium mb-3">
+                <p className="text-[#2E7D32] text-sm font-medium mb-3">
                   {step.subtitle}
                 </p>
-                <p className="text-white/45 text-sm leading-relaxed font-light">
+                <p className="text-[#1a2e1a]/50 text-sm leading-relaxed font-light">
                   {step.description}
                 </p>
               </div>

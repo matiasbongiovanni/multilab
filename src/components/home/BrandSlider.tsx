@@ -23,8 +23,8 @@ export default function BrandSlider() {
       className="relative py-20 lg:py-24 overflow-hidden"
       aria-label="Empresas e instituciones que confían en nosotros"
     >
-      {/* White subtle divider */}
-      <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      {/* Subtle divider */}
+      <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-green-300/50 to-transparent" />
 
       <motion.div
         initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
@@ -34,13 +34,13 @@ export default function BrandSlider() {
         className="max-w-7xl mx-auto px-4 mb-14"
       >
         <div className="flex flex-col items-center gap-4">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#4CAF50]" />
-            <span className="text-[#4CAF50] text-[10px] font-bold uppercase tracking-[0.2em]">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
+            <span className="text-[#2E7D32] text-[10px] font-bold uppercase tracking-[0.2em]">
               Confían en nosotros
             </span>
           </div>
-          <p className="text-center text-white/50 text-sm font-medium max-w-md">
+          <p className="text-center text-[#1a2e1a]/50 text-sm font-medium max-w-md">
             Empresas e instituciones que eligen nuestros servicios de análisis
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function BrandSlider() {
           {[...clients, ...clients].map((client, i) => (
             <div
               key={i}
-              className="inline-flex items-center justify-center mx-12 shrink-0 min-w-[180px] grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              className="inline-flex items-center justify-center mx-12 shrink-0 min-w-[180px] opacity-40 hover:opacity-80 transition-all duration-500"
             >
               {client.logo ? (
                 <img
@@ -60,10 +60,10 @@ export default function BrandSlider() {
                   alt={client.name}
                   loading="lazy"
                   decoding="async"
-                  className="h-12 object-contain max-w-[220px] invert brightness-200"
+                  className="h-12 object-contain max-w-[220px]"
                 />
               ) : (
-                <span className="text-base font-bold text-white tracking-wide">
+                <span className="text-base font-bold text-[#1a2e1a] tracking-wide">
                   {client.name}
                 </span>
               )}

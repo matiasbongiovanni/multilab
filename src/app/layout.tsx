@@ -1,11 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import FontSwitcher from "@/components/FontSwitcher";
 import "./globals.css";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-dmsans",
   display: "swap",
 });
 
@@ -75,13 +90,15 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${plusJakarta.variable} ${dmSans.variable} h-full antialiased`}
+      style={{ fontFamily: "var(--font-montserrat), system-ui, sans-serif" }}
     >
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-to-content">
           Ir al contenido principal
         </a>
         {children}
+        <FontSwitcher />
       </body>
     </html>
   );
