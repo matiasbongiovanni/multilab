@@ -1,181 +1,194 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
-const services = [
+const verticales = [
   {
-    id: "seguridad-higiene",
-    title: "Seguridad e Higiene Laboral",
+    num: "01",
+    title: "Higiene y Seguridad",
+    subtitle: "Laboral",
+    href: "/higiene-seguridad",
     description:
-      "Gestión técnica enfocada en la prevención de enfermedades profesionales y accidentes, asegurando entornos de trabajo saludables y productivos.",
-    href: "/servicios/seguridad-higiene",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
+      "Evaluación de riesgos, mediciones ambientales y documentación técnica para empresas que necesitan cumplir con la Ley 19.587 y sus reglamentaciones. Diagnóstico, plan de acción e informes certificados.",
+    items: ["Mediciones de ruido y vibraciones", "Iluminación y ergonomía", "Agentes químicos y biológicos", "Programas de higiene industrial"],
   },
   {
-    id: "microbiologia",
-    title: "Microbiología Integral",
+    num: "02",
+    title: "Laboratorio",
+    subtitle: "de Análisis",
+    href: "/laboratorio",
     description:
-      "Diagnóstico microbiológico transversal que abarca el control de procesos, ambientes y productos, asegurando la ausencia de riesgos biológicos.",
-    href: "/servicios/microbiologia",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M10 2v7.31M14 9.31V2M8.5 2h7M14 9.31l6.4 9.6A2 2 0 0 1 18.73 22H5.27a2 2 0 0 1-1.66-3.09L10 9.31" />
-        <line x1="6" y1="16" x2="18" y2="16" />
-      </svg>
-    ),
+      "Análisis microbiológicos, bromatológicos y de calidad de agua para industrias alimentarias, clínicas, veterinarias y municipios. Resultados con trazabilidad completa y firma del director técnico.",
+    items: ["Microbiología de alimentos y agua", "Control bromatológico", "Análisis veterinarios", "Hematología y bioquímica clínica"],
   },
   {
-    id: "ambiente",
-    title: "Laboratorio Ambiental",
+    num: "03",
+    title: "Medioambiente",
+    subtitle: "y Control Ambiental",
+    href: "/medioambiente",
     description:
-      "Monitoreo de precisión de agua, aire y suelo para garantizar que el entorno cumpla con los más altos estándares de calidad y normativas vigentes.",
-    href: "/servicios/ambiente",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-      </svg>
-    ),
-  },
-  {
-    id: "id-ciencias",
-    title: "I+D en Ciencias y Medicina",
-    description:
-      "Nuestro motor de innovación que investiga y desarrolla nuevas fronteras del diagnóstico, conectando la ciencia analítica con la salud humana y ambiental.",
-    href: "/servicios/investigacion",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    ),
+      "Monitoreo de efluentes, muestreo de suelos y análisis de agua para organismos públicos, industrias y desarrollos inmobiliarios. Informes técnicos avalados para presentación ante autoridades.",
+    items: ["Calidad de agua superficial y subterránea", "Monitoreo de efluentes industriales", "Muestreo y análisis de suelos", "Informes ambientales para organismos"],
   },
 ];
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: i * 0.12,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  }),
-};
-
 export default function ServicesGrid() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduce = useReducedMotion();
 
   return (
     <section
       id="servicios"
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-20 lg:py-28"
       aria-labelledby="servicios-heading"
+      style={{ backgroundColor: "oklch(99.5% 0.003 143)" }}
     >
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#4CAF50]/6 rounded-full blur-[200px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green-100/80 rounded-full blur-[150px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          className="text-center mb-16 lg:mb-20"
-          initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-          whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+          className="mb-16"
+          initial={reduce ? {} : { opacity: 0, y: 16 }}
+          whileInView={reduce ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.55 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-            <span className="text-[#2E7D32] text-[10px] font-bold uppercase tracking-[0.2em] font-sans">
-              Nuestros Ejes Estratégicos
-            </span>
-          </div>
-
+          <span
+            className="text-xs font-semibold uppercase tracking-[0.22em]"
+            style={{ color: "oklch(42% 0.13 144)" }}
+          >
+            Tres áreas de especialización
+          </span>
           <h2
             id="servicios-heading"
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1a2e1a] leading-tight tracking-tight"
+            className="mt-3 leading-[0.95] tracking-[-0.02em]"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2.4rem, 5vw, 4rem)",
+              color: "oklch(13% 0.015 143)",
+            }}
           >
-            Ciencias aplicadas a la{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] to-[#4CAF50]">
-              prevención
-            </span>
+            Prevención técnica
+            <br />
+            de riesgos.
           </h2>
-
-          {/* Green accent */}
-          <div className="w-16 h-[2px] bg-green-300 mx-auto mt-6" />
-
-          <p className="mt-6 text-lg text-[#1a2e1a]/55 max-w-2xl mx-auto font-light leading-relaxed">
-            Operamos bajo una visión sistémica donde la salud ambiental, la
-            inocuidad y el bienestar humano convergen en un diagnóstico único de
-            alta precisión.
-          </p>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
-          {services.map((service, i) => (
+        {/* Verticales — numbered editorial strips */}
+        <div style={{ borderTop: "1px solid oklch(91% 0.013 143)" }}>
+          {verticales.map((v, i) => (
             <motion.div
-              key={service.id}
-              custom={i}
-              variants={shouldReduceMotion ? {} : cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="h-full"
+              key={v.num}
+              initial={reduce ? {} : { opacity: 0, y: 24 }}
+              whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              style={{ borderBottom: "1px solid oklch(91% 0.013 143)" }}
             >
-              <Link
-                href={service.href}
-                className="group flex flex-col gap-6 p-8 lg:p-10 h-full rounded-3xl bg-white border border-green-100 hover:bg-green-50/50 hover:border-green-300 transition-all duration-500 relative overflow-hidden shadow-sm hover:shadow-md hover:shadow-green-100"
-                aria-label={`Ver detalle de: ${service.title}`}
+              <div
+                className={`grid gap-8 py-10 lg:py-14 ${
+                  i === 1
+                    ? "lg:grid-cols-[1fr_2fr_auto]"
+                    : i === 2
+                    ? "lg:grid-cols-[auto_1fr_2fr]"
+                    : "lg:grid-cols-[auto_2fr_1fr]"
+                }`}
               >
-                {/* Hover glow */}
-                <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#4CAF50]/8 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                {/* Row 0 & 2: number first */}
+                {i !== 1 && (
+                  <div className={`flex items-start ${i === 2 ? "lg:order-1" : ""}`}>
+                    <span
+                      className="font-semibold tabular-nums"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+                        color: "oklch(42% 0.13 144)",
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      {v.num}
+                    </span>
+                  </div>
+                )}
 
-                {/* Icon */}
-                <div className="relative w-16 h-16 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0 text-[#2E7D32] group-hover:bg-[#2E7D32] group-hover:text-white group-hover:border-[#2E7D32] transition-all duration-400 group-hover:shadow-[0_0_25px_rgba(46,125,50,0.3)]">
-                  {service.icon}
+                {/* Title block */}
+                <div className={`flex flex-col gap-2 ${i === 1 ? "lg:order-1" : i === 2 ? "lg:order-2" : ""}`}>
+                  <Link href={v.href} className="group inline-block">
+                    <h3
+                      className="leading-[0.95] tracking-[-0.02em] group-hover:opacity-80 transition-opacity duration-200"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(2rem, 4.5vw, 3.5rem)",
+                        color: "oklch(13% 0.015 143)",
+                      }}
+                    >
+                      {v.title}
+                      <br />
+                      <span style={{ color: "oklch(42% 0.13 144)" }}>{v.subtitle}</span>
+                    </h3>
+                  </Link>
                 </div>
 
-                {/* Content */}
-                <div className="relative flex flex-col gap-3 flex-1">
-                  <h3 className="text-xl lg:text-2xl font-bold text-[#1a2e1a] group-hover:text-[#2E7D32] transition-colors duration-300 font-sans">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#1a2e1a]/50 leading-relaxed font-light text-[15px]">
-                    {service.description}
-                  </p>
-                </div>
+                {/* Row 1: number between title and description */}
+                {i === 1 && (
+                  <div className="hidden lg:flex items-start justify-center">
+                    <span
+                      className="font-semibold tabular-nums"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
+                        color: "oklch(42% 0.13 144)",
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      {v.num}
+                    </span>
+                  </div>
+                )}
 
-                {/* CTA link */}
-                <div className="relative flex items-center gap-2 text-sm font-semibold mt-auto pt-4 text-[#1a2e1a]/30 group-hover:text-[#2E7D32] transition-colors duration-300">
-                  <span>Conocer más</span>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                    aria-hidden="true"
+                {/* Description + items + CTA */}
+                <div className={`flex flex-col gap-5 ${i === 2 ? "lg:order-3" : ""}`}>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "oklch(44% 0.012 143)", fontFamily: "var(--font-body)" }}
                   >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
+                    {v.description}
+                  </p>
+
+                  <ul className="space-y-1.5">
+                    {v.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2.5 text-sm"
+                        style={{ color: "oklch(13% 0.015 143)", fontFamily: "var(--font-body)" }}
+                      >
+                        <span
+                          className="w-1 h-1 rounded-full shrink-0"
+                          style={{ backgroundColor: "oklch(42% 0.13 144)" }}
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href={v.href}
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-200 self-start"
+                    style={{ color: "oklch(42% 0.13 144)" }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "oklch(33% 0.11 144)"; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = "oklch(42% 0.13 144)"; }}
+                  >
+                    Ver área completa
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

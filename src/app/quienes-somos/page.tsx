@@ -130,7 +130,7 @@ export default function QuienesSomosPage() {
               <span className="inline-block text-[#4CAF50] text-sm font-semibold uppercase tracking-widest">
                 Quiénes somos
               </span>
-              <h1 className="font-inter text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-[1.1]">
+              <h1 className="font-inter text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1]" style={{ color: "oklch(13% 0.015 143)" }}>
                 Un laboratorio con propósito
               </h1>
               <p className="text-lg text-[#616161] leading-relaxed max-w-2xl">
