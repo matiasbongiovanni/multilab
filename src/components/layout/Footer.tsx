@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link";
 
-const serviciosLinks = [
-  { label: "Calidad de Agua", href: "/servicios/calidad-de-agua" },
-  { label: "Higiene y Bromatología", href: "/servicios/higiene-bromatologia" },
-  { label: "Análisis Veterinario", href: "/servicios/analisis-veterinario" },
-  { label: "Análisis Clínico", href: "/servicios/analisis-clinico" },
-  { label: "Investigación", href: "/servicios/investigacion" },
-  { label: "Consulta Online", href: "/servicios/consulta-online" },
+const verticalesLinks = [
+  { label: "Higiene y Seguridad", href: "/higiene-seguridad" },
+  { label: "Laboratorio", href: "/laboratorio" },
+  { label: "Medioambiente", href: "/medioambiente" },
+];
+
+const empresaLinks = [
+  { label: "Quiénes somos", href: "/quienes-somos" },
+  { label: "Contacto", href: "/contacto" },
+  { label: "Ver mis informes", href: "/mis-estudios" },
 ];
 
 const socialLinks = [
@@ -68,18 +73,24 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-[#071410] text-white/40 mt-auto"
+      className="mt-auto"
+      style={{
+        backgroundColor: "var(--color-rp-bg)",
+        borderTop: "1px solid var(--color-rp-border)",
+        color: "var(--color-rp-text-muted)",
+      }}
       role="contentinfo"
       aria-label="Pie de página"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link
               href="/"
               className="inline-flex items-center gap-2 mb-4"
-              aria-label="Multilab — inicio"
+              aria-label="Multilab Risk Prevention — inicio"
             >
               <svg
                 width="32"
@@ -88,30 +99,55 @@ export default function Footer() {
                 fill="none"
                 aria-hidden="true"
               >
-                <rect width="36" height="36" rx="8" fill="#4CAF50" />
+                <rect width="36" height="36" rx="8" fill="var(--color-rp-accent)" />
                 <path d="M13 8h4v13a4 4 0 01-8 0V8h4z" fill="white" opacity="0.9" />
                 <circle cx="25" cy="14" r="4" fill="white" opacity="0.9" />
                 <path d="M23 18v6M27 18v6M21 24h8" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
-              <span className="font-black text-xl text-white tracking-tight">
-                MULTI<span className="text-[#4CAF50]">LAB</span>
+              <span
+                className="font-black text-xl tracking-tight"
+                style={{ color: "var(--color-rp-text-strong)" }}
+              >
+                MULTI
+                <span style={{ color: "var(--color-rp-accent)" }}>LAB</span>
               </span>
             </Link>
-            <p className="text-sm leading-relaxed max-w-xs">
-              Laboratorio de análisis clínicos, veterinarios, calidad de agua e
-              higiene. Precisión y confianza en cada resultado.
+            <p
+              className="text-sm leading-relaxed max-w-xs"
+              style={{ color: "var(--color-rp-text-muted)" }}
+            >
+              Risk Prevention. Análisis técnicos para Higiene y Seguridad,
+              Laboratorio y Medioambiente.
             </p>
-            <p className="text-xs mt-4 text-[#616161]">
+            <p
+              className="text-xs mt-3"
+              style={{ color: "var(--color-rp-text-subtle)" }}
+            >
               Lic. Cinthia Degliangioli
             </p>
-            {/* Redes */}
             <div className="flex gap-3 mt-5">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#4CAF50] text-[#616161] hover:text-white flex items-center justify-center transition-all duration-150"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-150"
+                  style={{
+                    backgroundColor: "var(--color-rp-bg-soft)",
+                    color: "var(--color-rp-text-muted)",
+                    border: "1px solid var(--color-rp-border)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                      "var(--color-rp-accent)";
+                    (e.currentTarget as HTMLAnchorElement).style.color = "white";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                      "var(--color-rp-bg-soft)";
+                    (e.currentTarget as HTMLAnchorElement).style.color =
+                      "var(--color-rp-text-muted)";
+                  }}
                 >
                   {social.icon}
                 </a>
@@ -119,17 +155,21 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Servicios column */}
+          {/* Verticales column */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4 uppercase tracking-wide">
-              Servicios
+            <h3
+              className="font-semibold text-sm mb-4 uppercase tracking-wide"
+              style={{ color: "var(--color-rp-text-strong)" }}
+            >
+              Verticales
             </h3>
             <ul className="space-y-2.5">
-              {serviciosLinks.map((link) => (
+              {verticalesLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-white transition-colors duration-150"
+                    className="text-sm transition-colors duration-150 hover:text-[var(--color-rp-accent)]"
+                    style={{ color: "var(--color-rp-text-muted)" }}
                   >
                     {link.label}
                   </Link>
@@ -138,52 +178,69 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Institucional column */}
+          {/* Empresa column */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4 uppercase tracking-wide">
-              Institucional
+            <h3
+              className="font-semibold text-sm mb-4 uppercase tracking-wide"
+              style={{ color: "var(--color-rp-text-strong)" }}
+            >
+              Empresa
             </h3>
             <ul className="space-y-2.5">
-              <li>
-                <Link
-                  href="/quienes-somos"
-                  className="text-sm hover:text-white transition-colors duration-150"
-                >
-                  Quiénes somos
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contacto"
-                  className="text-sm hover:text-white transition-colors duration-150"
-                >
-                  Contacto
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="text-sm hover:text-white transition-colors duration-150"
-                >
-                  Portal de pacientes
-                </Link>
-              </li>
+              {empresaLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm transition-colors duration-150 hover:text-[var(--color-rp-accent)]"
+                    style={{ color: "var(--color-rp-text-muted)" }}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact column */}
+          {/* Contacto column */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4 uppercase tracking-wide">
+            <h3
+              className="font-semibold text-sm mb-4 uppercase tracking-wide"
+              style={{ color: "var(--color-rp-text-strong)" }}
+            >
               Contacto
             </h3>
             <address className="not-italic space-y-3 text-sm">
-              <div className="flex items-start gap-2.5">
+              <div
+                className="flex items-start gap-2.5"
+                style={{ color: "var(--color-rp-text-muted)" }}
+              >
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#4CAF50"
+                  stroke="var(--color-rp-accent)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-0.5 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>Córdoba, Argentina · Dirección próximamente</span>
+              </div>
+              <div
+                className="flex items-start gap-2.5"
+                style={{ color: "var(--color-rp-text-muted)" }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--color-rp-accent)"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -192,38 +249,18 @@ export default function Footer() {
                 >
                   <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0121.92 15z" />
                 </svg>
-                <span>Consultar por WhatsApp</span>
+                <span>WhatsApp · próximamente</span>
               </div>
-              <div className="flex items-start gap-2.5">
+              <div
+                className="flex items-start gap-2.5"
+                style={{ color: "var(--color-rp-text-muted)" }}
+              >
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#4CAF50"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mt-0.5 shrink-0"
-                  aria-hidden="true"
-                >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-                <Link
-                  href="/contacto"
-                  className="hover:text-white transition-colors"
-                >
-                  contacto@multilab.com.ar
-                </Link>
-              </div>
-              <div className="flex items-start gap-2.5">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#4CAF50"
+                  stroke="var(--color-rp-accent)"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -240,18 +277,27 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[#616161]">
-            &copy; {currentYear} Multilab — Lic. Cinthia Degliangioli. Todos los
-            derechos reservados.
+        <div
+          className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+          style={{ borderTop: "1px solid var(--color-rp-border)" }}
+        >
+          <p
+            className="text-xs"
+            style={{ color: "var(--color-rp-text-subtle)" }}
+          >
+            &copy; {currentYear} Multilab Risk Prevention — Lic. Cinthia
+            Degliangioli. Todos los derechos reservados.
           </p>
-          <p className="text-xs text-[#616161]">
+          <p
+            className="text-xs"
+            style={{ color: "var(--color-rp-text-subtle)" }}
+          >
             Desarrollado por{" "}
             <a
               href="https://sideasconsultores.com.ar"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#4CAF50] transition-colors"
+              className="transition-colors hover:text-[var(--color-rp-accent)]"
             >
               SIDEAS Consultores
             </a>

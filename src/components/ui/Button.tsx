@@ -1,6 +1,6 @@
 import { type ButtonHTMLAttributes, forwardRef } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,13 +12,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-[#4CAF50] text-white hover:bg-[#2E7D32] active:bg-[#1B5E20] shadow-sm hover:shadow-md",
+    "bg-[var(--color-rp-accent)] text-white hover:bg-[var(--color-rp-accent-hover)] active:bg-[var(--color-rp-accent-hover)] shadow-sm hover:shadow-md",
   secondary:
-    "bg-[#2E7D32] text-white hover:bg-[#1B5E20] active:bg-[#1B5E20] shadow-sm hover:shadow-md",
-  outline:
-    "border-2 border-[#4CAF50] text-[#4CAF50] hover:bg-[#dcfce7] active:bg-[#bbf7d0]",
+    "bg-[var(--color-rp-bg-soft)] text-[var(--color-rp-text)] border border-[var(--color-rp-border)] hover:border-[var(--color-rp-accent)] hover:text-[var(--color-rp-accent)]",
   ghost:
-    "text-[#4CAF50] hover:bg-[#dcfce7] active:bg-[#bbf7d0]",
+    "bg-transparent border border-[var(--color-rp-border)] text-[var(--color-rp-text)] hover:border-[var(--color-rp-accent)] hover:text-[var(--color-rp-accent)]",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -50,7 +48,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           "inline-flex items-center justify-center gap-2",
           "font-semibold rounded-lg",
           "transition-all duration-200 ease-in-out",
-          "focus-visible:outline-3 focus-visible:outline-[#4CAF50] focus-visible:outline-offset-2",
           "disabled:opacity-50 disabled:cursor-not-allowed",
           "min-h-[44px]",
           variantClasses[variant],

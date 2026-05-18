@@ -5,26 +5,18 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-const serviciosLinks = [
-  { label: "Análisis Clínico", href: "/servicios/analisis-clinico" },
-  { label: "Análisis Veterinario", href: "/servicios/analisis-veterinario" },
-  { label: "Calidad de Agua", href: "/servicios/calidad-de-agua" },
-  { label: "Higiene y Bromatología", href: "/servicios/higiene-bromatologia" },
-  { label: "Investigación", href: "/servicios/investigacion" },
-  { label: "Consulta Online", href: "/servicios/consulta-online" },
-];
-
 const mainLinks = [
   { label: "Inicio", href: "/" },
+  { label: "Higiene y Seguridad", href: "/higiene-seguridad" },
+  { label: "Laboratorio", href: "/laboratorio" },
+  { label: "Medioambiente", href: "/medioambiente" },
   { label: "Quiénes somos", href: "/quienes-somos" },
-  { label: "Servicios", href: "/#servicios" },
   { label: "Contacto", href: "/contacto" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isServiciosOpen, setIsServiciosOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -35,20 +27,27 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsOpen(false);
-    setIsServiciosOpen(false);
   }, [pathname]);
 
-  const isActive = (href: string) => pathname === href;
-  const isServiciosActive = pathname.startsWith("/servicios");
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
       className={[
         "fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl",
         isScrolled
-          ? "bg-[#0A1F0F]/95 backdrop-blur-xl shadow-lg shadow-black/40 border border-[#4CAF50]/15"
-          : "bg-[#0A1F0F]/75 backdrop-blur-xl border border-white/10",
+          ? "shadow-lg border"
+          : "border",
       ].join(" ")}
+      style={{
+        backgroundColor: isScrolled
+          ? "color-mix(in oklch, var(--color-rp-bg) 95%, transparent)"
+          : "color-mix(in oklch, var(--color-rp-bg) 92%, transparent)",
+        borderColor: "var(--color-rp-border)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+      }}
       role="banner"
     >
       <nav
@@ -60,7 +59,7 @@ export default function Navbar() {
           <Link
             href="/"
             className="flex items-center gap-2.5 group"
-            aria-label="Multilab — inicio"
+            aria-label="Multilab Risk Prevention — inicio"
           >
             <div className="flex items-center gap-2">
               <svg
@@ -70,7 +69,7 @@ export default function Navbar() {
                 fill="none"
                 aria-hidden="true"
               >
-                <rect width="36" height="36" rx="8" fill="#4CAF50" />
+                <rect width="36" height="36" rx="8" fill="var(--color-rp-accent)" />
                 <path
                   d="M13 8h4v13a4 4 0 01-8 0V8h4z"
                   fill="white"
@@ -90,93 +89,56 @@ export default function Navbar() {
                   strokeLinecap="round"
                 />
               </svg>
-              <span className="font-black text-xl text-white tracking-tight">
-                MULTI<span className="text-[#4CAF50]">LAB</span>
+              <span
+                className="font-black text-xl tracking-tight"
+                style={{ color: "var(--color-rp-text-strong)" }}
+              >
+                MULTI
+                <span style={{ color: "var(--color-rp-accent)" }}>LAB</span>
               </span>
             </div>
           </Link>
 
           {/* Desktop navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-0.5">
             {mainLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={[
-                  "px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150",
-                  isActive(link.href)
-                    ? "text-[#4CAF50] bg-white/5"
-                    : "text-white/70 hover:text-white hover:bg-white/5",
+                  "px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150",
                 ].join(" ")}
+                style={{
+                  color: isActive(link.href)
+                    ? "var(--color-rp-accent)"
+                    : "var(--color-rp-text-muted)",
+                  backgroundColor: isActive(link.href)
+                    ? "var(--color-rp-accent-soft)"
+                    : "transparent",
+                }}
                 aria-current={isActive(link.href) ? "page" : undefined}
               >
                 {link.label}
               </Link>
             ))}
-
-            {/* Servicios dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setIsServiciosOpen(!isServiciosOpen)}
-                onBlur={() => setTimeout(() => setIsServiciosOpen(false), 150)}
-                className={[
-                  "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150",
-                  isServiciosActive
-                    ? "text-[#4CAF50] bg-white/5"
-                    : "text-white/70 hover:text-white hover:bg-white/5",
-                ].join(" ")}
-                aria-expanded={isServiciosOpen}
-                aria-haspopup="true"
-              >
-                Ver servicios
-                <svg
-                  className={`w-4 h-4 transition-transform duration-200 ${isServiciosOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              <AnimatePresence>
-                {isServiciosOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -8, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -8, scale: 0.96 }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-2 w-60 bg-[#0D2818] rounded-xl shadow-xl border border-[#4CAF50]/20 py-1.5 z-50"
-                    role="menu"
-                  >
-                    {serviciosLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        role="menuitem"
-                        className={[
-                          "flex items-center px-4 py-2.5 text-sm transition-colors duration-100",
-                          isActive(link.href)
-                            ? "text-[#4CAF50] bg-white/5 font-medium"
-                            : "text-white/70 hover:text-white hover:bg-white/5",
-                        ].join(" ")}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
           </div>
 
-          {/* CTA button + mobile toggle */}
+          {/* CTA + mobile toggle */}
           <div className="flex items-center gap-3">
             <Link
-              href="/login"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 bg-[#4CAF50] text-white text-sm font-semibold rounded-lg hover:bg-[#5CC05F] transition-colors duration-150 shadow-sm hover:shadow-md min-h-[40px]"
+              href="/mis-estudios"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-white text-sm font-semibold rounded-lg transition-colors duration-150 shadow-sm hover:shadow-md min-h-[40px]"
+              style={{
+                backgroundColor: "var(--color-rp-accent)",
+              }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                  "var(--color-rp-accent-hover)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                  "var(--color-rp-accent)")
+              }
             >
               <svg
                 width="16"
@@ -189,15 +151,15 @@ export default function Navbar() {
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
+                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              Iniciar Sesión
+              Ver mis informes
             </Link>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+              className="xl:hidden p-2 rounded-lg transition-colors"
+              style={{ color: "var(--color-rp-text-muted)" }}
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -230,7 +192,8 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="lg:hidden overflow-hidden border-t border-white/10"
+              className="xl:hidden overflow-hidden"
+              style={{ borderTop: "1px solid var(--color-rp-border)" }}
               role="navigation"
               aria-label="Menú móvil"
             >
@@ -239,40 +202,25 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={[
-                      "flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors",
-                      isActive(link.href)
-                        ? "text-[#4CAF50] bg-white/5"
-                        : "text-white/70 hover:text-white hover:bg-white/5",
-                    ].join(" ")}
+                    className="flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+                    style={{
+                      color: isActive(link.href)
+                        ? "var(--color-rp-accent)"
+                        : "var(--color-rp-text-muted)",
+                      backgroundColor: isActive(link.href)
+                        ? "var(--color-rp-accent-soft)"
+                        : "transparent",
+                    }}
                     aria-current={isActive(link.href) ? "page" : undefined}
                   >
                     {link.label}
                   </Link>
                 ))}
-                <div className="px-4 py-1">
-                  <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-1">
-                    Servicios
-                  </p>
-                  {serviciosLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={[
-                        "flex items-center px-3 py-2.5 rounded-lg text-sm transition-colors",
-                        isActive(link.href)
-                          ? "text-[#4CAF50] bg-white/5 font-medium"
-                          : "text-white/60 hover:text-white hover:bg-white/5",
-                      ].join(" ")}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
                 <div className="px-4 pt-2 pb-3">
                   <Link
-                    href="/login"
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#4CAF50] text-white text-sm font-semibold rounded-lg hover:bg-[#5CC05F] transition-colors"
+                    href="/mis-estudios"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-white text-sm font-semibold rounded-lg transition-colors"
+                    style={{ backgroundColor: "var(--color-rp-accent)" }}
                   >
                     <svg
                       width="16"
@@ -285,10 +233,9 @@ export default function Navbar() {
                       strokeLinejoin="round"
                       aria-hidden="true"
                     >
-                      <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                      <circle cx="12" cy="7" r="4" />
+                      <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    Iniciar Sesión
+                    Ver mis informes
                   </Link>
                 </div>
               </div>

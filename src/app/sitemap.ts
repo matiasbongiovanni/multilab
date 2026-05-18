@@ -10,29 +10,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/", priority: 1.0, changeFrequency: "weekly" as const },
     { url: "/quienes-somos", priority: 0.8, changeFrequency: "monthly" as const },
     { url: "/contacto", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/higiene-seguridad", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/laboratorio", priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/medioambiente", priority: 0.8, changeFrequency: "monthly" as const },
     {
       url: "/servicios/analisis-clinico",
-      priority: 0.9,
+      priority: 0.7,
       changeFrequency: "monthly" as const,
     },
     {
       url: "/servicios/analisis-veterinario",
-      priority: 0.8,
+      priority: 0.7,
       changeFrequency: "monthly" as const,
     },
     {
       url: "/servicios/calidad-de-agua",
-      priority: 0.8,
+      priority: 0.7,
       changeFrequency: "monthly" as const,
     },
     {
       url: "/servicios/higiene-bromatologia",
-      priority: 0.8,
+      priority: 0.7,
       changeFrequency: "monthly" as const,
     },
     {
       url: "/servicios/investigacion",
-      priority: 0.7,
+      priority: 0.6,
       changeFrequency: "monthly" as const,
     },
   ];

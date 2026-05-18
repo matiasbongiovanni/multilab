@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,49 +9,57 @@ const inter = Inter({
   display: "swap",
 });
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "600", "900"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://multilab.vercel.app"
   ),
   title: {
-    default:
-      "Multilab — Laboratorio de Análisis Clínicos, Veterinarios y Ambientales",
-    template: "%s | Multilab",
+    default: "Multilab — Risk Prevention | Argentina",
+    template: "%s | Multilab Risk Prevention",
   },
   description:
-    "Multilab, laboratorio dirigido por la Lic. Cinthia Degliangioli. Análisis clínicos, veterinarios, calidad de agua, higiene, bromatología e investigación en Argentina.",
+    "Multilab Risk Prevention: análisis para Higiene y Seguridad, Laboratorio y Medioambiente. Dirigido por la Lic. Cinthia Degliangioli.",
   keywords: [
-    "laboratorio análisis clínicos",
-    "análisis veterinarios",
+    "risk prevention",
+    "higiene y seguridad",
+    "análisis laboratorio",
     "calidad de agua",
-    "higiene bromatología",
+    "medioambiente",
     "Cinthia Degliangioli",
     "Multilab",
     "laboratorio Argentina",
+    "bromatología",
+    "microbiología",
   ],
   authors: [{ name: "SIDEAS Consultores" }],
   openGraph: {
     type: "website",
     locale: "es_AR",
-    siteName: "Multilab",
-    title:
-      "Multilab — Laboratorio de Análisis Clínicos, Veterinarios y Ambientales",
+    siteName: "Multilab Risk Prevention",
+    title: "Multilab — Risk Prevention | Argentina",
     description:
-      "Resultados precisos y confiables. Análisis clínicos, veterinarios, calidad de agua e investigación. Lic. Cinthia Degliangioli.",
+      "Análisis técnicos para Higiene y Seguridad, Laboratorio y Medioambiente. Lic. Cinthia Degliangioli.",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "Multilab — Laboratorio de Análisis",
+        alt: "Multilab Risk Prevention — Argentina",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Multilab — Laboratorio de Análisis",
+    title: "Multilab — Risk Prevention | Argentina",
     description:
-      "Resultados precisos y confiables. Análisis clínicos, veterinarios y ambientales.",
+      "Análisis técnicos para Higiene y Seguridad, Laboratorio y Medioambiente.",
     images: ["/images/og-default.png"],
   },
   robots: {
@@ -75,7 +83,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-to-content">

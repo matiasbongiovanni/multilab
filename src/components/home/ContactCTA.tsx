@@ -8,38 +8,11 @@ export default function ContactCTA() {
 
   return (
     <section
-      className="py-20 lg:py-24 relative overflow-hidden"
-      style={{ backgroundColor: "#0D3A1A" }}
+      className="py-20 lg:py-24"
+      style={{ backgroundColor: "var(--color-rp-bg-soft)" }}
       aria-labelledby="cta-heading"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#4CAF50]/8 rounded-full" />
-        <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-[#4CAF50]/8 rounded-full" />
-        <svg
-          className="absolute inset-0 w-full h-full opacity-5"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="cta-grid"
-              width="32"
-              height="32"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 32 0 L 0 0 0 32"
-                fill="none"
-                stroke="white"
-                strokeWidth="0.5"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#cta-grid)" />
-        </svg>
-      </div>
-
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 24 }}
           whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
@@ -47,17 +20,20 @@ export default function ContactCTA() {
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center gap-6"
         >
-          <div className="w-16 h-16 rounded-2xl bg-[#4CAF50]/20 flex items-center justify-center backdrop-blur-sm">
+          <div
+            className="w-14 h-14 rounded-2xl flex items-center justify-center"
+            style={{ backgroundColor: "var(--color-rp-accent-soft)" }}
+            aria-hidden="true"
+          >
             <svg
-              width="32"
-              height="32"
+              width="28"
+              height="28"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="white"
+              stroke="var(--color-rp-accent)"
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
-              aria-hidden="true"
             >
               <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z" />
             </svg>
@@ -65,20 +41,37 @@ export default function ContactCTA() {
 
           <h2
             id="cta-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--color-rp-text-strong)",
+              letterSpacing: "-0.01em",
+            }}
           >
-            ¿Listo para solicitar tus análisis?
+            ¿Necesitás un análisis?
           </h2>
 
-          <p className="text-white/85 text-lg max-w-xl leading-relaxed">
-            Completá el formulario de contacto y te respondemos en menos de 24
-            horas para coordinar tu turno o resolver cualquier consulta.
+          <p
+            className="text-lg max-w-xl leading-relaxed"
+            style={{ color: "var(--color-rp-text-muted)" }}
+          >
+            Completá el formulario y te respondemos en menos de 24 horas para
+            coordinar tu turno o resolver cualquier consulta.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
             <Link
               href="/contacto"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#4CAF50] text-white font-bold rounded-xl hover:bg-[#5CC05F] transition-all duration-200 shadow-md hover:shadow-lg min-h-[52px] text-base"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-bold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md min-h-[52px] text-base"
+              style={{ backgroundColor: "var(--color-rp-accent)" }}
+              onMouseEnter={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                  "var(--color-rp-accent-hover)")
+              }
+              onMouseLeave={(e) =>
+                ((e.currentTarget as HTMLAnchorElement).style.backgroundColor =
+                  "var(--color-rp-accent)")
+              }
             >
               Contactar ahora
               <svg
@@ -96,10 +89,26 @@ export default function ContactCTA() {
               </svg>
             </Link>
             <Link
-              href="/login"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/60 text-white font-semibold rounded-xl hover:bg-white/15 transition-all duration-200 min-h-[52px] text-base"
+              href="/mis-estudios"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 min-h-[52px] text-base border"
+              style={{
+                color: "var(--color-rp-text)",
+                borderColor: "var(--color-rp-border)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "var(--color-rp-accent)";
+                (e.currentTarget as HTMLAnchorElement).style.color =
+                  "var(--color-rp-accent)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.borderColor =
+                  "var(--color-rp-border)";
+                (e.currentTarget as HTMLAnchorElement).style.color =
+                  "var(--color-rp-text)";
+              }}
             >
-              Acceder a mis estudios
+              Ver mis informes
             </Link>
           </div>
         </motion.div>

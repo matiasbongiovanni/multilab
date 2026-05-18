@@ -113,7 +113,8 @@ export default function QuienesSomosPage() {
       <main id="main-content">
         {/* Hero */}
         <section
-          className="relative pt-28 pb-16 lg:pt-36 lg:pb-20 bg-gradient-to-br from-[#F5F5F5] via-[#f0f9ff] to-white overflow-hidden"
+          className="relative pt-28 pb-16 lg:pt-36 lg:pb-20 overflow-hidden"
+          style={{ backgroundColor: "var(--color-rp-bg)" }}
           aria-label="Quiénes somos — Multilab"
         >
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
@@ -127,13 +128,27 @@ export default function QuienesSomosPage() {
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center gap-5"
             >
-              <span className="inline-block text-[#4CAF50] text-sm font-semibold uppercase tracking-widest">
+              <span
+                className="inline-block text-sm font-bold uppercase tracking-[0.2em]"
+                style={{ color: "var(--color-rp-accent)" }}
+              >
                 Quiénes somos
               </span>
-              <h1 className="font-inter text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-[1.1]">
+              <h1
+                className="text-4xl sm:text-5xl lg:text-6xl leading-[1.1]"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 900,
+                  color: "var(--color-rp-text-strong)",
+                  letterSpacing: "-0.02em",
+                }}
+              >
                 Un laboratorio con propósito
               </h1>
-              <p className="text-lg text-[#616161] leading-relaxed max-w-2xl">
+              <p
+                className="text-lg leading-relaxed max-w-2xl"
+                style={{ color: "var(--color-rp-text-muted)" }}
+              >
                 Multilab nació con una convicción simple: que la calidad analítica y el compromiso humano no son excluyentes. Que se puede hacer ciencia de alto nivel y al mismo tiempo estar cerca de las personas.
               </p>
             </motion.div>

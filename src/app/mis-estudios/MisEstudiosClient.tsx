@@ -151,7 +151,7 @@ export default function MisEstudiosClient({
             Bienvenido/a, {session.nombre}
           </h1>
           <p className="text-[#616161] mt-1">
-            DNI {session.dni} · Acá encontrás todos tus estudios disponibles.
+            DNI {session.dni} · Acá encontrás todos tus informes disponibles.
           </p>
         </motion.div>
 
@@ -161,11 +161,11 @@ export default function MisEstudiosClient({
           animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8"
-          aria-label="Resumen de estudios"
+          aria-label="Resumen de informes"
         >
           {[
             {
-              label: "Total de estudios",
+              label: "Total de informes",
               value: studies.length,
               color: "text-[#1A1A1A]",
             },
@@ -199,7 +199,7 @@ export default function MisEstudiosClient({
           transition={{ duration: 0.5, delay: 0.15 }}
         >
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
-            <h2 className="text-xl font-bold text-[#1A1A1A]">Mis estudios</h2>
+            <h2 className="text-xl font-bold text-[#1A1A1A]">Mis informes</h2>
             <div className="relative w-full sm:w-64">
               <svg
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-[#616161]"
@@ -218,9 +218,9 @@ export default function MisEstudiosClient({
                 type="search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Buscar estudio..."
+                placeholder="Buscar informe..."
                 className="w-full pl-9 pr-4 py-2 text-sm border border-[#E0E0E0] rounded-lg bg-white text-[#1A1A1A] placeholder:text-[#616161] focus:ring-2 focus:ring-[#4CAF50] focus:border-[#4CAF50] outline-none transition-colors"
-                aria-label="Buscar estudios"
+                aria-label="Buscar informes"
               />
             </div>
           </div>
@@ -241,7 +241,7 @@ export default function MisEstudiosClient({
                 </svg>
               </div>
               <h3 className="text-lg font-bold text-[#1A1A1A] mb-2">
-                No tenés estudios todavía
+                No tenés informes todavía
               </h3>
               <p className="text-sm text-[#616161]">
                 Cuando tus análisis estén procesados, los vas a ver acá.
@@ -273,7 +273,7 @@ export default function MisEstudiosClient({
             <div
               className="space-y-3"
               role="list"
-              aria-label="Lista de estudios"
+              aria-label="Lista de informes"
             >
               {filtered.map((study, i) => (
                 <motion.div

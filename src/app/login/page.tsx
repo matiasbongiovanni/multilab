@@ -95,10 +95,16 @@ function LoginForm() {
 
       <div className="bg-white rounded-2xl shadow-lg border border-[#E0E0E0] p-7 lg:p-8">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-[#1A1A1A]">
-            Acceder a mis estudios
+          <h1
+            className="text-2xl font-bold"
+            style={{ color: "var(--color-rp-text-strong)" }}
+          >
+            Acceder a mis informes
           </h1>
-          <p className="text-sm text-[#616161] mt-1">
+          <p
+            className="text-sm mt-1"
+            style={{ color: "var(--color-rp-text-muted)" }}
+          >
             Ingresá con tu DNI y la contraseña que te asignaron.
           </p>
         </div>
@@ -196,7 +202,7 @@ export default function LoginPage() {
   return (
     <div
       className="min-h-screen flex items-center justify-center px-4 py-16"
-      style={{ backgroundColor: "#F5F5F5" }}
+      style={{ backgroundColor: "var(--color-rp-bg-soft)" }}
     >
       <Suspense
         fallback={

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 const values = [
@@ -12,7 +11,7 @@ const values = [
         height="20"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#4CAF50"
+        stroke="var(--color-rp-accent)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -32,7 +31,7 @@ const values = [
         height="20"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#4CAF50"
+        stroke="var(--color-rp-accent)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -52,7 +51,7 @@ const values = [
         height="20"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="#4CAF50"
+        stroke="var(--color-rp-accent)"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -73,41 +72,61 @@ export default function AboutPreview() {
 
   return (
     <section
-      className="py-20 lg:py-28 bg-[#0D2818]"
+      className="py-20 lg:py-28"
+      style={{ backgroundColor: "var(--color-rp-bg-soft)" }}
       aria-labelledby="about-preview-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* Left: Imagen */}
+          {/* Left: foto placeholder directora */}
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, x: -32 }}
             whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="flex flex-col items-center gap-5"
             aria-hidden="true"
           >
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl">
-              <Image
-                src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=900&q=80"
-                alt="Laboratorio Multilab — equipo técnico trabajando"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-              {/* Overlay verde sutil en esquina */}
-              <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent" />
+            {/* Foto placeholder circular */}
+            <div
+              className="w-40 h-40 rounded-full flex items-center justify-center"
+              style={{
+                backgroundColor: "var(--color-rp-bg-elevated)",
+                border: "2px solid var(--color-rp-border)",
+              }}
+            >
+              <svg
+                width="64"
+                height="64"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-rp-accent)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
             </div>
-
-            {/* Badge flotante */}
-            <div className="absolute -bottom-5 -right-5 bg-[#112B1A] rounded-2xl shadow-lg border border-[#4CAF50]/20 px-5 py-4">
-              <p className="font-black text-3xl text-[#4CAF50]">+10</p>
-              <p className="text-xs text-white/50 mt-0.5 font-medium">Años de experiencia</p>
+            <div className="text-center">
+              <p
+                className="font-bold text-lg"
+                style={{ color: "var(--color-rp-text-strong)" }}
+              >
+                Lic. Cinthia Degliangioli
+              </p>
+              <p
+                className="text-sm font-medium"
+                style={{ color: "var(--color-rp-accent)" }}
+              >
+                Directora Técnica
+              </p>
             </div>
           </motion.div>
 
-          {/* Right: Texto */}
+          {/* Right: texto */}
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, x: 32 }}
             whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
@@ -115,29 +134,54 @@ export default function AboutPreview() {
             transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col gap-6"
           >
-            <span className="inline-block text-[#4CAF50] text-sm font-semibold uppercase tracking-widest">
+            <span
+              className="text-xs font-bold uppercase tracking-[0.2em]"
+              style={{ color: "var(--color-rp-accent)" }}
+            >
               Quiénes somos
             </span>
             <h2
               id="about-preview-heading"
-              className="text-3xl sm:text-4xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl leading-tight"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontWeight: 900,
+                color: "var(--color-rp-text-strong)",
+                letterSpacing: "-0.01em",
+              }}
             >
-              Laboratorio de confianza desde 2014
+              Más de 10 años liderando Risk Prevention en Argentina
             </h2>
-            <p className="text-white/55 leading-relaxed">
-              Multilab fue fundado por la <strong className="text-white font-semibold">Lic. Cinthia Degliangioli</strong> con el objetivo de brindar servicios analíticos de alta calidad al alcance de todos. Contamos con equipamiento de última generación y un equipo comprometido con la excelencia técnica.
+            <p
+              className="leading-relaxed"
+              style={{ color: "var(--color-rp-text-muted)" }}
+            >
+              Más de 10 años liderando análisis técnicos de precisión para
+              empresas, profesionales de salud y organismos públicos en
+              Argentina.
             </p>
 
             {/* Valores */}
             <div className="space-y-4 pt-2">
               {values.map((value) => (
                 <div key={value.title} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#4CAF50]/10 flex items-center justify-center shrink-0">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: "var(--color-rp-accent-soft)" }}
+                  >
                     {value.icon}
                   </div>
                   <div>
-                    <p className="font-bold text-white/90 text-sm">{value.title}</p>
-                    <p className="text-xs text-white/50 mt-0.5 leading-relaxed">
+                    <p
+                      className="font-bold text-sm"
+                      style={{ color: "var(--color-rp-text-strong)" }}
+                    >
+                      {value.title}
+                    </p>
+                    <p
+                      className="text-xs mt-0.5 leading-relaxed"
+                      style={{ color: "var(--color-rp-text-subtle)" }}
+                    >
                       {value.desc}
                     </p>
                   </div>
@@ -148,7 +192,8 @@ export default function AboutPreview() {
             <div className="pt-2">
               <Link
                 href="/quienes-somos"
-                className="inline-flex items-center gap-2 text-[#4CAF50] font-bold hover:gap-3 transition-all duration-200"
+                className="inline-flex items-center gap-2 font-bold hover:gap-3 transition-all duration-200 group"
+                style={{ color: "var(--color-rp-accent)" }}
               >
                 Conocer más sobre Multilab
                 <svg
@@ -160,6 +205,7 @@ export default function AboutPreview() {
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="transition-transform duration-200 group-hover:translate-x-1"
                   aria-hidden="true"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />

@@ -6,28 +6,44 @@ interface BadgeProps {
   className?: string;
 }
 
-const variantClasses: Record<BadgeVariant, string> = {
-  primary: "bg-[#dcfce7] text-[#4CAF50] border-[#bbf7d0]",
-  success: "bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]",
-  warning: "bg-[#fef9c3] text-[#ca8a04] border-[#fef08a]",
-  neutral: "bg-[#f1f5f9] text-[#64748b] border-[#e2e8f0]",
-};
-
 export default function Badge({
   children,
   variant = "primary",
   className = "",
 }: BadgeProps) {
+  const variantStyles: Record<BadgeVariant, React.CSSProperties> = {
+    primary: {
+      backgroundColor: "var(--color-rp-accent-soft)",
+      color: "var(--color-rp-accent)",
+      borderColor: "var(--color-rp-border)",
+    },
+    success: {
+      backgroundColor: "var(--color-rp-accent-soft)",
+      color: "var(--color-rp-accent)",
+      borderColor: "var(--color-rp-border)",
+    },
+    warning: {
+      backgroundColor: "#fef9c3",
+      color: "#ca8a04",
+      borderColor: "#fef08a",
+    },
+    neutral: {
+      backgroundColor: "var(--color-rp-bg-soft)",
+      color: "var(--color-rp-text-muted)",
+      borderColor: "var(--color-rp-border)",
+    },
+  };
+
   return (
     <span
       className={[
         "inline-flex items-center px-2.5 py-0.5",
         "text-xs font-medium rounded-full border",
-        variantClasses[variant],
         className,
       ]
         .filter(Boolean)
         .join(" ")}
+      style={variantStyles[variant]}
     >
       {children}
     </span>

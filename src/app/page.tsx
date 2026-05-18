@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
-import StatsBand from "@/components/home/StatsBand";
-import BrandSlider from "@/components/home/BrandSlider";
-import ServicesGrid from "@/components/home/ServicesGrid";
+import VerticalsBlock from "@/components/home/VerticalsBlock";
 import AboutPreview from "@/components/home/AboutPreview";
-import FAQBot from "@/components/home/FAQBot";
+import InstitutionalVideo from "@/components/home/InstitutionalVideo";
+import FAQAccordion from "@/components/home/FAQAccordion";
 import ContactCTA from "@/components/home/ContactCTA";
 
 export const metadata: Metadata = {
@@ -19,9 +18,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalOrganization",
   "@id": "https://multilab.vercel.app/#organization",
-  name: "Multilab",
+  name: "Multilab Risk Prevention",
   description:
-    "Laboratorio de análisis clínicos, veterinarios, calidad de agua, higiene y bromatología. Dirigido por la Lic. Cinthia Degliangioli.",
+    "Empresa de Risk Prevention con análisis técnicos para Higiene y Seguridad, Laboratorio y Medioambiente. Dirigida por la Lic. Cinthia Degliangioli.",
   url: "https://multilab.vercel.app",
   logo: "https://multilab.vercel.app/images/logo.png",
   founder: {
@@ -34,14 +33,15 @@ const jsonLd = {
     "ClinicalLaboratory",
     "VeterinaryMedicine",
     "EnvironmentalHealth",
+    "OccupationalHealth",
   ],
   availableService: [
+    { "@type": "MedicalTest", name: "Higiene y Seguridad" },
     { "@type": "MedicalTest", name: "Análisis Clínico" },
     { "@type": "MedicalTest", name: "Análisis Veterinario" },
-    { "@type": "MedicalTest", name: "Calidad de Agua" },
-    { "@type": "MedicalTest", name: "Higiene y Bromatología" },
-    { "@type": "MedicalTest", name: "Investigación" },
-    { "@type": "Service", name: "Consulta Online" },
+    { "@type": "Service", name: "Calidad de Agua" },
+    { "@type": "Service", name: "Control Ambiental" },
+    { "@type": "Service", name: "Bromatología" },
   ],
   sameAs: [],
 };
@@ -56,11 +56,10 @@ export default function HomePage() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <StatsBand />
-        <BrandSlider />
-        <ServicesGrid />
+        <VerticalsBlock />
         <AboutPreview />
-        <FAQBot />
+        <InstitutionalVideo />
+        <FAQAccordion />
         <ContactCTA />
       </main>
       <Footer />

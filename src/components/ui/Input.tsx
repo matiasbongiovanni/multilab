@@ -15,11 +15,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="text-sm font-medium text-[#1A1A1A]"
+            className="text-sm font-medium"
+            style={{ color: "var(--color-rp-text-strong)" }}
           >
             {label}
             {props.required && (
-              <span className="text-[#dc2626] ml-1" aria-label="campo requerido">
+              <span className="text-red-600 ml-1" aria-label="campo requerido">
                 *
               </span>
             )}
@@ -30,19 +31,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           id={inputId}
           className={[
             "w-full px-4 py-2.5 rounded-lg border",
-            "text-[#0f172a] placeholder:text-[#94a3b8]",
-            "bg-white",
             "transition-colors duration-150",
             "min-h-[44px]",
-            error
-              ? "border-[#dc2626] focus:ring-[#dc2626] focus:border-[#dc2626]"
-              : "border-[#E0E0E0] focus:ring-[#4CAF50] focus:border-[#4CAF50]",
             "outline-none focus:ring-2",
-            "disabled:bg-[#f8fafc] disabled:cursor-not-allowed disabled:opacity-60",
+            "disabled:opacity-60 disabled:cursor-not-allowed",
+            error
+              ? "border-red-400 focus:ring-red-400 focus:border-red-400"
+              : "focus:ring-[var(--color-rp-accent)] focus:border-[var(--color-rp-accent)]",
             className,
           ]
             .filter(Boolean)
             .join(" ")}
+          style={{
+            backgroundColor: "var(--color-rp-bg-elevated)",
+            color: "var(--color-rp-text)",
+            borderColor: error ? undefined : "var(--color-rp-border)",
+          }}
           aria-invalid={error ? "true" : undefined}
           aria-describedby={
             error
@@ -56,7 +60,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && (
           <p
             id={`${inputId}-error`}
-            className="text-xs text-[#dc2626] flex items-center gap-1"
+            className="text-xs text-red-600 flex items-center gap-1"
             role="alert"
           >
             <svg
@@ -72,7 +76,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </p>
         )}
         {hint && !error && (
-          <p id={`${inputId}-hint`} className="text-xs text-[#64748b]">
+          <p
+            id={`${inputId}-hint`}
+            className="text-xs"
+            style={{ color: "var(--color-rp-text-subtle)" }}
+          >
             {hint}
           </p>
         )}
