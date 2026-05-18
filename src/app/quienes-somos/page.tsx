@@ -133,7 +133,7 @@ export default function QuienesSomosPage() {
               <h1 className="font-inter text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1]" style={{ color: "oklch(13% 0.015 143)" }}>
                 Un laboratorio con propósito
               </h1>
-              <p className="text-lg text-[#616161] leading-relaxed max-w-2xl">
+              <p className="text-lg text-[#1a2e1a] leading-relaxed max-w-2xl">
                 Multilab nació con una convicción simple: que la calidad analítica y el compromiso humano no son excluyentes. Que se puede hacer ciencia de alto nivel y al mismo tiempo estar cerca de las personas.
               </p>
             </motion.div>
@@ -157,10 +157,10 @@ export default function QuienesSomosPage() {
                 <h2 id="historia-heading" className="font-inter text-3xl sm:text-4xl font-bold text-[#1A1A1A] leading-tight">
                   De la investigación a la práctica diagnóstica
                 </h2>
-                <p className="text-[#616161] leading-relaxed">
+                <p className="text-[#1a2e1a] leading-relaxed">
                   Multilab fue fundado por la Lic. Cinthia Degliangioli con la idea de integrar el rigor académico con la calidez del servicio. Lo que comenzó como un proyecto orientado a la investigación científica aplicada fue creciendo hacia un laboratorio de análisis clínicos, veterinarios y ambientales de referencia regional.
                 </p>
-                <p className="text-[#616161] leading-relaxed">
+                <p className="text-[#1a2e1a] leading-relaxed">
                   Hoy contamos con cinco áreas especializadas, equipamiento de última generación y un portal digital que permite a los pacientes acceder a sus resultados de forma segura y en tiempo real.
                 </p>
                 <div className="grid grid-cols-3 gap-6 pt-4">
@@ -171,7 +171,7 @@ export default function QuienesSomosPage() {
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
                       <p className="font-inter text-3xl font-bold text-[#4CAF50]">{stat.value}</p>
-                      <p className="text-xs text-[#64748b] mt-1">{stat.label}</p>
+                      <p className="text-xs text-[#1a2e1a] mt-1">{stat.label}</p>
                     </div>
                   ))}
                 </div>
@@ -195,7 +195,7 @@ export default function QuienesSomosPage() {
                     </div>
                     <div>
                       <p className="font-inter font-bold text-xl text-[#1A1A1A]">Lic. Cinthia Degliangioli</p>
-                      <p className="text-sm text-[#64748b]">Fundadora y Directora Técnica</p>
+                      <p className="text-sm text-[#1a2e1a]">Fundadora y Directora Técnica</p>
                     </div>
                   </div>
                   <blockquote className="text-[#1A1A1A] leading-relaxed italic border-l-4 border-[#4CAF50] pl-5 text-base">
@@ -246,7 +246,7 @@ export default function QuienesSomosPage() {
                     {value.icon}
                   </div>
                   <h3 className="font-inter text-lg font-semibold text-[#1A1A1A] mb-2">{value.title}</h3>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{value.description}</p>
+                  <p className="text-sm text-[#1a2e1a] leading-relaxed">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -289,7 +289,7 @@ export default function QuienesSomosPage() {
                   </div>
                   <h3 className="font-inter text-xl font-bold text-[#1A1A1A]">{member.name}</h3>
                   <p className="text-sm text-[#4CAF50] font-medium mt-1 mb-4">{member.role}</p>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{member.bio}</p>
+                  <p className="text-sm text-[#1a2e1a] leading-relaxed">{member.bio}</p>
                 </motion.div>
               ))}
             </div>

@@ -159,7 +159,7 @@ export default function StatsBand() {
               </p>
 
               {/* Label */}
-              <p className="text-[#1a2e1a]/50 text-sm font-medium" aria-hidden="true">
+              <p className="text-[#1a2e1a] text-sm font-medium" aria-hidden="true">
                 {stat.label}
               </p>
             </motion.div>

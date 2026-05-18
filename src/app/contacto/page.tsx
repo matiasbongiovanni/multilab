@@ -142,7 +142,7 @@ export default function ContactoPage() {
               <h1 className="font-inter text-4xl sm:text-5xl font-bold text-[#1A1A1A] leading-tight">
                 Hablemos
               </h1>
-              <p className="text-lg text-[#616161] max-w-xl leading-relaxed">
+              <p className="text-lg text-[#1a2e1a] max-w-xl leading-relaxed">
                 Completá el formulario y te respondemos en menos de 24 horas hábiles para coordinar tu turno o responder cualquier consulta.
               </p>
             </motion.div>
@@ -165,7 +165,7 @@ export default function ContactoPage() {
                   <h2 className="font-inter text-2xl font-bold text-[#1A1A1A] mb-2">
                     Información de contacto
                   </h2>
-                  <p className="text-[#64748b] text-sm leading-relaxed">
+                  <p className="text-[#1a2e1a] text-sm leading-relaxed">
                     También podés comunicarte directamente con el laboratorio por cualquiera de estos medios.
                   </p>
                 </div>
@@ -179,7 +179,7 @@ export default function ContactoPage() {
                       <div>
                         <p className="text-xs text-[#94a3b8] font-medium uppercase tracking-wide">{item.label}</p>
                         <p className="text-sm font-semibold text-[#1A1A1A] mt-0.5">{item.value}</p>
-                        <p className="text-xs text-[#64748b] mt-0.5">{item.sub}</p>
+                        <p className="text-xs text-[#1a2e1a] mt-0.5">{item.sub}</p>
                       </div>
                     </div>
                   ))}
@@ -221,7 +221,7 @@ export default function ContactoPage() {
                       <h2 className="font-inter text-2xl font-bold text-[#1A1A1A]">
                         Mensaje enviado
                       </h2>
-                      <p className="text-[#64748b] mt-2 max-w-sm">
+                      <p className="text-[#1a2e1a] mt-2 max-w-sm">
                         Gracias por contactarnos. Te respondemos dentro de las próximas 24 horas hábiles.
                       </p>
                     </div>

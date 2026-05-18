@@ -1,49 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  /* ─── Multilab Design Tokens — Light, Restrained ─── */
+  /* Multilab Design Tokens — Light Green */
+  --color-ml-primary:       #2E7D32;
+  --color-ml-primary-dark:  #1B5E20;
+  --color-ml-primary-light: #4CAF50;
+  --color-ml-accent:        #81C784;
+  --color-ml-bg:            #f0faf0;
+  --color-ml-card:          rgba(255, 255, 255, 0.85);
+  --color-ml-card-hover:    rgba(255, 255, 255, 0.98);
+  --color-ml-text:          #1a2e1a;
+  --color-ml-text-muted:    rgba(26, 46, 26, 0.55);
 
-  /* Background & surface */
-  --color-ml-bg:        oklch(98.5% 0.006 143);
-  --color-ml-surface:   oklch(99.5% 0.003 143);
-
-  /* Text */
-  --color-ml-text:      oklch(13% 0.015 143);
-  --color-ml-muted:     oklch(44% 0.012 143);
-
-  /* Brand green */
-  --color-ml-green:     oklch(42% 0.13 144);
-  --color-ml-green-dk:  oklch(33% 0.11 144);
-  --color-ml-green-lt:  oklch(96% 0.022 143);
-
-  /* Borders */
-  --color-ml-border:    oklch(91% 0.013 143);
-  --color-ml-border-lt: oklch(95% 0.009 143);
-
-  /* Typography */
-  --font-display: var(--font-barlow), "Barlow Semi Condensed", system-ui, sans-serif;
-  --font-body:    var(--font-figtree), "Figtree", system-ui, sans-serif;
-  --font-sans:    var(--font-figtree), "Figtree", system-ui, sans-serif;
+  /* Typography — Inter only */
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
 }
 
-/* ─── BASE ─── */
+/* ═══════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════ */
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: var(--font-body);
-  background-color: oklch(98.5% 0.006 143);
-  color: oklch(13% 0.015 143);
+  font-family: var(--font-sans);
+  background-color: #f0faf0;
+  color: #1a2e1a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3 { font-family: var(--font-display); }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+}
 
-/* ─── ACCESSIBILITY ─── */
+/* ═══════════════════════════════════════════
+   ACCESSIBILITY
+   ═══════════════════════════════════════════ */
 
 *:focus-visible {
-  outline: 3px solid oklch(42% 0.13 144);
+  outline: 3px solid #2E7D32;
   outline-offset: 2px;
 }
 
@@ -53,17 +51,21 @@ h1, h2, h3 { font-family: var(--font-display); }
   left: 1rem;
   z-index: 9999;
   padding: 0.5rem 1rem;
-  background: oklch(42% 0.13 144);
-  color: oklch(99% 0.005 143);
+  background: #2E7D32;
+  color: #ffffff;
   border-radius: 0 0 0.25rem 0.25rem;
   font-size: 0.875rem;
   text-decoration: none;
   transition: top 0.2s;
 }
 
-.skip-to-content:focus { top: 0; }
+.skip-to-content:focus {
+  top: 0;
+}
 
-/* ─── MARQUEE ─── */
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
 
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -78,9 +80,67 @@ h1, h2, h3 { font-family: var(--font-display); }
   animation-play-state: paused;
 }
 
-/* ─── SCROLLBAR ─── */
+@keyframes float-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(12px); }
+}
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: oklch(97% 0.008 143); }
-::-webkit-scrollbar-thumb { background: oklch(80% 0.04 143); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: oklch(42% 0.13 144); }
+.animate-float-bounce {
+  animation: float-bounce 2.5s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.2; }
+  50%      { opacity: 0.5; }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(30px, -20px); }
+  50%      { transform: translate(-20px, 15px); }
+  75%      { transform: translate(15px, 25px); }
+}
+
+.animate-glow-drift {
+  animation: glow-drift 15s ease-in-out infinite;
+}
+
+.animate-glow-drift-slow {
+  animation: glow-drift 22s ease-in-out infinite reverse;
+}
+
+/* ═══════════════════════════════════════════
+   GLASSMORPHISM — Light
+   ═══════════════════════════════════════════ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(76, 175, 80, 0.15);
+}
+
+/* ═══════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8f5e9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a5d6a7;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4CAF50;
+}

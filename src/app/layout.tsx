@@ -1,36 +1,45 @@
 import type { Metadata } from "next";
-import { Barlow_Semi_Condensed, Figtree } from "next/font/google";
+import { Montserrat, Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import FontSwitcher from "@/components/FontSwitcher";
 import "./globals.css";
 
-const barlow = Barlow_Semi_Condensed({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-barlow",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
   display: "swap",
 });
 
-const figtree = Figtree({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-figtree",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-dmsans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://multilab.com.ar"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://multilab.vercel.app"
   ),
   title: {
-    default: "Multilab — Laboratorio de Prevención de Riesgos",
+    default:
+      "Multilab — Laboratorio de Análisis Clínicos, Veterinarios y Ambientales",
     template: "%s | Multilab",
   },
   description:
-    "Multilab, laboratorio de prevención de riesgos dirigido por la Lic. Cinthia Degliangioli. Higiene y Seguridad, Laboratorio de Análisis y Medioambiente en Argentina.",
+    "Multilab, laboratorio dirigido por la Lic. Cinthia Degliangioli. Análisis clínicos, veterinarios, calidad de agua, higiene, bromatología e investigación en Argentina.",
   keywords: [
-    "prevención de riesgos",
-    "higiene y seguridad laboral",
-    "laboratorio de análisis",
-    "análisis ambientales",
+    "laboratorio análisis clínicos",
+    "análisis veterinarios",
+    "calidad de agua",
+    "higiene bromatología",
     "Cinthia Degliangioli",
     "Multilab",
     "laboratorio Argentina",
@@ -40,22 +49,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_AR",
     siteName: "Multilab",
-    title: "Multilab — Laboratorio de Prevención de Riesgos",
+    title:
+      "Multilab — Laboratorio de Análisis Clínicos, Veterinarios y Ambientales",
     description:
-      "Higiene y Seguridad, Laboratorio y Medioambiente. Dirigido por la Lic. Cinthia Degliangioli.",
+      "Resultados precisos y confiables. Análisis clínicos, veterinarios, calidad de agua e investigación. Lic. Cinthia Degliangioli.",
     images: [
       {
         url: "/images/og-default.png",
         width: 1200,
         height: 630,
-        alt: "Multilab — Laboratorio de Prevención de Riesgos",
+        alt: "Multilab — Laboratorio de Análisis",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Multilab — Laboratorio de Prevención de Riesgos",
-    description: "Higiene y Seguridad, Laboratorio y Medioambiente.",
+    title: "Multilab — Laboratorio de Análisis",
+    description:
+      "Resultados precisos y confiables. Análisis clínicos, veterinarios y ambientales.",
     images: ["/images/og-default.png"],
   },
   robots: {
@@ -79,13 +90,15 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${barlow.variable} ${figtree.variable} h-full`}
+      className={`${montserrat.variable} ${plusJakarta.variable} ${dmSans.variable} h-full antialiased`}
+      style={{ fontFamily: "var(--font-montserrat), system-ui, sans-serif" }}
     >
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-to-content">
           Ir al contenido principal
         </a>
         {children}
+        <FontSwitcher />
       </body>
     </html>
   );

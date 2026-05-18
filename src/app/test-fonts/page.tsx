@@ -54,7 +54,7 @@ export default function TestFontsPage() {
         <h1 className="text-3xl font-bold text-[#1a2e1a] mb-2 font-sans">
           Comparación de tipografías
         </h1>
-        <p className="text-[#1a2e1a]/50 mb-16">
+        <p className="text-[#1a2e1a] mb-16">
           Elegí la que mejor represente a Multilab
         </p>
 
@@ -83,7 +83,7 @@ export default function TestFontsPage() {
                 >
                   {font.name}
                 </h2>
-                <p className="text-sm text-[#1a2e1a]/50 max-w-lg">
+                <p className="text-sm text-[#1a2e1a] max-w-lg">
                   {font.description}
                 </p>
               </div>
@@ -123,7 +123,7 @@ export default function TestFontsPage() {
                 <div className="w-20 h-[3px] rounded-full bg-gradient-to-r from-[#2E7D32] to-[#4CAF50] mb-6" />
 
                 {/* Paragraph */}
-                <p className="text-[#1a2e1a]/50 text-base leading-relaxed max-w-xl font-light mb-8">
+                <p className="text-[#1a2e1a] text-base leading-relaxed max-w-xl font-light mb-8">
                   Tecnología de vanguardia para análisis clínicos, veterinarios
                   y ambientales con trazabilidad absoluta y resultados de máxima
                   precisión.
@@ -181,7 +181,7 @@ export default function TestFontsPage() {
                   <p className="text-[10px] uppercase tracking-[0.2em] text-[#1a2e1a]/30 font-bold mb-2">
                     Cuerpo de texto
                   </p>
-                  <p className="text-[#1a2e1a]/50 leading-relaxed">
+                  <p className="text-[#1a2e1a] leading-relaxed">
                     Nuestro laboratorio integra la consultoría técnica con
                     análisis ambientales y microbiología integral.
                   </p>

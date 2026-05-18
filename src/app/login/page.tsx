@@ -98,7 +98,7 @@ function LoginForm() {
           <h1 className="text-2xl font-bold text-[#1A1A1A]">
             Acceder a mis estudios
           </h1>
-          <p className="text-sm text-[#616161] mt-1">
+          <p className="text-sm text-[#1a2e1a] mt-1">
             Ingresá con tu DNI y la contraseña que te asignaron.
           </p>
         </div>
@@ -170,7 +170,7 @@ function LoginForm() {
         </form>
 
         <div className="mt-6 pt-5 border-t border-[#E0E0E0]">
-          <p className="text-sm text-[#616161] text-center">
+          <p className="text-sm text-[#1a2e1a] text-center">
             ¿Olvidaste tu contraseña?{" "}
             <Link
               href="/contacto"
@@ -183,7 +183,7 @@ function LoginForm() {
         </div>
       </div>
 
-      <p className="text-center text-sm text-[#616161] mt-6">
+      <p className="text-center text-sm text-[#1a2e1a] mt-6">
         <Link href="/" className="hover:text-[#4CAF50] transition-colors">
           Volver al inicio
         </Link>

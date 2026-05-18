@@ -113,7 +113,7 @@ export default function MisEstudiosClient({
               <button
                 onClick={handleLogout}
                 disabled={isPending}
-                className="flex items-center gap-2 px-3 py-2 text-sm text-[#616161] hover:text-[#dc2626] hover:bg-[#fef2f2] rounded-lg transition-colors duration-150 disabled:opacity-50"
+                className="flex items-center gap-2 px-3 py-2 text-sm text-[#1a2e1a] hover:text-[#dc2626] hover:bg-[#fef2f2] rounded-lg transition-colors duration-150 disabled:opacity-50"
                 aria-label="Cerrar sesión"
               >
                 <svg
@@ -150,7 +150,7 @@ export default function MisEstudiosClient({
           <h1 className="text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
             Bienvenido/a, {session.nombre}
           </h1>
-          <p className="text-[#616161] mt-1">
+          <p className="text-[#1a2e1a] mt-1">
             DNI {session.dni} · Acá encontrás todos tus estudios disponibles.
           </p>
         </motion.div>
@@ -187,7 +187,7 @@ export default function MisEstudiosClient({
               <p className={`text-3xl font-black ${stat.color}`}>
                 {stat.value}
               </p>
-              <p className="text-xs text-[#616161] mt-1">{stat.label}</p>
+              <p className="text-xs text-[#1a2e1a] mt-1">{stat.label}</p>
             </div>
           ))}
         </motion.div>
@@ -202,7 +202,7 @@ export default function MisEstudiosClient({
             <h2 className="text-xl font-bold text-[#1A1A1A]">Mis estudios</h2>
             <div className="relative w-full sm:w-64">
               <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#616161]"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#1a2e1a]"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -219,7 +219,7 @@ export default function MisEstudiosClient({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Buscar estudio..."
-                className="w-full pl-9 pr-4 py-2 text-sm border border-[#E0E0E0] rounded-lg bg-white text-[#1A1A1A] placeholder:text-[#616161] focus:ring-2 focus:ring-[#4CAF50] focus:border-[#4CAF50] outline-none transition-colors"
+                className="w-full pl-9 pr-4 py-2 text-sm border border-[#E0E0E0] rounded-lg bg-white text-[#1A1A1A] placeholder:text-[#1a2e1a] focus:ring-2 focus:ring-[#4CAF50] focus:border-[#4CAF50] outline-none transition-colors"
                 aria-label="Buscar estudios"
               />
             </div>
@@ -243,7 +243,7 @@ export default function MisEstudiosClient({
               <h3 className="text-lg font-bold text-[#1A1A1A] mb-2">
                 No tenés estudios todavía
               </h3>
-              <p className="text-sm text-[#616161]">
+              <p className="text-sm text-[#1a2e1a]">
                 Cuando tus análisis estén procesados, los vas a ver acá.
               </p>
               <Link
@@ -255,7 +255,7 @@ export default function MisEstudiosClient({
             </div>
           ) : filtered.length === 0 ? (
             <div className="bg-white rounded-2xl border border-[#E0E0E0] p-10 text-center">
-              <p className="text-[#616161] text-sm">
+              <p className="text-[#1a2e1a] text-sm">
                 No se encontraron estudios para{" "}
                 <span className="font-semibold text-[#1A1A1A]">
                   &ldquo;{searchTerm}&rdquo;
@@ -303,11 +303,11 @@ export default function MisEstudiosClient({
                       {study.tipo}
                     </p>
                     {study.descripcion && (
-                      <p className="text-xs text-[#616161] mt-0.5 truncate">
+                      <p className="text-xs text-[#1a2e1a] mt-0.5 truncate">
                         {study.descripcion}
                       </p>
                     )}
-                    <p className="text-xs text-[#616161] mt-1">
+                    <p className="text-xs text-[#1a2e1a] mt-1">
                       {formatDate(study.fecha)}
                     </p>
                   </div>
@@ -390,7 +390,7 @@ export default function MisEstudiosClient({
             <p className="text-sm font-bold text-[#1A1A1A]">
               ¿Necesitás ayuda con tus resultados?
             </p>
-            <p className="text-xs text-[#616161] mt-0.5">
+            <p className="text-xs text-[#1a2e1a] mt-0.5">
               Si tenés alguna duda sobre tus estudios, contactanos y te
               orientamos.
             </p>
