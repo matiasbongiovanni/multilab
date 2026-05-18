@@ -63,8 +63,8 @@ export default function HigieneBromatologiaPage() {
           description="Análisis microbiológicos y fisicoquímicos de alimentos para garantizar la inocuidad y el cumplimiento normativo. Apoyo técnico para industrias, comercios y entes reguladores."
           longDescription="El área de higiene y bromatología de Multilab ofrece soporte analítico completo para el control de calidad de alimentos. Nuestros estudios permiten verificar la aptitud microbiológica y composicional de productos, validar procesos de sanitización y cumplir con los requisitos del Código Alimentario Argentino y el SENASA. Trabajamos con productores, industriales y organismos de control."
           icon={icon}
-          color="bg-[#fef9c3] text-[#ca8a04]"
-          bgGradient="bg-gradient-to-br from-[#fefce8] via-[#fef9c3] to-white"
+          color="bg-[var(--color-rp-accent-soft)] text-[var(--color-rp-accent)]"
+          bgGradient=""
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis de alimentos"

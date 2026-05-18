@@ -63,8 +63,8 @@ export default function CalidadDeAguaPage() {
           description="Evaluación integral de la calidad del agua potable, industrial y de consumo. Análisis según el Código Alimentario Argentino para garantizar la seguridad hídrica."
           longDescription="El servicio de calidad de agua de Multilab brinda un análisis completo de los parámetros fisicoquímicos y microbiológicos que determinan la aptitud del agua para consumo humano, uso industrial o irrigación. Emitimos informes técnicos detallados que permiten identificar desviaciones, establecer planes de corrección y cumplir con la normativa vigente."
           icon={icon}
-          color="bg-[#cffafe] text-[#0891b2]"
-          bgGradient="bg-gradient-to-br from-[#ecfeff] via-[#cffafe] to-white"
+          color="bg-[var(--color-rp-accent-soft)] text-[var(--color-rp-accent)]"
+          bgGradient=""
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis de agua"

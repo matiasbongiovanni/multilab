@@ -26,7 +26,6 @@ const values = [
         <path d="M12 8v4l3 3" />
       </svg>
     ),
-    color: "bg-[#e0f2fe] text-[#4CAF50]",
   },
   {
     title: "Compromiso",
@@ -47,7 +46,6 @@ const values = [
         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
       </svg>
     ),
-    color: "bg-[#dcfce7] text-[#16a34a]",
   },
   {
     title: "Innovación",
@@ -69,7 +67,6 @@ const values = [
         <path d="m21 21-4.35-4.35" />
       </svg>
     ),
-    color: "bg-[#ede9fe] text-[#7c3aed]",
   },
   {
     title: "Accesibilidad",
@@ -92,7 +89,6 @@ const values = [
         <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
       </svg>
     ),
-    color: "bg-[#cffafe] text-[#0891b2]",
   },
 ];
 
@@ -118,8 +114,14 @@ export default function QuienesSomosPage() {
           aria-label="Quiénes somos — Multilab"
         >
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div className="absolute top-1/3 right-0 w-80 h-80 bg-[#4CAF50]/5 rounded-full blur-3xl translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#16a34a]/5 rounded-full blur-3xl -translate-x-1/3" />
+            <div
+              className="absolute top-1/3 right-0 w-80 h-80 rounded-full blur-3xl translate-x-1/2"
+              style={{ backgroundColor: "var(--color-rp-accent-soft)" }}
+            />
+            <div
+              className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl -translate-x-1/3"
+              style={{ backgroundColor: "var(--color-rp-accent-soft)" }}
+            />
           </div>
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
@@ -156,7 +158,11 @@ export default function QuienesSomosPage() {
         </section>
 
         {/* Historia */}
-        <section className="py-16 lg:py-24 bg-white" aria-labelledby="historia-heading">
+        <section
+          className="py-16 lg:py-24"
+          style={{ backgroundColor: "var(--color-rp-bg-elevated)" }}
+          aria-labelledby="historia-heading"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <motion.div
@@ -166,16 +172,23 @@ export default function QuienesSomosPage() {
                 transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col gap-6"
               >
-                <span className="text-[#4CAF50] text-sm font-semibold uppercase tracking-widest">
+                <span
+                  className="text-sm font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--color-rp-accent)" }}
+                >
                   Nuestra historia
                 </span>
-                <h2 id="historia-heading" className="font-inter text-3xl sm:text-4xl font-bold text-[#1A1A1A] leading-tight">
+                <h2
+                  id="historia-heading"
+                  className="text-3xl sm:text-4xl font-bold leading-tight"
+                  style={{ color: "var(--color-rp-text-strong)" }}
+                >
                   De la investigación a la práctica diagnóstica
                 </h2>
-                <p className="text-[#616161] leading-relaxed">
+                <p className="leading-relaxed" style={{ color: "var(--color-rp-text-muted)" }}>
                   Multilab fue fundado por la Lic. Cinthia Degliangioli con la idea de integrar el rigor académico con la calidez del servicio. Lo que comenzó como un proyecto orientado a la investigación científica aplicada fue creciendo hacia un laboratorio de análisis clínicos, veterinarios y ambientales de referencia regional.
                 </p>
-                <p className="text-[#616161] leading-relaxed">
+                <p className="leading-relaxed" style={{ color: "var(--color-rp-text-muted)" }}>
                   Hoy contamos con cinco áreas especializadas, equipamiento de última generación y un portal digital que permite a los pacientes acceder a sus resultados de forma segura y en tiempo real.
                 </p>
                 <div className="grid grid-cols-3 gap-6 pt-4">
@@ -185,8 +198,18 @@ export default function QuienesSomosPage() {
                     { value: "100%", label: "Resultados certificados" },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
-                      <p className="font-inter text-3xl font-bold text-[#4CAF50]">{stat.value}</p>
-                      <p className="text-xs text-[#64748b] mt-1">{stat.label}</p>
+                      <p
+                        className="text-3xl font-bold"
+                        style={{ color: "var(--color-rp-accent)" }}
+                      >
+                        {stat.value}
+                      </p>
+                      <p
+                        className="text-xs mt-1"
+                        style={{ color: "var(--color-rp-text-subtle)" }}
+                      >
+                        {stat.label}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -200,25 +223,58 @@ export default function QuienesSomosPage() {
                 className="relative"
                 aria-hidden="true"
               >
-                <div className="bg-gradient-to-br from-[#F5F5F5] to-[#e0f2fe] rounded-3xl p-8 lg:p-10 border border-[#e0f2fe]">
+                <div
+                  className="rounded-3xl p-8 lg:p-10"
+                  style={{
+                    backgroundColor: "var(--color-rp-bg-soft)",
+                    border: "1px solid var(--color-rp-border)",
+                  }}
+                >
                   <div className="flex items-center gap-4 mb-6">
-                    <div className="w-16 h-16 rounded-2xl bg-[#4CAF50] flex items-center justify-center shadow-md">
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-md"
+                      style={{ backgroundColor: "var(--color-rp-accent)" }}
+                    >
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                         <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                         <circle cx="12" cy="7" r="4" />
                       </svg>
                     </div>
                     <div>
-                      <p className="font-inter font-bold text-xl text-[#1A1A1A]">Lic. Cinthia Degliangioli</p>
-                      <p className="text-sm text-[#64748b]">Fundadora y Directora Técnica</p>
+                      <p
+                        className="font-bold text-xl"
+                        style={{ color: "var(--color-rp-text-strong)" }}
+                      >
+                        Lic. Cinthia Degliangioli
+                      </p>
+                      <p
+                        className="text-sm"
+                        style={{ color: "var(--color-rp-text-muted)" }}
+                      >
+                        Fundadora y Directora Técnica
+                      </p>
                     </div>
                   </div>
-                  <blockquote className="text-[#1A1A1A] leading-relaxed italic border-l-4 border-[#4CAF50] pl-5 text-base">
+                  <blockquote
+                    className="leading-relaxed italic pl-5 text-base"
+                    style={{
+                      color: "var(--color-rp-text)",
+                      borderLeft: "4px solid var(--color-rp-accent)",
+                    }}
+                  >
                     "Cada análisis que hacemos tiene impacto en la vida de alguien. Esa responsabilidad nos mueve a mejorar cada día, a no conformarnos con el estándar mínimo y a estar siempre del lado del paciente."
                   </blockquote>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {["Bioquímica", "Investigación aplicada", "Docencia universitaria"].map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-white text-[#4CAF50] text-xs font-medium rounded-full border border-[#e0f2fe]">
+                      <span
+                        key={tag}
+                        className="px-3 py-1 text-xs font-medium rounded-full"
+                        style={{
+                          backgroundColor: "var(--color-rp-bg-elevated)",
+                          color: "var(--color-rp-accent)",
+                          border: "1px solid var(--color-rp-border)",
+                        }}
+                      >
                         {tag}
                       </span>
                     ))}
@@ -230,7 +286,11 @@ export default function QuienesSomosPage() {
         </section>
 
         {/* Valores */}
-        <section className="py-16 lg:py-24 bg-gradient-to-br from-[#f8fafc] to-[#f0f9ff]" aria-labelledby="valores-heading">
+        <section
+          className="py-16 lg:py-24"
+          style={{ backgroundColor: "var(--color-rp-bg-soft)" }}
+          aria-labelledby="valores-heading"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-14"
@@ -239,10 +299,17 @@ export default function QuienesSomosPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-block text-[#4CAF50] text-sm font-semibold uppercase tracking-widest mb-3">
+              <span
+                className="inline-block text-sm font-semibold uppercase tracking-widest mb-3"
+                style={{ color: "var(--color-rp-accent)" }}
+              >
                 Lo que nos define
               </span>
-              <h2 id="valores-heading" className="font-inter text-3xl sm:text-4xl font-bold text-[#1A1A1A]">
+              <h2
+                id="valores-heading"
+                className="text-3xl sm:text-4xl font-bold"
+                style={{ color: "var(--color-rp-text-strong)" }}
+              >
                 Nuestros valores
               </h2>
             </motion.div>
@@ -255,13 +322,33 @@ export default function QuienesSomosPage() {
                   whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white rounded-2xl p-6 border border-[#e2e8f0] hover:border-[#4CAF50] hover:shadow-md transition-all duration-200"
+                  className="rounded-2xl p-6 transition-all duration-200"
+                  style={{
+                    backgroundColor: "var(--color-rp-bg-elevated)",
+                    border: "1px solid var(--color-rp-border)",
+                  }}
                 >
-                  <div className={`w-12 h-12 rounded-xl ${value.color} flex items-center justify-center mb-4`}>
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                    style={{
+                      backgroundColor: "var(--color-rp-accent-soft)",
+                      color: "var(--color-rp-accent)",
+                    }}
+                  >
                     {value.icon}
                   </div>
-                  <h3 className="font-inter text-lg font-semibold text-[#1A1A1A] mb-2">{value.title}</h3>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{value.description}</p>
+                  <h3
+                    className="text-lg font-semibold mb-2"
+                    style={{ color: "var(--color-rp-text-strong)" }}
+                  >
+                    {value.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--color-rp-text-muted)" }}
+                  >
+                    {value.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -269,7 +356,11 @@ export default function QuienesSomosPage() {
         </section>
 
         {/* Equipo */}
-        <section className="py-16 lg:py-24 bg-white" aria-labelledby="equipo-heading">
+        <section
+          className="py-16 lg:py-24"
+          style={{ backgroundColor: "var(--color-rp-bg-elevated)" }}
+          aria-labelledby="equipo-heading"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-12"
@@ -278,10 +369,17 @@ export default function QuienesSomosPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-block text-[#4CAF50] text-sm font-semibold uppercase tracking-widest mb-3">
+              <span
+                className="inline-block text-sm font-semibold uppercase tracking-widest mb-3"
+                style={{ color: "var(--color-rp-accent)" }}
+              >
                 El equipo
               </span>
-              <h2 id="equipo-heading" className="font-inter text-3xl sm:text-4xl font-bold text-[#1A1A1A]">
+              <h2
+                id="equipo-heading"
+                className="text-3xl sm:text-4xl font-bold"
+                style={{ color: "var(--color-rp-text-strong)" }}
+              >
                 Quién está detrás de cada análisis
               </h2>
             </motion.div>
@@ -294,17 +392,42 @@ export default function QuienesSomosPage() {
                   whileInView={shouldReduceMotion ? {} : { opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="max-w-sm w-full bg-[#f8fafc] rounded-2xl p-8 border border-[#e2e8f0] text-center"
+                  className="max-w-sm w-full rounded-2xl p-8 text-center"
+                  style={{
+                    backgroundColor: "var(--color-rp-bg-soft)",
+                    border: "1px solid var(--color-rp-border)",
+                  }}
                 >
-                  <div className="w-20 h-20 rounded-2xl bg-[#e0f2fe] flex items-center justify-center mx-auto mb-5">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" strokeWidth="1.8">
+                  <div
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-5"
+                    style={{
+                      backgroundColor: "var(--color-rp-accent-soft)",
+                      color: "var(--color-rp-accent)",
+                    }}
+                  >
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                       <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                       <circle cx="12" cy="7" r="4" />
                     </svg>
                   </div>
-                  <h3 className="font-inter text-xl font-bold text-[#1A1A1A]">{member.name}</h3>
-                  <p className="text-sm text-[#4CAF50] font-medium mt-1 mb-4">{member.role}</p>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{member.bio}</p>
+                  <h3
+                    className="text-xl font-bold"
+                    style={{ color: "var(--color-rp-text-strong)" }}
+                  >
+                    {member.name}
+                  </h3>
+                  <p
+                    className="text-sm font-medium mt-1 mb-4"
+                    style={{ color: "var(--color-rp-accent)" }}
+                  >
+                    {member.role}
+                  </p>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--color-rp-text-muted)" }}
+                  >
+                    {member.bio}
+                  </p>
                 </motion.div>
               ))}
             </div>

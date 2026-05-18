@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Multilab",
   descriptor: "Risk Prevention",
   fullName: "Multilab Risk Prevention",
-  url: "https://multilab.vercel.app",
+  url: "https://multilab.com.ar",
   description:
     "Análisis técnicos para Higiene y Seguridad, Laboratorio y Medioambiente. Dirigido por la Lic. Cinthia Degliangioli.",
   locale: "es_AR",

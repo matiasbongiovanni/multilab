@@ -62,8 +62,8 @@ export default function AnalisisVeterinarioPage() {
           description="Estudios especializados para el cuidado de la salud animal. Trabajamos con veterinarios de toda la región para ofrecer resultados precisos que apoyen el diagnóstico y tratamiento."
           longDescription="El servicio de análisis veterinario de Multilab ofrece soporte diagnóstico de laboratorio para clínicas y veterinarios independientes. Nuestros procesos están adaptados a las particularidades fisiológicas de cada especie, con valores de referencia actualizados y una cadena analítica que garantiza la integridad de la muestra desde la extracción hasta el resultado."
           icon={icon}
-          color="bg-[#dcfce7] text-[#16a34a]"
-          bgGradient="bg-gradient-to-br from-[#f0fdf4] via-[#dcfce7] to-white"
+          color="bg-[var(--color-rp-accent-soft)] text-[var(--color-rp-accent)]"
+          bgGradient=""
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis veterinario"

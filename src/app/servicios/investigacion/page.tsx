@@ -61,8 +61,8 @@ export default function InvestigacionPage() {
           description="Líneas activas de investigación científica y desarrollo de metodologías analíticas. Colaboramos con universidades, instituciones y profesionales de la salud en proyectos de alto valor científico."
           longDescription="Multilab integra la práctica analítica con la investigación aplicada. Bajo la dirección de la Lic. Cinthia Degliangioli, desarrollamos y validamos nuevas metodologías, colaboramos con instituciones académicas y participamos en proyectos de investigación con impacto en salud humana, animal y ambiental. Nuestra capacidad instalada y nuestro equipo técnico nos permiten ser socios estratégicos en proyectos de distinta envergadura."
           icon={icon}
-          color="bg-[#ede9fe] text-[#7c3aed]"
-          bgGradient="bg-gradient-to-br from-[#f5f3ff] via-[#ede9fe] to-white"
+          color="bg-[var(--color-rp-accent-soft)] text-[var(--color-rp-accent)]"
+          bgGradient=""
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Consultar sobre colaboración"

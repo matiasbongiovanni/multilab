@@ -37,10 +37,7 @@ export default function ServiceDetail({
         className={`relative pt-24 pb-16 lg:pt-32 lg:pb-20 ${bgGradient} overflow-hidden`}
         aria-label={`Servicio: ${title}`}
       >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden="true"
-        >
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           <div className="absolute top-1/2 right-0 w-80 h-80 bg-white/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         </div>
 
@@ -54,19 +51,29 @@ export default function ServiceDetail({
             <div className={`w-16 h-16 rounded-2xl ${color} flex items-center justify-center`}>
               {icon}
             </div>
-            <span className="text-sm font-semibold text-[#4CAF50] uppercase tracking-widest">
+            <span
+              className="text-sm font-semibold uppercase tracking-widest"
+              style={{ color: "var(--color-rp-accent)" }}
+            >
               {subtitle}
             </span>
-            <h1 className="font-inter text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-tight">
+            <h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight"
+              style={{ color: "var(--color-rp-text-strong)" }}
+            >
               {title}
             </h1>
-            <p className="text-lg text-[#616161] leading-relaxed max-w-xl">
+            <p
+              className="text-lg leading-relaxed max-w-xl"
+              style={{ color: "var(--color-rp-text-muted)" }}
+            >
               {description}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[#4CAF50] text-white font-semibold rounded-xl hover:bg-[#2E7D32] transition-all duration-200 shadow-md hover:shadow-lg min-h-[52px]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 shadow-md hover:shadow-lg min-h-[52px]"
+                style={{ backgroundColor: "var(--color-rp-accent)" }}
               >
                 {ctaText}
                 <svg
@@ -85,7 +92,11 @@ export default function ServiceDetail({
               </Link>
               <Link
                 href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-[#4CAF50] text-[#4CAF50] font-semibold rounded-xl hover:bg-[#dcfce7] transition-all duration-200 min-h-[52px]"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl transition-all duration-200 min-h-[52px]"
+                style={{
+                  border: "2px solid var(--color-rp-accent)",
+                  color: "var(--color-rp-accent)",
+                }}
               >
                 Consultar disponibilidad
               </Link>
@@ -95,7 +106,10 @@ export default function ServiceDetail({
       </section>
 
       {/* Content section */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section
+        className="py-16 lg:py-24"
+        style={{ backgroundColor: "var(--color-rp-bg-elevated)" }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Analyses list */}
@@ -105,7 +119,10 @@ export default function ServiceDetail({
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="font-inter text-2xl sm:text-3xl font-bold text-[#1A1A1A] mb-8">
+              <h2
+                className="text-2xl sm:text-3xl font-bold mb-8"
+                style={{ color: "var(--color-rp-text-strong)" }}
+              >
                 Análisis disponibles
               </h2>
               <ul className="space-y-3" role="list">
@@ -113,24 +130,28 @@ export default function ServiceDetail({
                   <motion.li
                     key={i}
                     initial={shouldReduceMotion ? {} : { opacity: 0, x: -16 }}
-                    whileInView={
-                      shouldReduceMotion ? {} : { opacity: 1, x: 0 }
-                    }
+                    whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{
-                      duration: 0.35,
-                      delay: i * 0.04,
-                      ease: "easeOut",
+                    transition={{ duration: 0.35, delay: i * 0.04, ease: "easeOut" }}
+                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-150"
+                    style={{
+                      backgroundColor: "var(--color-rp-bg-soft)",
+                      border: "1px solid var(--color-rp-border)",
                     }}
-                    className="flex items-center gap-3 p-3.5 bg-[#F5F5F5] rounded-xl border border-[#E0E0E0] hover:border-[#4CAF50] hover:bg-[#dcfce7] transition-all duration-150"
                   >
-                    <div className="w-5 h-5 rounded-full bg-[#dcfce7] flex items-center justify-center shrink-0">
+                    <div
+                      className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                      style={{
+                        backgroundColor: "var(--color-rp-accent-soft)",
+                        color: "var(--color-rp-accent)",
+                      }}
+                    >
                       <svg
                         width="10"
                         height="10"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke="#16a34a"
+                        stroke="currentColor"
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -139,7 +160,9 @@ export default function ServiceDetail({
                         <path d="M20 6L9 17l-5-5" />
                       </svg>
                     </div>
-                    <span className="text-sm text-[#1A1A1A]">{item}</span>
+                    <span className="text-sm" style={{ color: "var(--color-rp-text)" }}>
+                      {item}
+                    </span>
                   </motion.li>
                 ))}
               </ul>
@@ -150,27 +173,35 @@ export default function ServiceDetail({
               initial={shouldReduceMotion ? {} : { opacity: 0, x: 24 }}
               whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col gap-6"
             >
               {longDescription && (
                 <div>
-                  <h2 className="font-inter text-2xl sm:text-3xl font-bold text-[#1A1A1A] mb-4">
+                  <h2
+                    className="text-2xl sm:text-3xl font-bold mb-4"
+                    style={{ color: "var(--color-rp-text-strong)" }}
+                  >
                     Descripción del servicio
                   </h2>
-                  <p className="text-[#616161] leading-relaxed">
+                  <p className="leading-relaxed" style={{ color: "var(--color-rp-text-muted)" }}>
                     {longDescription}
                   </p>
                 </div>
               )}
 
               {additionalInfo && additionalInfo.length > 0 && (
-                <div className="bg-[#dcfce7] rounded-2xl border border-[#bbf7d0] p-6">
-                  <h3 className="font-semibold text-[#4CAF50] mb-4 flex items-center gap-2">
+                <div
+                  className="rounded-2xl p-6"
+                  style={{
+                    backgroundColor: "var(--color-rp-accent-soft)",
+                    border: "1px solid var(--color-rp-border)",
+                  }}
+                >
+                  <h3
+                    className="font-semibold mb-4 flex items-center gap-2"
+                    style={{ color: "var(--color-rp-accent)" }}
+                  >
                     <svg
                       width="18"
                       height="18"
@@ -189,9 +220,13 @@ export default function ServiceDetail({
                     {additionalInfo.map((info, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2.5 text-sm text-[#616161]"
+                        className="flex items-start gap-2.5 text-sm"
+                        style={{ color: "var(--color-rp-text-muted)" }}
                       >
-                        <span className="text-[#4CAF50] mt-0.5 shrink-0">
+                        <span
+                          className="mt-0.5 shrink-0"
+                          style={{ color: "var(--color-rp-accent)" }}
+                        >
                           •
                         </span>
                         {info}
@@ -202,17 +237,23 @@ export default function ServiceDetail({
               )}
 
               {/* CTA card */}
-              <div className="bg-gradient-to-br from-[#4CAF50] to-[#2E7D32] rounded-2xl p-6 text-white">
-                <h3 className="font-inter font-bold text-xl mb-2">
+              <div
+                className="rounded-2xl p-6 text-white"
+                style={{ backgroundColor: "var(--color-rp-accent)" }}
+              >
+                <h3 className="font-bold text-xl mb-2">
                   ¿Necesitás más información?
                 </h3>
                 <p className="text-white/80 text-sm mb-4">
-                  Contactanos para conocer requisitos, tiempos de entrega y
-                  precios de cada análisis.
+                  Contactanos para conocer requisitos, tiempos de entrega y precios de cada análisis.
                 </p>
                 <Link
                   href="/contacto"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#4CAF50] font-semibold rounded-lg hover:bg-[#dcfce7] transition-colors duration-200 text-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 font-semibold rounded-lg transition-colors duration-200 text-sm"
+                  style={{
+                    backgroundColor: "white",
+                    color: "var(--color-rp-accent)",
+                  }}
                 >
                   Ir al formulario de contacto
                   <svg

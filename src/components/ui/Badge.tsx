@@ -23,9 +23,9 @@ export default function Badge({
       borderColor: "var(--color-rp-border)",
     },
     warning: {
-      backgroundColor: "#fef9c3",
-      color: "#ca8a04",
-      borderColor: "#fef08a",
+      backgroundColor: "var(--color-rp-warning-soft)",
+      color: "var(--color-rp-warning)",
+      borderColor: "var(--color-rp-border)",
     },
     neutral: {
       backgroundColor: "var(--color-rp-bg-soft)",

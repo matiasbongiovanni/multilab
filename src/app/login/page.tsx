@@ -77,7 +77,7 @@ function LoginForm() {
             fill="none"
             aria-hidden="true"
           >
-            <rect width="36" height="36" rx="8" fill="#4CAF50" />
+            <rect width="36" height="36" rx="8" fill="var(--color-rp-accent)" />
             <path d="M13 8h4v13a4 4 0 01-8 0V8h4z" fill="white" opacity="0.9" />
             <circle cx="25" cy="14" r="4" fill="white" opacity="0.9" />
             <path
@@ -87,24 +87,27 @@ function LoginForm() {
               strokeLinecap="round"
             />
           </svg>
-          <span className="font-black text-2xl text-[#1A1A1A] tracking-tight">
-            MULTI<span className="text-[#4CAF50]">LAB</span>
+          <span
+            className="font-black text-2xl tracking-tight"
+            style={{ color: "var(--color-rp-text-strong)" }}
+          >
+            MULTI<span style={{ color: "var(--color-rp-accent)" }}>LAB</span>
           </span>
         </Link>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg border border-[#E0E0E0] p-7 lg:p-8">
+      <div
+        className="rounded-2xl shadow-lg p-7 lg:p-8"
+        style={{
+          backgroundColor: "var(--color-rp-bg-elevated)",
+          border: "1px solid var(--color-rp-border)",
+        }}
+      >
         <div className="mb-6">
-          <h1
-            className="text-2xl font-bold"
-            style={{ color: "var(--color-rp-text-strong)" }}
-          >
+          <h1 className="text-2xl font-bold" style={{ color: "var(--color-rp-text-strong)" }}>
             Acceder a mis informes
           </h1>
-          <p
-            className="text-sm mt-1"
-            style={{ color: "var(--color-rp-text-muted)" }}
-          >
+          <p className="text-sm mt-1" style={{ color: "var(--color-rp-text-muted)" }}>
             Ingresá con tu DNI y la contraseña que te asignaron.
           </p>
         </div>
@@ -117,7 +120,12 @@ function LoginForm() {
         >
           {errors.general && (
             <div
-              className="p-3.5 bg-[#fef2f2] border border-[#fecaca] rounded-lg text-sm text-[#dc2626] flex items-center gap-2"
+              className="p-3.5 rounded-lg text-sm flex items-center gap-2"
+              style={{
+                backgroundColor: "var(--color-rp-danger-soft)",
+                border: "1px solid var(--color-rp-danger)",
+                color: "var(--color-rp-danger)",
+              }}
               role="alert"
               aria-live="polite"
             >
@@ -175,12 +183,16 @@ function LoginForm() {
           </Button>
         </form>
 
-        <div className="mt-6 pt-5 border-t border-[#E0E0E0]">
-          <p className="text-sm text-[#616161] text-center">
+        <div
+          className="mt-6 pt-5"
+          style={{ borderTop: "1px solid var(--color-rp-border)" }}
+        >
+          <p className="text-sm text-center" style={{ color: "var(--color-rp-text-muted)" }}>
             ¿Olvidaste tu contraseña?{" "}
             <Link
               href="/contacto"
-              className="text-[#4CAF50] font-medium hover:underline underline-offset-2"
+              className="font-medium hover:underline underline-offset-2"
+              style={{ color: "var(--color-rp-accent)" }}
             >
               Contactanos
             </Link>{" "}
@@ -189,8 +201,12 @@ function LoginForm() {
         </div>
       </div>
 
-      <p className="text-center text-sm text-[#616161] mt-6">
-        <Link href="/" className="hover:text-[#4CAF50] transition-colors">
+      <p className="text-center text-sm mt-6" style={{ color: "var(--color-rp-text-muted)" }}>
+        <Link
+          href="/"
+          className="hover:underline underline-offset-2 transition-colors"
+          style={{ color: "var(--color-rp-text-muted)" }}
+        >
           Volver al inicio
         </Link>
       </p>
@@ -206,10 +222,19 @@ export default function LoginPage() {
     >
       <Suspense
         fallback={
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border border-[#E0E0E0] p-8 flex items-center justify-center h-64">
+          <div
+            className="w-full max-w-md rounded-2xl shadow-lg p-8 flex items-center justify-center h-64"
+            style={{
+              backgroundColor: "var(--color-rp-bg-elevated)",
+              border: "1px solid var(--color-rp-border)",
+            }}
+          >
             <div
-              className="w-8 h-8 border-4 border-t-transparent rounded-full animate-spin"
-              style={{ borderColor: "#4CAF50", borderTopColor: "transparent" }}
+              className="w-8 h-8 border-4 rounded-full animate-spin"
+              style={{
+                borderColor: "var(--color-rp-accent)",
+                borderTopColor: "transparent",
+              }}
               aria-label="Cargando..."
             />
           </div>
