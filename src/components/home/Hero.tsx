@@ -1,47 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ShieldCheck, FlaskConical, Leaf } from "lucide-react";
 
-const trustedBy = [
-  { label: "Ledesma SAIC", icon: "🌿" },
-  { label: "Cia. Cervecera Argentina", icon: "🍺" },
-  { label: "Canteras Diquecito", icon: "🏗️" },
-];
+/* ─────────────────────────────────────────────
+   HERO — Fiel al diseño Figma
+   Foto full-bleed · gradiente izq→transp · MULTILAB bold
+   ───────────────────────────────────────────── */
 
-const services = [
-  {
-    icon: ShieldCheck,
-    label: "Higiene y Seguridad Laboral",
-    color: "#2E7D32",
-    bg: "#DCFCE7",
-  },
-  {
-    icon: FlaskConical,
-    label: "Laboratorio de Análisis",
-    color: "#1B5E20",
-    bg: "#BBF7D0",
-  },
-  {
-    icon: Leaf,
-    label: "Control Ambiental",
-    color: "#166534",
-    bg: "#DCFCE7",
-  },
-];
+const HERO_PHOTO =
+  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=85";
+// [REEMPLAZAR: foto propia del equipo técnico en campo — 1920×1080px WebP]
 
 export default function Hero() {
   const reduce = useReducedMotion();
 
-  const fade = (delay = 0) =>
+  const fadeUp = (delay = 0) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 24 },
+          initial: { opacity: 0, y: 22 },
           animate: { opacity: 1, y: 0 },
           transition: {
-            duration: 0.7,
+            duration: 0.75,
             delay,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           },
@@ -49,239 +31,131 @@ export default function Hero() {
 
   return (
     <section
-      className="relative pt-28 pb-20 lg:pt-36 lg:pb-28 bg-[#FAFAF8] overflow-hidden"
+      className="relative min-h-[calc(100dvh-0px)] flex flex-col overflow-hidden"
       aria-label="Inicio — Multilab Risk Prevention"
     >
-      {/* Subtle grid texture */}
+      {/* ── Background photo ── */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={HERO_PHOTO}
+          alt="Profesional técnico de Multilab en campo realizando análisis"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
+
+      {/* ── Left-to-right gradient overlay (makes left text readable) ── */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.018]"
+        className="absolute inset-0 z-[1]"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, #1C1917 1px, transparent 1px), linear-gradient(to bottom, #1C1917 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
+          background:
+            "linear-gradient(to right, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.80) 38%, rgba(255,255,255,0.35) 62%, rgba(255,255,255,0.0) 100%)",
         }}
         aria-hidden="true"
       />
 
-      {/* Green accent top-right */}
+      {/* ── Bottom fade for smooth section transition ── */}
       <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#2E7D32] opacity-[0.04] blur-[120px] pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-20 z-[1]"
+        style={{
+          background: "linear-gradient(to bottom, transparent, rgba(250,250,248,0.4))",
+        }}
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left: copy */}
-          <div className="max-w-xl">
+      {/* ── Content ── */}
+      <div className="relative z-10 flex-1 flex items-center pt-20 lg:pt-24">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="max-w-[580px]">
+
             {/* Badge */}
-            <motion.div {...fade(0)}>
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-                <span
-                  className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
-                  Desde 2014 · Córdoba, Argentina
-                </span>
-              </div>
+            <motion.div {...fadeUp(0)}>
+              <p
+                className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#2E7D32] mb-5"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                Laboratorio de análisis · Risk Prevention
+              </p>
             </motion.div>
 
-            {/* H1 */}
-            <motion.h1 {...fade(0.08)}>
+            {/* H1 — MULTILAB */}
+            <motion.h1 {...fadeUp(0.07)}>
               <span
-                className="block text-[clamp(2.8rem,6vw,4.5rem)] leading-[1.0] tracking-[-0.03em] text-[#1C1917]"
-                style={{ fontFamily: "var(--font-display)" }}
+                className="block text-[clamp(4rem,10vw,7.5rem)] font-black leading-[0.92] tracking-[-0.02em] text-[#1C1917]"
+                style={{ fontFamily: "var(--font-heading)" }}
               >
-                Protegemos la salud.
-              </span>
-              <span
-                className="block text-[clamp(2.8rem,6vw,4.5rem)] leading-[1.0] tracking-[-0.03em] text-[#2E7D32] mt-1"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Certificamos la seguridad.
+                MULTI
+                <span className="text-[#2E7D32]">LAB</span>
               </span>
             </motion.h1>
 
-            {/* Divider */}
-            <motion.div {...fade(0.15)}>
-              <div className="w-16 h-[3px] bg-[#2E7D32] rounded-full mt-7 mb-7" />
-            </motion.div>
-
-            {/* Subhead */}
+            {/* Subtítulo */}
             <motion.p
-              {...fade(0.2)}
-              className="text-lg text-[#6B7280] leading-relaxed"
+              {...fadeUp(0.14)}
+              className="mt-4 text-lg lg:text-xl font-light text-[#1C1917]/70 italic leading-snug"
             >
-              Higiene y Seguridad Laboral, Laboratorio de Análisis, Control Ambiental e I+D para empresas que no pueden permitirse fallar.
+              Calidad, condición y{" "}
+              <span className="font-semibold not-italic text-[#1C1917]">
+                diagnóstico avanzado
+              </span>
             </motion.p>
 
-            {/* Normativa badges */}
-            <motion.div {...fade(0.26)} className="flex flex-wrap gap-2 mt-6">
-              {["Ley 19.587", "Cód. Alimentario Arg.", "ISO-compatible"].map(
-                (tag) => (
-                  <span
-                    key={tag}
-                    className="text-[11px] font-semibold text-[#1B5E20] bg-[#DCFCE7] border border-[#BBF7D0] px-3 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                )
-              )}
-            </motion.div>
+            {/* Body */}
+            <motion.p
+              {...fadeUp(0.2)}
+              className="mt-6 text-[15px] leading-relaxed text-[#1C1917]/65 max-w-[460px]"
+            >
+              Integramos la consultoría técnica en Higiene y Seguridad Laboral con
+              laboratorio especializado en Análisis Ambientales y Microbiología
+              Integral. Resultados con trazabilidad absoluta, firmados por nuestra
+              Directora Técnica.
+            </motion.p>
 
             {/* CTAs */}
             <motion.div
-              {...fade(0.33)}
-              className="flex flex-col sm:flex-row gap-3 mt-10"
+              {...fadeUp(0.27)}
+              className="mt-10 flex flex-col sm:flex-row gap-3"
             >
               <Link
                 href="#contacto"
-                className="group inline-flex items-center justify-center gap-2 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors duration-200 text-base"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-semibold text-sm transition-colors duration-200 shadow-[0_4px_20px_rgba(46,125,50,0.3)]"
               >
                 Solicitar cotización
-                <ArrowRight
-                  size={16}
-                  className="transition-transform duration-200 group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
               </Link>
               <Link
                 href="/mis-estudios"
-                className="inline-flex items-center justify-center gap-2 border border-[#E5E7EB] hover:border-[#2E7D32] bg-white hover:bg-[#DCFCE7] text-[#1C1917] font-semibold px-6 py-3.5 rounded-lg transition-colors duration-200 text-base"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border-2 border-[#1C1917]/25 hover:border-[#1C1917]/50 bg-white/60 hover:bg-white/80 backdrop-blur-sm text-[#1C1917] font-semibold text-sm transition-all duration-200"
               >
                 Ver mis resultados
               </Link>
             </motion.div>
 
-            {/* Trust line */}
-            <motion.p
-              {...fade(0.4)}
-              className="mt-8 text-sm text-[#9CA3AF]"
-            >
-              Directora Técnica:{" "}
-              <span className="text-[#6B7280] font-medium">
-                Lic. Cinthia Degliangioli
-              </span>
-            </motion.p>
           </div>
-
-          {/* Right: visual */}
-          <motion.div
-            {...(reduce
-              ? {}
-              : {
-                  initial: { opacity: 0, x: 30 },
-                  animate: { opacity: 1, x: 0 },
-                  transition: { duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
-                })}
-            className="relative"
-          >
-            {/* Main image placeholder */}
-            <div
-              className="relative rounded-2xl overflow-hidden bg-[#F4F4F1] border border-[#E5E7EB]"
-              style={{ aspectRatio: "4/3" }}
-            >
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-                <div className="w-16 h-16 rounded-full bg-[#DCFCE7] flex items-center justify-center mb-4">
-                  <FlaskConical size={28} className="text-[#2E7D32]" />
-                </div>
-                <p className="text-sm font-medium text-[#9CA3AF]">
-                  [REEMPLAZAR: foto del laboratorio / equipo técnico]
-                </p>
-                <p className="text-xs text-[#9CA3AF] mt-1">
-                  Resolución sugerida: 1200 × 900px · formato WebP
-                </p>
-              </div>
-            </div>
-
-            {/* Floating card — Director */}
-            <motion.div
-              {...(reduce
-                ? {}
-                : {
-                    initial: { opacity: 0, y: 20, scale: 0.95 },
-                    animate: { opacity: 1, y: 0, scale: 1 },
-                    transition: { duration: 0.6, delay: 0.55, ease: [0.22, 1, 0.36, 1] },
-                  })}
-              className="absolute -bottom-5 -left-5 lg:-left-8 bg-white border border-[#E5E7EB] rounded-xl p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)] max-w-[200px]"
-            >
-              <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0">
-                  <ShieldCheck size={18} className="text-[#2E7D32]" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-[#1C1917] leading-tight">
-                    Lic. Cinthia Degliangioli
-                  </p>
-                  <p className="text-[11px] text-[#6B7280] mt-0.5">
-                    Directora Técnica
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Floating card — Years */}
-            <motion.div
-              {...(reduce
-                ? {}
-                : {
-                    initial: { opacity: 0, y: -20, scale: 0.95 },
-                    animate: { opacity: 1, y: 0, scale: 1 },
-                    transition: { duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] },
-                  })}
-              className="absolute -top-5 -right-5 lg:-right-6 bg-[#2E7D32] text-white rounded-xl p-4 shadow-[0_8px_30px_rgba(46,125,50,0.25)]"
-            >
-              <p
-                className="text-3xl font-bold leading-none"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                +10
-              </p>
-              <p className="text-[11px] font-medium mt-1 opacity-90">
-                años de experiencia
-              </p>
-            </motion.div>
-          </motion.div>
         </div>
+      </div>
 
-        {/* Service chips */}
+      {/* ── Scroll indicator ── */}
+      {!reduce && (
         <motion.div
-          {...(reduce
-            ? {}
-            : {
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
-              })}
-          className="mt-16 lg:mt-20 flex flex-wrap gap-3"
-          aria-label="Áreas de servicio"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="relative z-10 pb-8 flex justify-start max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8"
+          aria-hidden="true"
         >
-          {services.map(({ icon: Icon, label, color, bg }) => (
-            <div
-              key={label}
-              className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-[#E5E7EB] bg-white"
+          <div className="flex flex-col items-center gap-1.5">
+            <span
+              className="text-[10px] uppercase tracking-[0.3em] text-[#1C1917]/35 font-semibold"
+              style={{ fontFamily: "var(--font-heading)" }}
             >
-              <div
-                className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
-                style={{ background: bg }}
-              >
-                <Icon size={14} style={{ color }} aria-hidden="true" />
-              </div>
-              <span className="text-sm font-medium text-[#1C1917]">
-                {label}
-              </span>
-            </div>
-          ))}
-          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-[#E5E7EB] bg-white">
-            <div className="w-7 h-7 rounded-md bg-[#DCFCE7] flex items-center justify-center shrink-0">
-              <span className="text-[#2E7D32] text-xs font-bold">I+D</span>
-            </div>
-            <span className="text-sm font-medium text-[#1C1917]">
-              I+D en Ciencias y Medicina
+              Scroll
             </span>
+            <div className="w-px h-10 bg-gradient-to-b from-[#1C1917]/20 to-transparent" />
           </div>
         </motion.div>
-      </div>
+      )}
     </section>
   );
 }
