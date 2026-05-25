@@ -1,48 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  /* Multilab Design Tokens — Light Green */
-  --color-ml-primary:       #2E7D32;
-  --color-ml-primary-dark:  #1B5E20;
-  --color-ml-primary-light: #4CAF50;
-  --color-ml-accent:        #81C784;
-  --color-ml-bg:            #f0faf0;
-  --color-ml-card:          rgba(255, 255, 255, 0.85);
-  --color-ml-card-hover:    rgba(255, 255, 255, 0.98);
-  --color-ml-text:          #1a2e1a;
-  --color-ml-text-muted:    rgba(26, 46, 26, 0.55);
+  /* ─── Multilab Risk Prevention — Design Tokens ─── */
 
-  /* Typography — Inter only */
-  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  /* Brand */
+  --color-ml-green:        #2E7D32;
+  --color-ml-green-dark:   #1B5E20;
+  --color-ml-green-light:  #DCFCE7;
+  --color-ml-green-muted:  #BBF7D0;
+
+  /* Surfaces */
+  --color-ml-surface:      #FAFAF8;
+  --color-ml-surface-2:    #F4F4F1;
+  --color-ml-white:        #FFFFFF;
+
+  /* Text */
+  --color-ml-text:         #1C1917;
+  --color-ml-text-muted:   #6B7280;
+  --color-ml-text-light:   #9CA3AF;
+
+  /* Borders */
+  --color-ml-border:       #E5E7EB;
+  --color-ml-border-green: #BBF7D0;
+
+  /* Semantic */
+  --color-ml-error:        #DC2626;
+  --color-ml-success:      #16A34A;
+
+  /* Fonts */
+  --font-display: var(--font-dm-serif), "DM Serif Display", Georgia, serif;
+  --font-heading: var(--font-syne), "Syne", system-ui, sans-serif;
+  --font-sans:    var(--font-figtree), "Figtree", system-ui, sans-serif;
 }
 
-/* ═══════════════════════════════════════════
-   BASE STYLES
-   ═══════════════════════════════════════════ */
-
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #f0faf0;
-  color: #1a2e1a;
+  background-color: #FAFAF8;
+  color: #1C1917;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans);
-}
-
-/* ═══════════════════════════════════════════
-   ACCESSIBILITY
-   ═══════════════════════════════════════════ */
-
+/* ─── Accessibility ─── */
 *:focus-visible {
-  outline: 3px solid #2E7D32;
-  outline-offset: 2px;
+  outline: 2px solid #2E7D32;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .skip-to-content {
@@ -53,94 +61,39 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5rem 1rem;
   background: #2E7D32;
   color: #ffffff;
-  border-radius: 0 0 0.25rem 0.25rem;
+  border-radius: 0 0 0.375rem 0.375rem;
   font-size: 0.875rem;
   text-decoration: none;
-  transition: top 0.2s;
+  transition: top 0.15s ease;
 }
-
 .skip-to-content:focus {
   top: 0;
 }
 
-/* ═══════════════════════════════════════════
-   ANIMATIONS
-   ═══════════════════════════════════════════ */
+/* ─── Font utilities ─── */
+.font-display { font-family: var(--font-display); }
+.font-heading  { font-family: var(--font-heading); }
 
+/* ─── Marquee ─── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 35s linear infinite;
 }
-
 .animate-marquee:hover {
   animation-play-state: paused;
 }
 
-@keyframes float-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(12px); }
-}
-
-.animate-float-bounce {
-  animation: float-bounce 2.5s ease-in-out infinite;
-}
-
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.2; }
-  50%      { opacity: 0.5; }
-}
-
-.animate-glow-pulse {
-  animation: glow-pulse 4s ease-in-out infinite;
-}
-
-@keyframes glow-drift {
-  0%, 100% { transform: translate(0, 0); }
-  25%      { transform: translate(30px, -20px); }
-  50%      { transform: translate(-20px, 15px); }
-  75%      { transform: translate(15px, 25px); }
-}
-
-.animate-glow-drift {
-  animation: glow-drift 15s ease-in-out infinite;
-}
-
-.animate-glow-drift-slow {
-  animation: glow-drift 22s ease-in-out infinite reverse;
-}
-
-/* ═══════════════════════════════════════════
-   GLASSMORPHISM — Light
-   ═══════════════════════════════════════════ */
-
-.glass {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(76, 175, 80, 0.15);
-}
-
-/* ═══════════════════════════════════════════
-   SCROLLBAR
-   ═══════════════════════════════════════════ */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #e8f5e9;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #a5d6a7;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #4CAF50;
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,215 +1,287 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ShieldCheck, FlaskConical, Leaf } from "lucide-react";
 
-const HERO_BG =
-  "https://fcm.uncuyo.edu.ar/ingreso/cache/0a0f0e0e26fae10cdf26739eb29fb11e_732_1296.jpg";
+const trustedBy = [
+  { label: "Ledesma SAIC", icon: "🌿" },
+  { label: "Cia. Cervecera Argentina", icon: "🍺" },
+  { label: "Canteras Diquecito", icon: "🏗️" },
+];
+
+const services = [
+  {
+    icon: ShieldCheck,
+    label: "Higiene y Seguridad Laboral",
+    color: "#2E7D32",
+    bg: "#DCFCE7",
+  },
+  {
+    icon: FlaskConical,
+    label: "Laboratorio de Análisis",
+    color: "#1B5E20",
+    bg: "#BBF7D0",
+  },
+  {
+    icon: Leaf,
+    label: "Control Ambiental",
+    color: "#166534",
+    bg: "#DCFCE7",
+  },
+];
 
 export default function Hero() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduce = useReducedMotion();
 
-  const fadeUp = (delay = 0) =>
-    shouldReduceMotion
+  const fade = (delay = 0) =>
+    reduce
       ? {}
       : {
-        initial: { opacity: 0, y: 28 },
-        animate: { opacity: 1, y: 0 },
-        transition: {
-          duration: 0.9,
-          delay,
-          ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-        },
-      };
+          initial: { opacity: 0, y: 24 },
+          animate: { opacity: 1, y: 0 },
+          transition: {
+            duration: 0.7,
+            delay,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+          },
+        };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f0faf0]" aria-label="Multilab Hero">
-      {/* BACKGROUND IMAGE */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={HERO_BG}
-          alt="Profesional de laboratorio realizando análisis"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center scale-105"
-        />
-
-        {/* Light green overlay — 35% so photo is more visible */}
-        <div className="absolute inset-0 bg-[#f0faf0]/35" />
-
-        {/* Gradient from left for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f0faf0]/90 via-[#f0faf0]/60 to-transparent" />
-
-        {/* Soft vignette bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f0faf0]/60" />
-      </div>
-
-      {/* Ambient glows — green */}
-      <div className="absolute top-[-80px] left-[-80px] w-[400px] h-[400px] rounded-full bg-[#2E7D32]/8 blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-[-80px] right-[-80px] w-[350px] h-[350px] rounded-full bg-[#4CAF50]/6 blur-[120px] pointer-events-none" />
-      <div className="absolute top-[35%] right-[15%] w-[250px] h-[250px] rounded-full bg-emerald-300/10 blur-[100px] pointer-events-none" />
-
-      {/* Grid texture */}
+    <section
+      className="relative pt-28 pb-20 lg:pt-36 lg:pb-28 bg-[#FAFAF8] overflow-hidden"
+      aria-label="Inicio — Multilab Risk Prevention"
+    >
+      {/* Subtle grid texture */}
       <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        className="absolute inset-0 pointer-events-none opacity-[0.018]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, #1a2e1a 1px, transparent 1px), linear-gradient(to bottom, #1a2e1a 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
+            "linear-gradient(to right, #1C1917 1px, transparent 1px), linear-gradient(to bottom, #1C1917 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
         }}
+        aria-hidden="true"
       />
 
-      {/* CONTENT */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="w-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl">
-            {/* Badge */}
-            <motion.div {...fadeUp(0.1)}>
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-[#2E7D32]/15 bg-white/70 backdrop-blur-xl mb-8 shadow-[0_8px_30px_rgba(46,125,50,0.08)]">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2E7D32] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#2E7D32]" />
-                </span>
+      {/* Green accent top-right */}
+      <div
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#2E7D32] opacity-[0.04] blur-[120px] pointer-events-none"
+        aria-hidden="true"
+      />
 
-                <span className="text-[#2E7D32] text-[11px] font-bold uppercase tracking-[0.24em]">
-                  Risk Prevention
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: copy */}
+          <div className="max-w-xl">
+            {/* Badge */}
+            <motion.div {...fade(0)}>
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
+                <span
+                  className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
+                  style={{ fontFamily: "var(--font-heading)" }}
+                >
+                  Desde 2014 · Córdoba, Argentina
                 </span>
               </div>
             </motion.div>
 
-            {/* Heading */}
-            <motion.div {...fadeUp(0.2)}>
-              <h1 className="leading-[0.9] tracking-[-0.06em]">
-                <span className="block text-[#1a2e1a] font-black text-[clamp(4rem,9vw,8rem)]">
-                  MULTI
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E7D32] to-[#4CAF50]">LAB</span>
-                </span>
+            {/* H1 */}
+            <motion.h1 {...fade(0.08)}>
+              <span
+                className="block text-[clamp(2.8rem,6vw,4.5rem)] leading-[1.0] tracking-[-0.03em] text-[#1C1917]"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Protegemos la salud.
+              </span>
+              <span
+                className="block text-[clamp(2.8rem,6vw,4.5rem)] leading-[1.0] tracking-[-0.03em] text-[#2E7D32] mt-1"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Certificamos la seguridad.
+              </span>
+            </motion.h1>
 
-                <span className="block mt-5 text-[#1a2e1a]/70 font-light text-[clamp(1.2rem,2vw,2rem)] leading-tight tracking-[-0.03em]">
-                  Ciencia, precisión y{" "}
-                  <span className="text-[#1a2e1a] font-semibold">
-                    diagnóstico avanzado
-                  </span>
-                </span>
-              </h1>
+            {/* Divider */}
+            <motion.div {...fade(0.15)}>
+              <div className="w-16 h-[3px] bg-[#2E7D32] rounded-full mt-7 mb-7" />
             </motion.div>
 
-            {/* Accent line */}
-            <motion.div {...fadeUp(0.3)}>
-              <div className="mt-10 mb-10 w-28 h-[4px] rounded-full bg-gradient-to-r from-[#2E7D32] to-[#4CAF50] shadow-[0_0_20px_rgba(46,125,50,0.3)]" />
-            </motion.div>
-
-            {/* Paragraph */}
+            {/* Subhead */}
             <motion.p
-              {...fadeUp(0.4)}
-              className="max-w-2xl text-[#1a2e1a] text-lg lg:text-xl leading-relaxed font-light"
+              {...fade(0.2)}
+              className="text-lg text-[#6B7280] leading-relaxed"
             >
-              Tecnología de vanguardia para análisis clínicos, veterinarios y
-              ambientales con trazabilidad absoluta y resultados de máxima
-              precisión.
+              Higiene y Seguridad Laboral, Laboratorio de Análisis, Control Ambiental e I+D para empresas que no pueden permitirse fallar.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* Normativa badges */}
+            <motion.div {...fade(0.26)} className="flex flex-wrap gap-2 mt-6">
+              {["Ley 19.587", "Cód. Alimentario Arg.", "ISO-compatible"].map(
+                (tag) => (
+                  <span
+                    key={tag}
+                    className="text-[11px] font-semibold text-[#1B5E20] bg-[#DCFCE7] border border-[#BBF7D0] px-3 py-1 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                )
+              )}
+            </motion.div>
+
+            {/* CTAs */}
             <motion.div
-              {...fadeUp(0.5)}
-              className="mt-14 flex flex-col sm:flex-row gap-5"
+              {...fade(0.33)}
+              className="flex flex-col sm:flex-row gap-3 mt-10"
             >
               <Link
-                href="/contacto"
-                className="group relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[#2E7D32] px-8 py-4 font-bold text-white shadow-[0_20px_60px_rgba(46,125,50,0.25)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#1B5E20]"
+                href="#contacto"
+                className="group inline-flex items-center justify-center gap-2 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-semibold px-6 py-3.5 rounded-lg transition-colors duration-200 text-base"
               >
-                <span className="relative z-10">
-                  Solicitar cotización
-                </span>
-
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+                Solicitar cotización
+                <ArrowRight
+                  size={16}
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
                   aria-hidden="true"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1B5E20] to-[#2E7D32] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                />
               </Link>
-
               <Link
                 href="/mis-estudios"
-                className="inline-flex items-center justify-center rounded-2xl border border-[#2E7D32]/15 bg-white/60 backdrop-blur-xl px-8 py-4 text-[#2E7D32] font-semibold transition-all duration-300 hover:bg-white/90 hover:border-[#2E7D32]/30 hover:-translate-y-1 shadow-[0_4px_20px_rgba(46,125,50,0.06)]"
+                className="inline-flex items-center justify-center gap-2 border border-[#E5E7EB] hover:border-[#2E7D32] bg-white hover:bg-[#DCFCE7] text-[#1C1917] font-semibold px-6 py-3.5 rounded-lg transition-colors duration-200 text-base"
               >
-                Ver mis informes
+                Ver mis resultados
               </Link>
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
-              {...fadeUp(0.65)}
-              className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-5"
+            {/* Trust line */}
+            <motion.p
+              {...fade(0.4)}
+              className="mt-8 text-sm text-[#9CA3AF]"
             >
-              {[
-                { title: "+10 años", desc: "de experiencia" },
-                { title: "100%", desc: "trazabilidad" },
-                { title: "24/7", desc: "soporte técnico" },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-3xl border border-[#2E7D32]/10 bg-white/50 backdrop-blur-xl p-6 shadow-[0_8px_30px_rgba(46,125,50,0.06)] hover:bg-white/70 hover:border-[#2E7D32]/20 transition-all duration-300"
-                >
-                  <div className="text-3xl font-black text-[#1a2e1a]">
-                    {item.title}
-                  </div>
+              Directora Técnica:{" "}
+              <span className="text-[#6B7280] font-medium">
+                Lic. Cinthia Degliangioli
+              </span>
+            </motion.p>
+          </div>
 
-                  <div className="mt-2 text-sm text-[#1a2e1a] tracking-wide">
-                    {item.desc}
-                  </div>
+          {/* Right: visual */}
+          <motion.div
+            {...(reduce
+              ? {}
+              : {
+                  initial: { opacity: 0, x: 30 },
+                  animate: { opacity: 1, x: 0 },
+                  transition: { duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
+                })}
+            className="relative"
+          >
+            {/* Main image placeholder */}
+            <div
+              className="relative rounded-2xl overflow-hidden bg-[#F4F4F1] border border-[#E5E7EB]"
+              style={{ aspectRatio: "4/3" }}
+            >
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+                <div className="w-16 h-16 rounded-full bg-[#DCFCE7] flex items-center justify-center mb-4">
+                  <FlaskConical size={28} className="text-[#2E7D32]" />
                 </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </div>
+                <p className="text-sm font-medium text-[#9CA3AF]">
+                  [REEMPLAZAR: foto del laboratorio / equipo técnico]
+                </p>
+                <p className="text-xs text-[#9CA3AF] mt-1">
+                  Resolución sugerida: 1200 × 900px · formato WebP
+                </p>
+              </div>
+            </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={shouldReduceMotion ? {} : { opacity: 0 }}
-        animate={shouldReduceMotion ? {} : { opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
-      >
-        <a
-          href="#clientes"
-          className="flex flex-col items-center gap-3 text-[#1a2e1a]/30 hover:text-[#2E7D32] transition-colors duration-300"
-        >
-          <span className="text-[10px] uppercase tracking-[0.35em] font-bold">
-            Explorar
-          </span>
-
-          <div className="animate-bounce">
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
+            {/* Floating card — Director */}
+            <motion.div
+              {...(reduce
+                ? {}
+                : {
+                    initial: { opacity: 0, y: 20, scale: 0.95 },
+                    animate: { opacity: 1, y: 0, scale: 1 },
+                    transition: { duration: 0.6, delay: 0.55, ease: [0.22, 1, 0.36, 1] },
+                  })}
+              className="absolute -bottom-5 -left-5 lg:-left-8 bg-white border border-[#E5E7EB] rounded-xl p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)] max-w-[200px]"
             >
-              <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-            </svg>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0">
+                  <ShieldCheck size={18} className="text-[#2E7D32]" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-[#1C1917] leading-tight">
+                    Lic. Cinthia Degliangioli
+                  </p>
+                  <p className="text-[11px] text-[#6B7280] mt-0.5">
+                    Directora Técnica
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Floating card — Years */}
+            <motion.div
+              {...(reduce
+                ? {}
+                : {
+                    initial: { opacity: 0, y: -20, scale: 0.95 },
+                    animate: { opacity: 1, y: 0, scale: 1 },
+                    transition: { duration: 0.6, delay: 0.65, ease: [0.22, 1, 0.36, 1] },
+                  })}
+              className="absolute -top-5 -right-5 lg:-right-6 bg-[#2E7D32] text-white rounded-xl p-4 shadow-[0_8px_30px_rgba(46,125,50,0.25)]"
+            >
+              <p
+                className="text-3xl font-bold leading-none"
+                style={{ fontFamily: "var(--font-heading)" }}
+              >
+                +10
+              </p>
+              <p className="text-[11px] font-medium mt-1 opacity-90">
+                años de experiencia
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Service chips */}
+        <motion.div
+          {...(reduce
+            ? {}
+            : {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
+              })}
+          className="mt-16 lg:mt-20 flex flex-wrap gap-3"
+          aria-label="Áreas de servicio"
+        >
+          {services.map(({ icon: Icon, label, color, bg }) => (
+            <div
+              key={label}
+              className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-[#E5E7EB] bg-white"
+            >
+              <div
+                className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
+                style={{ background: bg }}
+              >
+                <Icon size={14} style={{ color }} aria-hidden="true" />
+              </div>
+              <span className="text-sm font-medium text-[#1C1917]">
+                {label}
+              </span>
+            </div>
+          ))}
+          <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-[#E5E7EB] bg-white">
+            <div className="w-7 h-7 rounded-md bg-[#DCFCE7] flex items-center justify-center shrink-0">
+              <span className="text-[#2E7D32] text-xs font-bold">I+D</span>
+            </div>
+            <span className="text-sm font-medium text-[#1C1917]">
+              I+D en Ciencias y Medicina
+            </span>
           </div>
-        </a>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
