@@ -25,7 +25,7 @@ const jsonLd = {
   description:
     "Servicios técnicos en Higiene y Seguridad Laboral, Laboratorio de Análisis Ambiental y Microbiológico, Control Ambiental e I+D en Ciencias y Medicina. Córdoba, Argentina.",
   url: "https://multilab.com.ar",
-  logo: "https://multilab.com.ar/images/logo.png",
+  logo: "https://multilab.com.ar/images/Logo-Multilab.webp",
   foundingDate: "2014",
   founder: {
     "@type": "Person",
@@ -105,7 +105,6 @@ export default function HomePage() {
         <Hero />
         <ClientsSlider />
         <Services />
-        <Stats />
         <About />
         <Process />
         <FAQ />

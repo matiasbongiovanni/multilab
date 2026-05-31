@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Mail, Phone, MapPin, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, CheckCircle, AlertCircle, Loader2, Send } from "lucide-react";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -17,10 +17,15 @@ const services = [
 function FieldError({ msg }: { msg?: string }) {
   if (!msg) return null;
   return (
-    <p className="flex items-center gap-1.5 text-xs text-[#DC2626] mt-1.5" role="alert">
-      <AlertCircle size={12} aria-hidden="true" />
+    <motion.p 
+      initial={{ opacity: 0, y: -5 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      className="flex items-center gap-1.5 text-xs font-semibold text-red-500 mt-2" 
+      role="alert"
+    >
+      <AlertCircle size={14} aria-hidden="true" />
       {msg}
-    </p>
+    </motion.p>
   );
 }
 
@@ -88,174 +93,150 @@ export default function Contact() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-3 rounded-lg border text-sm text-[#1C1917] bg-white placeholder:text-[#9CA3AF] transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-[#2E7D32] focus:border-[#2E7D32] ${
+    `w-full px-5 py-3.5 rounded-xl border text-sm font-medium text-[#1A2E1A] bg-white placeholder:text-[#1A2E1A]/30 transition-all duration-300 focus:outline-none focus:ring-4 ${
       errors[field]
-        ? "border-[#DC2626] bg-red-50/50"
-        : "border-[#E5E7EB] hover:border-[#9CA3AF]"
+        ? "border-red-500 focus:ring-red-500/10 focus:border-red-500 bg-red-50/30"
+        : "border-[#1A2E1A]/10 hover:border-[#44A148]/40 focus:ring-[#44A148]/10 focus:border-[#44A148]"
     }`;
 
   return (
     <section
       id="contacto"
-      className="py-20 lg:py-28 bg-[#FAFAF8]"
+      className="relative py-24 lg:py-32 bg-[#fcfdfc] overflow-hidden"
       aria-labelledby="contacto-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left — info */}
+      {/* Glow decorativo de fondo */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#44A148]/5 rounded-full blur-[150px] -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#1A2E1A]/5 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+          
+          {/* Columna Izquierda — Información */}
           <motion.div
             initial={reduce ? {} : { opacity: 0, x: -24 }}
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-              <span
-                className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5 self-start">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
+              <span className="font-inter text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
                 Contacto
               </span>
             </div>
 
             <h2
               id="contacto-heading"
-              className="text-3xl sm:text-4xl lg:text-[2.8rem] text-[#1C1917] leading-tight"
-              style={{ fontFamily: "var(--font-display)" }}
+              className="font-inter text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A2E1A] leading-tight tracking-tight"
             >
               Hablemos de lo que tu empresa necesita
             </h2>
 
-            <p className="mt-5 text-[#6B7280] text-lg leading-relaxed">
-              Completá el formulario y te respondemos en menos de 24 horas hábiles. El diagnóstico inicial es gratuito y sin compromiso.
+            <p className="mt-5 text-[#1A2E1A]/70 text-lg leading-relaxed max-w-lg">
+              Completá el formulario y te respondemos en menos de 24 horas hábiles. El diagnóstico inicial es <strong className="text-[#1A2E1A]">gratuito y sin compromiso</strong>.
             </p>
 
-            <div className="mt-10 space-y-5">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-[#DCFCE7] flex items-center justify-center shrink-0">
-                  <Mail size={17} className="text-[#2E7D32]" aria-hidden="true" />
+            {/* Tarjetas de contacto interactivas */}
+            <div className="mt-10 space-y-4">
+              <a href="mailto:contacto@multilab.com.ar" className="group flex items-center gap-5 p-4 rounded-2xl border border-[#1A2E1A]/5 bg-white hover:border-[#44A148]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0 group-hover:bg-[#44A148]/20 transition-colors">
+                  <Mail size={20} className="text-[#44A148]" aria-hidden="true" />
                 </div>
                 <div>
-                  <p
-                    className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] mb-1"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    Email
-                  </p>
-                  <a
-                    href="mailto:contacto@multilab.com.ar"
-                    className="text-sm font-medium text-[#1C1917] hover:text-[#2E7D32] transition-colors duration-150"
-                  >
-                    contacto@multilab.com.ar
-                  </a>
+                  <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-1">Email</p>
+                  <p className="text-base font-semibold text-[#1A2E1A] group-hover:text-[#44A148] transition-colors">contacto@multilab.com.ar</p>
+                </div>
+              </a>
+
+              <div className="group flex items-center gap-5 p-4 rounded-2xl border border-[#1A2E1A]/5 bg-white hover:border-[#44A148]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0 group-hover:bg-[#44A148]/20 transition-colors">
+                  <Phone size={20} className="text-[#44A148]" aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-1">Teléfono / WhatsApp</p>
+                  <p className="text-base font-semibold text-[#1A2E1A]">[REEMPLAZAR: número de contacto]</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-[#DCFCE7] flex items-center justify-center shrink-0">
-                  <Phone size={17} className="text-[#2E7D32]" aria-hidden="true" />
+              <div className="group flex items-center gap-5 p-4 rounded-2xl border border-[#1A2E1A]/5 bg-white hover:border-[#44A148]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0 group-hover:bg-[#44A148]/20 transition-colors">
+                  <MapPin size={20} className="text-[#44A148]" aria-hidden="true" />
                 </div>
                 <div>
-                  <p
-                    className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] mb-1"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    Teléfono / WhatsApp
-                  </p>
-                  <p className="text-sm font-medium text-[#6B7280]">
-                    [REEMPLAZAR: número de contacto]
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-[#DCFCE7] flex items-center justify-center shrink-0">
-                  <MapPin size={17} className="text-[#2E7D32]" aria-hidden="true" />
-                </div>
-                <div>
-                  <p
-                    className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] mb-1"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    Ubicación
-                  </p>
-                  <p className="text-sm font-medium text-[#6B7280]">
-                    [REEMPLAZAR: dirección · Córdoba, Argentina]
-                  </p>
+                  <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-1">Ubicación</p>
+                  <p className="text-base font-semibold text-[#1A2E1A]">[REEMPLAZAR: dirección · Córdoba]</p>
                 </div>
               </div>
             </div>
 
-            {/* What happens next */}
-            <div className="mt-10 p-5 bg-[#F4F4F1] rounded-xl border border-[#E5E7EB]">
-              <p
-                className="text-xs font-bold uppercase tracking-wider text-[#9CA3AF] mb-3"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Qué pasa después de que enviás
-              </p>
-              <ol className="space-y-2">
-                {[
-                  "Te respondemos en menos de 24 hs hábiles",
-                  "Coordinamos una llamada de diagnóstico gratuita",
-                  "Presentamos propuesta técnica documentada",
-                ].map((step, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-[#6B7280]">
-                    <span
-                      className="mt-0.5 w-4 h-4 rounded-full bg-[#DCFCE7] text-[#2E7D32] text-[10px] font-bold flex items-center justify-center shrink-0"
-                      aria-hidden="true"
-                    >
-                      {i + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
+            {/* Tarjeta Oscura: What happens next */}
+            <div className="mt-auto pt-10">
+              <div className="relative overflow-hidden p-8 bg-[#1A2E1A] rounded-[2rem] shadow-xl">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#44A148]/20 rounded-full blur-3xl" />
+                <p className="font-inter text-xs font-bold uppercase tracking-[0.15em] text-[#44A148] mb-5">
+                  Qué pasa después de que enviás
+                </p>
+                <ul className="space-y-4">
+                  {[
+                    "Te respondemos en menos de 24 hs hábiles.",
+                    "Coordinamos una llamada de diagnóstico técnico.",
+                    "Presentamos propuesta documentada.",
+                  ].map((step, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm font-medium text-white/80">
+                      <span className="mt-0.5 w-5 h-5 rounded-full bg-[#44A148]/20 border border-[#44A148]/30 text-[#44A148] text-[10px] font-black flex items-center justify-center shrink-0" aria-hidden="true">
+                        {i + 1}
+                      </span>
+                      {step}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </motion.div>
 
-          {/* Right — form */}
+          {/* Columna Derecha — Formulario */}
           <motion.div
             initial={reduce ? {} : { opacity: 0, x: 24 }}
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative"
           >
+            {/* Glow sutil detrás del form para destacarlo */}
+            <div className="absolute inset-0 bg-white rounded-[2.5rem] shadow-2xl shadow-[#1A2E1A]/5 transform rotate-1 scale-105 opacity-50" />
+            
             {formState === "success" ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-16 px-8 bg-white rounded-2xl border border-[#E5E7EB]">
-                <div className="w-16 h-16 rounded-full bg-[#DCFCE7] flex items-center justify-center mb-5">
-                  <CheckCircle size={30} className="text-[#2E7D32]" />
+              <div className="relative h-full min-h-[500px] flex flex-col items-center justify-center text-center py-16 px-8 bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 shadow-xl">
+                <div className="w-20 h-20 rounded-full bg-[#44A148]/10 border-4 border-white shadow-sm flex items-center justify-center mb-6">
+                  <CheckCircle size={36} className="text-[#44A148]" />
                 </div>
-                <h3
-                  className="text-2xl font-bold text-[#1C1917] mb-3"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
+                <h3 className="font-inter text-3xl font-bold text-[#1A2E1A] mb-4">
                   ¡Mensaje enviado!
                 </h3>
-                <p className="text-[#6B7280] max-w-xs leading-relaxed">
-                  Te respondemos en menos de 24 horas hábiles. Revisá también tu carpeta de spam por las dudas.
+                <p className="text-[#1A2E1A]/70 max-w-md leading-relaxed text-lg">
+                  Recibimos tu consulta con éxito. Te responderemos en menos de 24 horas hábiles. Revisá tu carpeta de spam por las dudas.
                 </p>
-                <p className="mt-4 text-sm font-medium text-[#9CA3AF]">
-                  — Lic. Cinthia Degliangioli
-                </p>
+                <button
+                  onClick={() => setFormState("idle")}
+                  className="mt-8 font-bold text-[#44A148] hover:text-[#1A2E1A] underline underline-offset-4 transition-colors"
+                >
+                  Enviar otro mensaje
+                </button>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="bg-white rounded-2xl border border-[#E5E7EB] p-6 lg:p-8 space-y-5"
+                className="relative bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 p-8 lg:p-10 shadow-xl space-y-6"
                 aria-label="Formulario de contacto Multilab"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Nombre */}
                   <div>
-                    <label
-                      htmlFor="contact-nombre"
-                      className="block text-xs font-semibold text-[#1C1917] mb-1.5"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      Nombre y apellido <span className="text-[#DC2626]" aria-label="requerido">*</span>
+                    <label htmlFor="contact-nombre" className="block text-sm font-bold text-[#1A2E1A] mb-2">
+                      Nombre y apellido <span className="text-red-500" aria-label="requerido">*</span>
                     </label>
                     <input
                       id="contact-nombre"
@@ -275,18 +256,12 @@ export default function Contact() {
                       className={inputClass("nombre")}
                       disabled={formState === "loading"}
                     />
-                    <span id="err-nombre">
-                      <FieldError msg={errors.nombre} />
-                    </span>
+                    <span id="err-nombre"><FieldError msg={errors.nombre} /></span>
                   </div>
 
                   {/* Empresa */}
                   <div>
-                    <label
-                      htmlFor="contact-empresa"
-                      className="block text-xs font-semibold text-[#1C1917] mb-1.5"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
+                    <label htmlFor="contact-empresa" className="block text-sm font-bold text-[#1A2E1A] mb-2">
                       Empresa
                     </label>
                     <input
@@ -302,15 +277,11 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Email */}
                   <div>
-                    <label
-                      htmlFor="contact-email"
-                      className="block text-xs font-semibold text-[#1C1917] mb-1.5"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      Email <span className="text-[#DC2626]" aria-label="requerido">*</span>
+                    <label htmlFor="contact-email" className="block text-sm font-bold text-[#1A2E1A] mb-2">
+                      Email corporativo <span className="text-red-500" aria-label="requerido">*</span>
                     </label>
                     <input
                       id="contact-email"
@@ -323,7 +294,7 @@ export default function Contact() {
                         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email))
                           setErrors((e) => ({ ...e, email: "Ingresá un email válido." }));
                       }}
-                      placeholder="juan@empresa.com"
+                      placeholder="juan@empresa.com.ar"
                       autoComplete="email"
                       inputMode="email"
                       aria-required="true"
@@ -333,18 +304,12 @@ export default function Contact() {
                       className={inputClass("email")}
                       disabled={formState === "loading"}
                     />
-                    <span id="err-email">
-                      <FieldError msg={errors.email} />
-                    </span>
+                    <span id="err-email"><FieldError msg={errors.email} /></span>
                   </div>
 
                   {/* Teléfono */}
                   <div>
-                    <label
-                      htmlFor="contact-tel"
-                      className="block text-xs font-semibold text-[#1C1917] mb-1.5"
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
+                    <label htmlFor="contact-tel" className="block text-sm font-bold text-[#1A2E1A] mb-2">
                       Teléfono
                     </label>
                     <input
@@ -363,37 +328,28 @@ export default function Contact() {
 
                 {/* Servicio */}
                 <div>
-                  <label
-                    htmlFor="contact-servicio"
-                    className="block text-xs font-semibold text-[#1C1917] mb-1.5"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    Servicio que te interesa
+                  <label htmlFor="contact-servicio" className="block text-sm font-bold text-[#1A2E1A] mb-2">
+                    Servicio de interés
                   </label>
                   <select
                     id="contact-servicio"
                     value={fields.servicio}
                     onChange={(e) => set("servicio", e.target.value)}
-                    className={`${inputClass("servicio")} cursor-pointer`}
+                    className={`${inputClass("servicio")} cursor-pointer appearance-none`}
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: `right 1rem center`, backgroundRepeat: `no-repeat`, backgroundSize: `1.5em 1.5em` }}
                     disabled={formState === "loading"}
                   >
-                    <option value="">Seleccioná una opción</option>
+                    <option value="">Seleccioná un área (Opcional)</option>
                     {services.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
+                      <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
                 </div>
 
                 {/* Mensaje */}
                 <div>
-                  <label
-                    htmlFor="contact-mensaje"
-                    className="block text-xs font-semibold text-[#1C1917] mb-1.5"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    Contanos tu consulta <span className="text-[#DC2626]" aria-label="requerido">*</span>
+                  <label htmlFor="contact-mensaje" className="block text-sm font-bold text-[#1A2E1A] mb-2">
+                    ¿En qué podemos ayudarte? <span className="text-red-500" aria-label="requerido">*</span>
                   </label>
                   <textarea
                     id="contact-mensaje"
@@ -403,7 +359,7 @@ export default function Contact() {
                       if (!fields.mensaje.trim())
                         setErrors((e) => ({ ...e, mensaje: "Contanos brevemente tu consulta." }));
                     }}
-                    placeholder="Describí brevemente tu situación o lo que necesitás analizar / evaluar..."
+                    placeholder="Describí brevemente tu situación, el tipo de análisis que buscás o los riesgos a evaluar..."
                     rows={4}
                     aria-required="true"
                     aria-invalid={!!errors.mensaje}
@@ -412,21 +368,16 @@ export default function Contact() {
                     className={`${inputClass("mensaje")} resize-none`}
                     disabled={formState === "loading"}
                   />
-                  <span id="err-mensaje">
-                    <FieldError msg={errors.mensaje} />
-                  </span>
+                  <span id="err-mensaje"><FieldError msg={errors.mensaje} /></span>
                 </div>
 
                 {/* Error global */}
                 {formState === "error" && (
-                  <div
-                    className="flex items-start gap-2.5 p-3.5 rounded-lg bg-red-50 border border-red-200 text-sm text-[#DC2626]"
-                    role="alert"
-                  >
-                    <AlertCircle size={16} className="shrink-0 mt-0.5" aria-hidden="true" />
+                  <div className="flex items-start gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-sm font-medium text-red-600" role="alert">
+                    <AlertCircle size={20} className="shrink-0 mt-0.5" aria-hidden="true" />
                     <span>
-                      Error al enviar. Intentá de nuevo o escribinos a{" "}
-                      <a href="mailto:contacto@multilab.com.ar" className="underline font-medium">
+                      Hubo un error al enviar el formulario. Por favor, intentá de nuevo o escribinos a{" "}
+                      <a href="mailto:contacto@multilab.com.ar" className="font-bold underline hover:text-red-800">
                         contacto@multilab.com.ar
                       </a>
                     </span>
@@ -434,24 +385,28 @@ export default function Contact() {
                 )}
 
                 {/* Submit */}
-                <button
-                  type="submit"
-                  disabled={formState === "loading"}
-                  className="w-full flex items-center justify-center gap-2 bg-[#2E7D32] hover:bg-[#1B5E20] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-6 py-3.5 rounded-lg transition-colors duration-200 text-sm"
-                >
-                  {formState === "loading" ? (
-                    <>
-                      <Loader2 size={16} className="animate-spin" aria-hidden="true" />
-                      Enviando...
-                    </>
-                  ) : (
-                    "Enviar consulta"
-                  )}
-                </button>
-
-                <p className="text-center text-xs text-[#9CA3AF]">
-                  Te respondemos en menos de 24 hs hábiles. Sin spam, sin compromiso.
-                </p>
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={formState === "loading"}
+                    className="w-full flex items-center justify-center gap-2 bg-[#44A148] hover:bg-[#38853b] hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0 disabled:cursor-not-allowed text-white font-bold px-6 py-4 rounded-xl transition-all duration-300 text-base"
+                  >
+                    {formState === "loading" ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" aria-hidden="true" />
+                        Enviando consulta...
+                      </>
+                    ) : (
+                      <>
+                        Enviar mensaje
+                        <Send size={18} className="ml-1" />
+                      </>
+                    )}
+                  </button>
+                  <p className="text-center text-xs font-medium text-[#1A2E1A]/40 mt-4">
+                    Tus datos están protegidos. No enviamos spam.
+                  </p>
+                </div>
               </form>
             )}
           </motion.div>

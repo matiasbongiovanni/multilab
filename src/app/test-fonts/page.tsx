@@ -135,7 +135,7 @@ export default function TestFontsPage() {
                     Solicitar cotización →
                   </div>
                   <div className="inline-flex items-center rounded-xl border border-[#2E7D32]/15 bg-white/60 px-6 py-3 text-[#2E7D32] font-semibold text-sm">
-                    Ver mis resultados
+                  Ver mis informes
                   </div>
                 </div>
 

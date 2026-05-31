@@ -18,8 +18,6 @@ const services = [
       "Programas de higiene industrial",
     ],
     href: "/higiene-seguridad",
-    color: "#2E7D32",
-    bg: "#DCFCE7",
     featured: true,
   },
   {
@@ -35,8 +33,6 @@ const services = [
       "Código Alimentario Argentino",
     ],
     href: "/laboratorio",
-    color: "#1B5E20",
-    bg: "#BBF7D0",
     featured: false,
   },
   {
@@ -52,8 +48,6 @@ const services = [
       "Informes para organismos regulatorios",
     ],
     href: "/medioambiente",
-    color: "#166534",
-    bg: "#DCFCE7",
     featured: false,
   },
   {
@@ -69,8 +63,6 @@ const services = [
       "Ciencias de la vida",
     ],
     href: "/servicios",
-    color: "#2E7D32",
-    bg: "#DCFCE7",
     featured: false,
   },
 ];
@@ -94,7 +86,7 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="py-20 lg:py-28 bg-[#FAFAF8]"
+      className="py-20 lg:py-28 bg-gradient-to-b from-[#fcfdfc] to-white"
       aria-labelledby="servicios-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,10 +98,10 @@ export default function Services() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
             <span
-              className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
+              className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               Ejes estratégicos de servicio
@@ -118,13 +110,13 @@ export default function Services() {
 
           <h2
             id="servicios-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl text-[#1C1917] leading-tight"
-            style={{ fontFamily: "var(--font-display)" }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A2E1A] leading-tight"
+            // Eliminamos style={{ fontFamily: "var(--font-display)" }} para que use la fuente tailwind por defecto
           >
             Ciencias aplicadas a la prevención
           </h2>
 
-          <p className="mt-4 text-[#6B7280] text-lg leading-relaxed">
+          <p className="mt-4 text-[#1A2E1A]/70 text-lg leading-relaxed">
             Operamos bajo una visión sistémica donde la salud ambiental, la inocuidad y el bienestar humano convergen en un diagnóstico de alta precisión.
           </p>
         </motion.div>
@@ -141,79 +133,77 @@ export default function Services() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className={`group relative rounded-2xl border transition-all duration-300 ${
+                className={`group relative rounded-[2rem] border transition-all duration-300 ${
                   service.featured
-                    ? "bg-[#1C1917] border-[#1C1917] text-white"
-                    : "bg-white border-[#E5E7EB] hover:border-[#BBF7D0] hover:shadow-[0_4px_24px_rgba(46,125,50,0.08)]"
+                    ? "bg-[#1A2E1A] border-[#1A2E1A] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                    : "bg-white border-[#1A2E1A]/10 hover:border-[#44A148]/40 hover:shadow-lg hover:-translate-y-1"
                 }`}
               >
                 <Link
                   href={service.href}
-                  className="flex flex-col gap-5 p-7 lg:p-8 h-full rounded-2xl"
+                  className="flex flex-col gap-6 p-8 lg:p-10 h-full rounded-[2rem] outline-none"
                   aria-label={`Ver servicio: ${service.title}`}
                 >
                   {/* Icon */}
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
-                    style={{
-                      background: service.featured ? "rgba(255,255,255,0.1)" : service.bg,
-                    }}
+                    className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                      service.featured
+                        ? "bg-white/10"
+                        : "bg-[#44A148]/10 group-hover:bg-[#44A148]/20"
+                    }`}
                   >
                     <Icon
-                      size={22}
-                      style={{
-                        color: service.featured ? "#DCFCE7" : service.color,
-                      }}
+                      size={26}
+                      color={service.featured ? "#44A148" : "#44A148"}
                       aria-hidden="true"
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="flex flex-col gap-3 flex-1">
+                  <div className="flex flex-col gap-4 flex-1">
                     <h3
-                      className={`text-xl font-bold leading-snug ${
-                        service.featured ? "text-white" : "text-[#1C1917]"
+                      className={`text-2xl font-bold leading-snug ${
+                        service.featured ? "text-white" : "text-[#1A2E1A]"
                       }`}
                       style={{ fontFamily: "var(--font-heading)" }}
                     >
                       {service.title}
                     </h3>
                     <p
-                      className={`text-sm leading-relaxed ${
-                        service.featured ? "text-white/70" : "text-[#6B7280]"
+                      className={`text-base leading-relaxed ${
+                        service.featured ? "text-white/70" : "text-[#1A2E1A]/70"
                       }`}
                     >
                       {service.description}
                     </p>
 
                     {/* Items list */}
-                    <ul className="mt-2 space-y-1.5">
+                    <ul className="mt-2 space-y-2.5">
                       {service.items.map((item) => (
                         <li
                           key={item}
-                          className={`flex items-start gap-2 text-sm ${
-                            service.featured ? "text-white/80" : "text-[#6B7280]"
+                          className={`flex items-start gap-3 text-sm font-medium ${
+                            service.featured ? "text-white/80" : "text-[#1A2E1A]/80"
                           }`}
                         >
                           <span
-                            className="mt-1 w-3.5 h-3.5 rounded-full flex items-center justify-center shrink-0"
-                            style={{
-                              background: service.featured
-                                ? "rgba(255,255,255,0.15)"
-                                : service.bg,
-                            }}
+                            className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
+                              service.featured
+                                ? "bg-[#44A148]/20"
+                                : "bg-[#44A148]/10"
+                            }`}
                             aria-hidden="true"
                           >
                             <svg
-                              width="7"
-                              height="5"
+                              width="8"
+                              height="6"
                               viewBox="0 0 7 5"
                               fill="none"
                             >
                               <path
                                 d="M1 2.5L2.8 4.3L6 1"
-                                stroke={service.featured ? "#DCFCE7" : service.color}
-                                strokeWidth="1.2"
+                                stroke="#44A148"
+                                strokeWidth="1.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                               />
@@ -227,16 +217,16 @@ export default function Services() {
 
                   {/* CTA */}
                   <div
-                    className={`flex items-center gap-1.5 text-sm font-semibold mt-auto pt-3 transition-colors duration-200 ${
+                    className={`flex items-center gap-2 text-sm font-bold mt-4 pt-4 transition-colors duration-200 border-t ${
                       service.featured
-                        ? "text-[#DCFCE7]"
-                        : "text-[#9CA3AF] group-hover:text-[#2E7D32]"
+                        ? "text-[#44A148] border-white/10"
+                        : "text-[#1A2E1A]/40 group-hover:text-[#44A148] border-[#1A2E1A]/5"
                     }`}
                   >
                     Conocer más
                     <ArrowRight
-                      size={14}
-                      className="transition-transform duration-200 group-hover:translate-x-0.5"
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
                       aria-hidden="true"
                     />
                   </div>

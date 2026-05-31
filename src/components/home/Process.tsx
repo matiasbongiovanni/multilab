@@ -1,40 +1,36 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Search, FileText, Beaker, CheckCircle } from "lucide-react";
+import { Search, FileText, Beaker, CheckCircle, ArrowRight } from "lucide-react";
 
 const steps = [
   {
     num: "01",
     icon: Search,
     title: "Diagnóstico inicial",
-    description:
-      "Relevamos el contexto de tu empresa, identificamos riesgos específicos y determinamos qué análisis o servicios son necesarios para tu actividad.",
-    duration: "1–2 días hábiles",
+    description: "Relevamos riesgos específicos y determinamos los análisis necesarios.",
+    duration: "1–2 días",
   },
   {
     num: "02",
     icon: FileText,
     title: "Plan de acción",
-    description:
-      "Diseñamos un plan técnico personalizado con cronograma, metodología y alcance detallado. Toda la propuesta queda documentada y firmada.",
+    description: "Diseño de cronograma y metodología documentada y firmada.",
     duration: "Mismo día",
   },
   {
     num: "03",
     icon: Beaker,
-    title: "Ejecución y análisis",
-    description:
-      "Realizamos las mediciones, muestreos o análisis de laboratorio con trazabilidad absoluta. Cada etapa queda registrada en cadena de custodia.",
-    duration: "Según alcance",
+    title: "Ejecución técnica",
+    description: "Mediciones y muestreos bajo estricta cadena de custodia.",
+    duration: "A medida",
   },
   {
     num: "04",
     icon: CheckCircle,
     title: "Informe certificado",
-    description:
-      "Entregamos el informe técnico firmado por la Directora Técnica, listo para presentar ante organismos regulatorios, ART o auditorías internas.",
-    duration: "5–10 días hábiles",
+    description: "Entrega de resultados con aval técnico para organismos y ART.",
+    duration: "5–10 días",
   },
 ];
 
@@ -44,127 +40,121 @@ export default function Process() {
   return (
     <section
       id="proceso"
-      className="py-20 lg:py-28 bg-[#FAFAF8]"
+      className="py-16 lg:py-24 bg-white border-y border-[#1A2E1A]/5"
       aria-labelledby="proceso-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          className="max-w-2xl mb-14 lg:mb-16"
-          initial={reduce ? {} : { opacity: 0, y: 20 }}
-          whileInView={reduce ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-            <span
-              className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Transparencia operativa
-            </span>
-          </div>
-
-          <h2
-            id="proceso-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl text-[#1C1917] leading-tight"
-            style={{ fontFamily: "var(--font-display)" }}
+        
+        {/* Header Compacto (Título a la izq, texto a la der en desktop) */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 lg:mb-16">
+          <motion.div
+            initial={reduce ? {} : { opacity: 0, x: -20 }}
+            whileInView={reduce ? {} : { opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-lg"
           >
-            Cómo trabajamos
-          </h2>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
+              <span className="font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
+                Transparencia operativa
+              </span>
+            </div>
+            <h2
+              id="proceso-heading"
+              className="font-inter text-3xl md:text-4xl font-extrabold text-[#1A2E1A] leading-tight"
+            >
+              Nuestro método <br className="hidden lg:block" /> de trabajo
+            </h2>
+          </motion.div>
 
-          <p className="mt-4 text-[#6B7280] text-lg leading-relaxed">
-            Ninguna caja negra. Sabés exactamente qué pasa en cada etapa, quién lo ejecuta y en qué plazos.
-          </p>
-        </motion.div>
-
-        {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 relative">
-          {/* Connector line (desktop) */}
-          <div
-            className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-[#E5E7EB] z-0"
-            aria-hidden="true"
-          />
-
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.num}
-                initial={reduce ? {} : { opacity: 0, y: 24 }}
-                whileInView={reduce ? {} : { opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.55,
-                  delay: i * 0.1,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="relative flex flex-col gap-4 bg-white rounded-2xl border border-[#E5E7EB] p-6 lg:p-7 z-10"
-              >
-                {/* Step number + icon */}
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] flex items-center justify-center shrink-0">
-                    <Icon size={17} className="text-[#2E7D32]" aria-hidden="true" />
-                  </div>
-                  <span
-                    className="text-3xl font-bold text-[#E5E7EB]"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                    aria-hidden="true"
-                  >
-                    {step.num}
-                  </span>
-                </div>
-
-                <div>
-                  <h3
-                    className="font-bold text-[#1C1917] text-base mb-2"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-[#6B7280] leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Duration badge */}
-                <div className="mt-auto pt-3 border-t border-[#F4F4F1]">
-                  <span className="text-[11px] font-semibold text-[#2E7D32] bg-[#DCFCE7] px-2.5 py-1 rounded-full">
-                    {step.duration}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
+          <motion.div
+            initial={reduce ? {} : { opacity: 0, x: 20 }}
+            whileInView={reduce ? {} : { opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="max-w-md lg:text-right"
+          >
+            <p className="text-[#1A2E1A]/70 text-base leading-relaxed">
+              Ninguna caja negra. Sabés exactamente qué pasa en cada etapa, quién lo ejecuta y en qué plazos.
+            </p>
+          </motion.div>
         </div>
 
-        {/* CTA callout */}
+        {/* Timeline Horizontal (Desktop) / Vertical Compacta (Mobile) */}
+        <div className="relative">
+          {/* Línea conectora Desktop */}
+          <div className="hidden md:block absolute top-6 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-[#44A148]/20 to-transparent" />
+          
+          {/* Línea conectora Mobile */}
+          <div className="md:hidden absolute left-6 top-10 bottom-10 w-[2px] bg-gradient-to-b from-transparent via-[#44A148]/20 to-transparent" />
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              return (
+                <motion.div
+                  key={step.num}
+                  initial={reduce ? {} : { opacity: 0, y: 20 }}
+                  whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="relative group flex md:flex-col items-start gap-4 md:gap-6 z-10"
+                >
+                  {/* Icono (Funciona como nodo en la línea) */}
+                  <div className="relative bg-white w-12 h-12 md:mx-auto rounded-xl border border-[#1A2E1A]/10 flex items-center justify-center shrink-0 shadow-sm transition-all duration-300 group-hover:border-[#44A148] group-hover:shadow-[0_0_15px_rgba(68,161,72,0.2)] group-hover:-translate-y-1">
+                    <Icon size={20} className="text-[#44A148]" />
+                    {/* Número de fondo sutil (Desktop) */}
+                    <span className="hidden md:block absolute -top-8 text-3xl font-black text-[#1A2E1A]/5 transition-colors group-hover:text-[#44A148]/10 select-none">
+                      {step.num}
+                    </span>
+                  </div>
+
+                  {/* Contenido de la tarjeta */}
+                  <div className="flex flex-col flex-1 md:text-center pt-1 md:pt-0">
+                    <h3 className="font-inter font-bold text-[#1A2E1A] text-lg mb-1.5">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-[#1A2E1A]/60 leading-relaxed mb-3 md:min-h-[60px]">
+                      {step.description}
+                    </p>
+                    <span className="inline-flex items-center md:justify-center gap-1.5 text-xs font-bold text-[#44A148] uppercase tracking-wide">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      {step.duration}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* CTA Ultra Compacto */}
         <motion.div
-          initial={reduce ? {} : { opacity: 0, y: 20 }}
+          initial={reduce ? {} : { opacity: 0, y: 15 }}
           whileInView={reduce ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 bg-[#F4F4F1] border border-[#E5E7EB] rounded-2xl px-7 py-6"
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-16 bg-[#1A2E1A] rounded-2xl p-6 sm:px-8 sm:py-6 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl"
         >
-          <div>
-            <p
-              className="font-bold text-[#1C1917]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              ¿Listo para empezar?
-            </p>
-            <p className="text-sm text-[#6B7280] mt-0.5">
-              El diagnóstico inicial no tiene costo. Contactanos y arrancamos.
-            </p>
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:flex w-12 h-12 rounded-full bg-[#44A148]/20 items-center justify-center shrink-0">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div className="text-center sm:text-left">
+              <p className="font-inter font-bold text-white text-lg">¿Listo para empezar?</p>
+              <p className="text-sm text-white/70 mt-0.5">Diagnóstico inicial sin cargo. Armamos un plan a tu medida.</p>
+            </div>
           </div>
           <a
             href="#contacto"
-            className="shrink-0 inline-flex items-center gap-2 bg-[#2E7D32] hover:bg-[#1B5E20] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors duration-200"
+            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#44A148] text-white font-bold px-6 py-3 rounded-xl text-sm transition-all hover:bg-[#38853b] hover:shadow-lg"
           >
-            Solicitar diagnóstico gratuito
+            Solicitar ahora
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </a>
         </motion.div>
+
       </div>
     </section>
   );

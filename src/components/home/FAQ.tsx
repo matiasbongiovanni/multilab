@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const faqs = [
   {
@@ -44,116 +44,137 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="py-20 lg:py-28 bg-[#F4F4F1]"
+      className="relative py-20 lg:py-28 bg-[#fcfdfc] overflow-hidden"
       aria-labelledby="faq-heading"
     >
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background Glow */}
+      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-[#44A148]/5 rounded-full blur-[120px] pointer-events-none translate-x-1/2" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#1A2E1A]/5 rounded-full blur-[100px] pointer-events-none -translate-x-1/2 translate-y-1/3" aria-hidden="true" />
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
         <motion.div
-          className="mb-12"
+          className="mb-14 text-center max-w-2xl mx-auto"
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={reduce ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-            <span
-              className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
+            <span className="font-inter text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
               Preguntas frecuentes
             </span>
           </div>
 
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-4xl text-[#1C1917] leading-tight"
-            style={{ fontFamily: "var(--font-display)" }}
+            className="font-inter text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A2E1A] leading-tight"
           >
             Todo lo que necesitás saber antes de contratar
           </h2>
         </motion.div>
 
-        {/* Items */}
-        <dl className="space-y-2">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={reduce ? {} : { opacity: 0, y: 12 }}
-              whileInView={reduce ? {} : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.45,
-                delay: i * 0.06,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="bg-white rounded-xl border border-[#E5E7EB] overflow-hidden"
-            >
-              <dt>
-                <button
-                  onClick={() => toggle(i)}
-                  aria-expanded={openIdx === i}
-                  aria-controls={`faq-answer-${i}`}
-                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-[#FAFAF8] transition-colors duration-150"
-                >
-                  <span
-                    className="font-semibold text-[#1C1917] text-sm leading-snug"
-                    style={{ fontFamily: "var(--font-heading)" }}
-                  >
-                    {faq.q}
-                  </span>
-                  <span
-                    className="shrink-0 w-8 h-8 rounded-full bg-[#F4F4F1] flex items-center justify-center transition-colors duration-200"
-                    aria-hidden="true"
-                  >
-                    {openIdx === i ? (
-                      <Minus size={14} className="text-[#2E7D32]" />
-                    ) : (
-                      <Plus size={14} className="text-[#6B7280]" />
-                    )}
-                  </span>
-                </button>
-              </dt>
+        {/* FAQ Items */}
+        <dl className="space-y-4">
+          {faqs.map((faq, i) => {
+            const isOpen = openIdx === i;
 
-              <AnimatePresence initial={false}>
-                {openIdx === i && (
-                  <motion.dd
-                    id={`faq-answer-${i}`}
-                    initial={reduce ? {} : { height: 0, opacity: 0 }}
-                    animate={reduce ? {} : { height: "auto", opacity: 1 }}
-                    exit={reduce ? {} : { height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                    className="overflow-hidden"
+            return (
+              <motion.div
+                key={i}
+                initial={reduce ? {} : { opacity: 0, y: 16 }}
+                whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.08,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className={`bg-white rounded-2xl border transition-all duration-300 ${
+                  isOpen
+                    ? "border-[#44A148]/30 shadow-[0_8px_30px_rgb(26,46,26,0.04)] ring-1 ring-[#44A148]/5"
+                    : "border-[#1A2E1A]/10 hover:border-[#44A148]/30 hover:shadow-sm"
+                }`}
+              >
+                <dt>
+                  <button
+                    onClick={() => toggle(i)}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${i}`}
+                    className="w-full flex items-center justify-between gap-4 px-6 py-5 lg:px-8 lg:py-6 text-left outline-none group rounded-2xl focus-visible:ring-2 focus-visible:ring-[#44A148]/50"
                   >
-                    <p className="px-5 pb-5 text-sm text-[#6B7280] leading-relaxed border-t border-[#F4F4F1] pt-3">
-                      {faq.a}
-                    </p>
-                  </motion.dd>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                    <span className="font-inter font-bold text-[#1A2E1A] text-base lg:text-lg pr-4">
+                      {faq.q}
+                    </span>
+                    
+                    {/* Botón dinámico Plus -> Cruz */}
+                    <motion.div
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
+                      className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                        isOpen 
+                          ? "bg-[#44A148] text-white shadow-md" 
+                          : "bg-[#44A148]/10 text-[#44A148] group-hover:bg-[#44A148]/20"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      <Plus size={20} strokeWidth={2.5} />
+                    </motion.div>
+                  </button>
+                </dt>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.dd
+                      id={`faq-answer-${i}`}
+                      initial={reduce ? {} : { height: 0, opacity: 0 }}
+                      animate={reduce ? {} : { height: "auto", opacity: 1 }}
+                      exit={reduce ? {} : { height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 lg:px-8 lg:pb-8 pt-0">
+                        <div className="pt-4 border-t border-[#1A2E1A]/5">
+                          <p className="text-base text-[#1A2E1A]/70 leading-relaxed">
+                            {faq.a}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.dd>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </dl>
 
-        {/* Still have questions */}
+        {/* CTA "Still have questions" Premium */}
         <motion.div
           initial={reduce ? {} : { opacity: 0, y: 16 }}
           whileInView={reduce ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 text-center"
+          className="mt-12 flex items-center justify-center"
         >
-          <p className="text-sm text-[#9CA3AF]">
-            ¿Tenés otra pregunta?{" "}
+          <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-6 py-4 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm">
+            <span className="text-sm font-medium text-[#1A2E1A]/60">
+              ¿Tenés otra pregunta o un caso particular?
+            </span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-[#1A2E1A]/20" aria-hidden="true" />
             <a
               href="#contacto"
-              className="font-semibold text-[#2E7D32] hover:text-[#1B5E20] underline underline-offset-2 transition-colors duration-150"
+              className="group inline-flex items-center gap-1.5 font-bold text-[#44A148] hover:text-[#1A2E1A] transition-colors duration-200 text-sm"
             >
               Escribinos directamente
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </a>
-          </p>
+          </div>
         </motion.div>
+
       </div>
     </section>
   );

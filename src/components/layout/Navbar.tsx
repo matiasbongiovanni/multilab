@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Higiene y Seguridad", href: "/higiene-seguridad" },
+  { label: "Laboratorio", href: "/laboratorio" },
+  { label: "Medioambiente", href: "/medioambiente" },
+  { label: "Quiénes somos", href: "/quienes-somos" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -30,7 +30,11 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -43,121 +47,136 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-[#E5E7EB] shadow-[0_1px_12px_rgba(0,0,0,0.06)]"
+          ? "bg-white/90 backdrop-blur-md border-b border-[#1A2E1A]/10 shadow-sm"
           : "bg-transparent"
       }`}
       role="banner"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link
-            href="/"
-            aria-label="Multilab Risk Prevention — inicio"
-            className="flex items-center gap-2 shrink-0"
-          >
+          
+          {/* Logo & Brand */}
+          <Link href="/" className="flex items-center gap-3 group" aria-label="Inicio — Multilab">
+            <img
+              src="/Logo-Multilab.webp"
+              alt="Multilab Logo"
+              className="w-36 h-36 object-contain transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = "/Logo_Multilab.webp";
+              }}
+            />
             <span
-              className="text-xl font-bold tracking-tight text-[#1C1917]"
+              className="hidden sm:block text-[10px] font-bold uppercase tracking-[0.15em] text-[#1A2E1A]/60 border-l border-[#1A2E1A]/20 pl-3 py-1"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Multi<span className="text-[#2E7D32]">lab</span>
-            </span>
-            <span
-              className="hidden sm:block text-[10px] font-semibold uppercase tracking-[0.15em] text-[#6B7280] border-l border-[#E5E7EB] pl-2 ml-1"
-              style={{ fontFamily: "var(--font-heading)" }}
-            >
-              Risk Prevention
+              Risk <br /> Prevention
             </span>
           </Link>
 
-          {/* Desktop nav */}
-          <nav
-            className="hidden lg:flex items-center gap-8"
-            aria-label="Navegación principal"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-sm font-medium text-[#6B7280] hover:text-[#1C1917] transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Navegación principal">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="relative px-3 py-2 text-sm font-semibold transition-colors duration-200 group"
+                >
+                  <span className={isActive ? "text-[#44A148]" : "text-[#1A2E1A]/75 group-hover:text-[#44A148]"}>
+                    {link.label}
+                  </span>
+                  {/* Indicador de estado activo */}
+                  <span 
+                    className={`absolute bottom-0 left-3 right-3 h-0.5 rounded-full transition-all duration-300 ${
+                      isActive ? "bg-[#44A148] opacity-100" : "bg-[#44A148] opacity-0 group-hover:opacity-100 transform scale-x-0 group-hover:scale-x-100"
+                    }`} 
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Desktop CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/mis-estudios"
-              className="text-sm font-semibold text-[#2E7D32] hover:text-[#1B5E20] transition-colors duration-200 px-3 py-2"
-            >
-              Ver mis resultados
-            </Link>
             <Link
               href="#contacto"
-              className="inline-flex items-center gap-2 bg-[#2E7D32] hover:bg-[#1B5E20] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200"
+              className="inline-flex items-center justify-center bg-[#44A148] hover:bg-[#1A2E1A] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm"
             >
-              Solicitar cotización
+               Ver mis informes
             </Link>
-          </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-[#1C1917] hover:bg-[#F4F4F1] transition-colors duration-200"
+            className="lg:hidden relative z-50 p-2 -mr-2 rounded-lg text-[#1A2E1A] hover:bg-[#1A2E1A]/5 transition-colors duration-200"
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden bg-white border-t border-[#E5E7EB]"
-          >
-            <nav
-              className="px-4 py-4 flex flex-col gap-1"
-              aria-label="Navegación móvil"
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 top-16 bg-[#1A2E1A]/20 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setIsOpen(false)}
+              aria-hidden="true"
+            />
+            
+            <motion.div
+              id="mobile-menu"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full left-0 w-full bg-white border-b border-[#1A2E1A]/10 shadow-xl z-50 lg:hidden"
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="py-3 px-3 text-base font-medium text-[#1C1917] hover:bg-[#F4F4F1] rounded-lg transition-colors duration-150"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <div className="mt-3 pt-3 border-t border-[#E5E7EB] flex flex-col gap-2">
-                <Link
-                  href="/mis-estudios"
-                  onClick={() => setIsOpen(false)}
-                  className="py-3 px-3 text-base font-semibold text-[#2E7D32] hover:bg-[#DCFCE7] rounded-lg transition-colors duration-150 text-center"
-                >
-                  Ver mis resultados
-                </Link>
-                <Link
-                  href="#contacto"
-                  onClick={() => setIsOpen(false)}
-                  className="py-3 px-3 text-base font-semibold text-white bg-[#2E7D32] hover:bg-[#1B5E20] rounded-lg transition-colors duration-150 text-center"
-                >
-                  Solicitar cotización
-                </Link>
-              </div>
-            </nav>
-          </motion.div>
+              <nav className="px-4 pt-2 pb-6 max-h-[calc(100vh-4rem)] overflow-y-auto flex flex-col gap-1" aria-label="Navegación móvil">
+                {navLinks.map((link) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-3.5 px-4 text-base font-semibold rounded-xl transition-colors duration-200 ${
+                        isActive 
+                          ? "bg-[#44A148]/10 text-[#44A148]" 
+                          : "text-[#1A2E1A]/80 hover:bg-[#1A2E1A]/5 hover:text-[#44A148]"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
+                
+                <div className="mt-4 pt-4 border-t border-[#1A2E1A]/10 flex flex-col gap-3 px-2">
+                  <Link
+                    href="/mis-estudios"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center w-full py-3.5 px-4 text-base font-bold text-[#44A148] bg-[#44A148]/10 hover:bg-[#44A148]/20 rounded-xl transition-colors duration-200"
+                  >
+                    Ver mis informes
+                  </Link>
+                  <Link
+                    href="#contacto"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center w-full py-3.5 px-4 text-base font-bold text-white bg-[#44A148] hover:bg-[#1A2E1A] rounded-xl transition-colors duration-200 shadow-sm"
+                  >
+                    Solicitar cotización
+                  </Link>
+                </div>
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

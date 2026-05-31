@@ -30,37 +30,34 @@ export default function About() {
   return (
     <section
       id="nosotros"
-      className="py-20 lg:py-28 bg-[#F4F4F1]"
+      className="py-20 lg:py-28 bg-[#fcfdfc]"
       aria-labelledby="about-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Left */}
+          
+          {/* Left Column */}
           <motion.div
             initial={reduce ? {} : { opacity: 0, x: -24 }}
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-              <span
-                className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#1B5E20]"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
+              <span className="font-inter text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
                 Quiénes somos
               </span>
             </div>
 
             <h2
               id="about-heading"
-              className="text-3xl sm:text-4xl lg:text-[2.8rem] leading-tight text-[#1C1917]"
-              style={{ fontFamily: "var(--font-display)" }}
+              className="font-inter text-3xl sm:text-4xl lg:text-[2.8rem] font-bold leading-tight text-[#1A2E1A]"
             >
               Somos Multilab Risk Prevention
             </h2>
 
-            <div className="mt-6 space-y-5 text-[#6B7280] leading-relaxed">
+            <div className="mt-6 space-y-5 text-[#1A2E1A]/75 leading-relaxed text-lg">
               <p>
                 Una organización de vanguardia dedicada a la protección de la vida y la excelencia en servicios analíticos. Nuestra estructura integra la consultoría técnica en Higiene y Seguridad Laboral con un laboratorio especializado en Análisis Ambientales y Microbiología Integral.
               </p>
@@ -70,45 +67,45 @@ export default function About() {
             </div>
 
             {/* Director card */}
-            <div className="mt-10 flex items-start gap-5 p-5 bg-white rounded-xl border border-[#E5E7EB]">
+            <div className="mt-10 flex items-start gap-5 p-6 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm hover:border-[#44A148]/30 transition-all duration-300">
               <div
-                className="w-14 h-14 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"
+                className="w-14 h-14 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0"
                 aria-hidden="true"
               >
-                <span
-                  className="text-lg font-bold text-[#2E7D32]"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
+                <span className="font-inter text-lg font-bold text-[#44A148]">
                   CD
                 </span>
               </div>
               <div>
-                <p
-                  className="font-bold text-[#1C1917]"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
+                <p className="font-inter font-bold text-[#1A2E1A] text-lg">
                   Lic. Cinthia Degliangioli
                 </p>
-                <p className="text-sm text-[#6B7280] mt-0.5">
-                  Directora Técnica y Fundadora · Multilab Risk Prevention
+                <p className="text-sm font-semibold text-[#44A148] mt-0.5">
+                  Directora Técnica y Fundadora
                 </p>
-                <p className="text-xs text-[#9CA3AF] mt-2">
-                  Cada informe firmado con respaldo técnico-científico sólido.
+                <p className="text-sm text-[#1A2E1A]/60 mt-2 leading-relaxed">
+                  "Cada informe que emitimos cuenta con un respaldo técnico-científico absoluto."
                 </p>
               </div>
             </div>
 
-            {/* Photo placeholder */}
-            <div className="mt-8 rounded-2xl overflow-hidden bg-[#E5E7EB] border border-[#E5E7EB] flex items-center justify-center py-14">
-              <p className="text-sm text-[#9CA3AF] text-center px-6">
-                [REEMPLAZAR: foto del equipo / instalaciones del laboratorio]
-                <br />
-                <span className="text-xs">Resolución sugerida: 1200 × 700px</span>
+            {/* Photo placeholder (Styled to look premium while empty) */}
+            <div className="mt-8 rounded-[2rem] overflow-hidden bg-[#44A148]/5 border-2 border-dashed border-[#44A148]/20 flex flex-col items-center justify-center py-16 px-6 relative group transition-colors hover:bg-[#44A148]/10 hover:border-[#44A148]/40">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 mb-3">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+              <p className="text-sm font-medium text-[#1A2E1A]/50 text-center">
+                [REEMPLAZAR: foto del equipo / instalaciones]
               </p>
+              <span className="text-xs font-semibold text-[#1A2E1A]/40 mt-2 uppercase tracking-wider">
+                Resolución sugerida: 1200 × 700px
+              </span>
             </div>
           </motion.div>
 
-          {/* Right — Mission, Vision, Culture */}
+          {/* Right Column — Mission, Vision, Culture */}
           <div className="flex flex-col gap-5">
             {pillars.map((pillar, i) => {
               const Icon = pillar.icon;
@@ -117,26 +114,23 @@ export default function About() {
                   key={pillar.title}
                   initial={reduce ? {} : { opacity: 0, x: 24 }}
                   whileInView={reduce ? {} : { opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{
                     duration: 0.6,
                     delay: i * 0.12,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="bg-white rounded-2xl border border-[#E5E7EB] p-6 lg:p-7"
+                  className="bg-white rounded-2xl border border-[#1A2E1A]/10 p-6 lg:p-8 hover:-translate-y-1 hover:shadow-lg hover:border-[#44A148]/30 transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#DCFCE7] flex items-center justify-center shrink-0">
-                      <Icon size={18} className="text-[#2E7D32]" aria-hidden="true" />
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0">
+                      <Icon size={22} className="text-[#44A148]" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3
-                        className="font-bold text-[#1C1917] mb-2"
-                        style={{ fontFamily: "var(--font-heading)" }}
-                      >
+                      <h3 className="font-inter text-xl font-bold text-[#1A2E1A] mb-2">
                         {pillar.title}
                       </h3>
-                      <p className="text-sm text-[#6B7280] leading-relaxed">
+                      <p className="text-[#1A2E1A]/70 leading-relaxed text-sm sm:text-base">
                         {pillar.content}
                       </p>
                     </div>
@@ -151,30 +145,32 @@ export default function About() {
               whileInView={reduce ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.36 }}
-              className="rounded-2xl bg-[#1C1917] p-6 lg:p-7"
+              className="rounded-3xl bg-[#1A2E1A] p-7 lg:p-8 shadow-xl relative overflow-hidden mt-2"
             >
-              <p
-                className="text-xs font-bold uppercase tracking-[0.2em] text-white/40 mb-4"
-                style={{ fontFamily: "var(--font-heading)" }}
-              >
-                Marcos normativos que dominamos
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Ley 19.587",
-                  "Cód. Alimentario Argentino",
-                  "SENASA",
-                  "Res. SRT 295/03",
-                  "ISO-compatible",
-                  "Normativa provincial ambiental",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[11px] font-medium text-white/70 bg-white/10 border border-white/15 px-2.5 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#44A148]/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+              
+              <div className="relative z-10">
+                <p className="font-inter text-xs font-bold uppercase tracking-[0.2em] text-[#44A148] mb-5">
+                  Marcos normativos que dominamos
+                </p>
+                <div className="flex flex-wrap gap-2.5">
+                  {[
+                    "Ley 19.587",
+                    "Cód. Alimentario Argentino",
+                    "SENASA",
+                    "Res. SRT 295/03",
+                    "ISO-compatible",
+                    "Normativa provincial ambiental",
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] sm:text-xs font-semibold text-white bg-white/10 border border-white/20 px-3.5 py-1.5 rounded-full backdrop-blur-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
