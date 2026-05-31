@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ShieldCheck, FlaskConical, Leaf, Microscope, ArrowRight } from "lucide-react";
 
@@ -11,29 +12,19 @@ const services = [
     title: "Higiene y Seguridad Laboral",
     description:
       "Gestión técnica enfocada en la prevención de enfermedades profesionales y accidentes, asegurando entornos de trabajo saludables y productivos.",
-    items: [
-      "Evaluación de riesgos laborales",
-      "Mediciones de ruido, iluminación y ergonomía",
-      "Documentación Ley 19.587",
-      "Programas de higiene industrial",
-    ],
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&fit=crop",
     href: "/higiene-seguridad",
-    featured: true,
+    variant: "green" as const,
   },
   {
     id: "laboratorio",
     icon: FlaskConical,
-    title: "Laboratorio de Análisis",
+    title: "Microbiología Integral",
     description:
       "Análisis microbiológicos, fisicoquímicos y bromatológicos para industrias alimentarias, clínicas, veterinarias y organismos públicos.",
-    items: [
-      "Microbiología de alimentos y agua",
-      "Control bromatológico",
-      "Análisis veterinarios",
-      "Código Alimentario Argentino",
-    ],
+    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80&fit=crop",
     href: "/laboratorio",
-    featured: false,
+    variant: "white" as const,
   },
   {
     id: "ambiente",
@@ -41,14 +32,9 @@ const services = [
     title: "Laboratorio Ambiental",
     description:
       "Monitoreo de precisión de agua, aire y suelo para garantizar que el entorno cumpla con los estándares de calidad y normativas vigentes.",
-    items: [
-      "Calidad de agua superficial y subterránea",
-      "Monitoreo de efluentes industriales",
-      "Muestreo y análisis de suelos",
-      "Informes para organismos regulatorios",
-    ],
+    image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80&fit=crop",
     href: "/medioambiente",
-    featured: false,
+    variant: "green" as const,
   },
   {
     id: "id",
@@ -56,14 +42,9 @@ const services = [
     title: "I+D en Ciencias y Medicina",
     description:
       "Motor de innovación que investiga y desarrolla nuevas fronteras del diagnóstico, conectando la ciencia analítica con la salud humana y ambiental.",
-    items: [
-      "Investigación aplicada",
-      "Diagnóstico de precisión",
-      "Desarrollo de metodologías",
-      "Ciencias de la vida",
-    ],
+    image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&fit=crop",
     href: "/servicios",
-    featured: false,
+    variant: "white" as const,
   },
 ];
 
@@ -125,6 +106,7 @@ export default function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {services.map((service, i) => {
             const Icon = service.icon;
+            const isGreen = service.variant === "green";
             return (
               <motion.article
                 key={service.id}
@@ -133,102 +115,82 @@ export default function Services() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className={`group relative rounded-[2rem] border transition-all duration-300 ${
-                  service.featured
+                className={`group relative rounded-[2rem] border overflow-hidden transition-all duration-300 ${
+                  isGreen
                     ? "bg-[#1A2E1A] border-[#1A2E1A] text-white shadow-xl hover:shadow-2xl hover:-translate-y-1"
                     : "bg-white border-[#1A2E1A]/10 hover:border-[#44A148]/40 hover:shadow-lg hover:-translate-y-1"
                 }`}
               >
                 <Link
                   href={service.href}
-                  className="flex flex-col gap-6 p-8 lg:p-10 h-full rounded-[2rem] outline-none"
+                  className="flex flex-col h-full outline-none"
                   aria-label={`Ver servicio: ${service.title}`}
                 >
-                  {/* Icon */}
-                  <div
-                    className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
-                      service.featured
-                        ? "bg-white/10"
-                        : "bg-[#44A148]/10 group-hover:bg-[#44A148]/20"
-                    }`}
-                  >
-                    <Icon
-                      size={26}
-                      color={service.featured ? "#44A148" : "#44A148"}
-                      aria-hidden="true"
+                  {/* Photo */}
+                  <div className="relative h-44 w-full shrink-0 overflow-hidden">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
+                    {isGreen && (
+                      <div className="absolute inset-0 bg-[#1A2E1A]/50" />
+                    )}
                   </div>
 
                   {/* Content */}
-                  <div className="flex flex-col gap-4 flex-1">
-                    <h3
-                      className={`text-2xl font-bold leading-snug ${
-                        service.featured ? "text-white" : "text-[#1A2E1A]"
-                      }`}
-                      style={{ fontFamily: "var(--font-heading)" }}
-                    >
-                      {service.title}
-                    </h3>
-                    <p
-                      className={`text-base leading-relaxed ${
-                        service.featured ? "text-white/70" : "text-[#1A2E1A]/70"
+                  <div className="flex flex-col gap-4 p-8 lg:p-10 flex-1">
+                    {/* Icon */}
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                        isGreen
+                          ? "bg-white/10"
+                          : "bg-[#44A148]/10 group-hover:bg-[#44A148]/20"
                       }`}
                     >
-                      {service.description}
-                    </p>
+                      <Icon
+                        size={26}
+                        color="#44A148"
+                        aria-hidden="true"
+                      />
+                    </div>
 
-                    {/* Items list */}
-                    <ul className="mt-2 space-y-2.5">
-                      {service.items.map((item) => (
-                        <li
-                          key={item}
-                          className={`flex items-start gap-3 text-sm font-medium ${
-                            service.featured ? "text-white/80" : "text-[#1A2E1A]/80"
-                          }`}
-                        >
-                          <span
-                            className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 ${
-                              service.featured
-                                ? "bg-[#44A148]/20"
-                                : "bg-[#44A148]/10"
-                            }`}
-                            aria-hidden="true"
-                          >
-                            <svg
-                              width="8"
-                              height="6"
-                              viewBox="0 0 7 5"
-                              fill="none"
-                            >
-                              <path
-                                d="M1 2.5L2.8 4.3L6 1"
-                                stroke="#44A148"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    {/* Text */}
+                    <div className="flex flex-col gap-3 flex-1">
+                      <h3
+                        className={`text-2xl font-bold leading-snug ${
+                          isGreen ? "text-white" : "text-[#1A2E1A]"
+                        }`}
+                        style={{ fontFamily: "var(--font-heading)" }}
+                      >
+                        {service.title}
+                      </h3>
+                      <p
+                        className={`text-base leading-relaxed ${
+                          isGreen ? "text-white/70" : "text-[#1A2E1A]/70"
+                        }`}
+                      >
+                        {service.description}
+                      </p>
+                    </div>
 
-                  {/* CTA */}
-                  <div
-                    className={`flex items-center gap-2 text-sm font-bold mt-4 pt-4 transition-colors duration-200 border-t ${
-                      service.featured
-                        ? "text-[#44A148] border-white/10"
-                        : "text-[#1A2E1A]/40 group-hover:text-[#44A148] border-[#1A2E1A]/5"
-                    }`}
-                  >
-                    Conocer más
-                    <ArrowRight
-                      size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                      aria-hidden="true"
-                    />
+                    {/* CTA */}
+                    <div
+                      className={`flex items-center gap-2 text-sm font-bold pt-4 mt-auto transition-colors duration-200 border-t ${
+                        isGreen
+                          ? "text-[#44A148] border-white/10"
+                          : "text-[#1A2E1A]/40 group-hover:text-[#44A148] border-[#1A2E1A]/5"
+                      }`}
+                    >
+                      Conocer más
+                      <ArrowRight
+                        size={16}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                        aria-hidden="true"
+                      />
+                    </div>
                   </div>
                 </Link>
               </motion.article>

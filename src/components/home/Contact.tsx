@@ -8,7 +8,7 @@ type FormState = "idle" | "loading" | "success" | "error";
 
 const services = [
   "Higiene y Seguridad Laboral",
-  "Laboratorio de Análisis",
+  "Microbiología Integral",
   "Laboratorio Ambiental",
   "I+D en Ciencias y Medicina",
   "Otro / no sé todavía",
@@ -140,15 +140,21 @@ export default function Contact() {
 
             {/* Tarjetas de contacto interactivas */}
             <div className="mt-10 space-y-4">
-              <a href="mailto:contacto@multilab.com.ar" className="group flex items-center gap-5 p-4 rounded-2xl border border-[#1A2E1A]/5 bg-white hover:border-[#44A148]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0 group-hover:bg-[#44A148]/20 transition-colors">
-                  <Mail size={20} className="text-[#44A148]" aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-1">Email</p>
-                  <p className="text-base font-semibold text-[#1A2E1A] group-hover:text-[#44A148] transition-colors">contacto@multilab.com.ar</p>
-                </div>
-              </a>
+              {[
+                { label: "Laboratorio", email: "laboratorio@multilab.com.ar" },
+                { label: "Higiene y Seguridad", email: "higieneyseguridad@multilab.com.ar" },
+                { label: "Medioambiente", email: "medioambiente@multilab.com.ar" },
+              ].map(({ label, email }) => (
+                <a key={email} href={`mailto:${email}`} className="group flex items-center gap-4 p-4 rounded-2xl border border-[#1A2E1A]/5 bg-white hover:border-[#44A148]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0 group-hover:bg-[#44A148]/20 transition-colors">
+                    <Mail size={18} className="text-[#44A148]" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-0.5">{label}</p>
+                    <p className="text-sm font-semibold text-[#1A2E1A] group-hover:text-[#44A148] transition-colors truncate">{email}</p>
+                  </div>
+                </a>
+              ))}
 
               <div className="group flex items-center gap-5 p-4 rounded-2xl border border-[#1A2E1A]/5 bg-white hover:border-[#44A148]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-[#44A148]/10 flex items-center justify-center shrink-0 group-hover:bg-[#44A148]/20 transition-colors">

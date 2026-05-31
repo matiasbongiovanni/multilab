@@ -4,65 +4,34 @@ import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 
 const clients = [
-  {
-    name: "Adolfo Cassaro e Hijos SRL",
-    logo: "https://www.cassaro.com.ar/assets/images/cassaro-754x98.png",
-    useImg: true,
-  },
-  {
-    name: "Cantesur SA",
-    logo: null,
-    useImg: false,
-  },
-  {
-    name: "Clínica de Ojos Reyes Giobellina",
-    logo: "https://reyes-giobellina.com.ar/wp-content/uploads/2020/09/web-logo-rg.png",
-    useImg: true,
-  },
-  {
-    name: "La Casa de las Chopperas SRL",
-    logo: null,
-    useImg: false,
-  },
-  {
-    name: "Ledesma SAIC",
-    logo: null,
-    useImg: false,
-  },
-  {
-    name: "Dicca ICSA",
-    logo: null,
-    useImg: false,
-  },
-  {
-    name: "Cía. Cervecera Argentina SRL",
-    logo: null,
-    useImg: false,
-  },
-  {
-    name: "Alimentación del Centro SA",
-    logo: null,
-    useImg: false,
-  },
-  {
-    name: "Canteras Diquecito SA",
-    logo: null,
-    useImg: false,
-  },
+  { name: "Adolfo Cassaro e Hijos SRL", logo: "/clientes/adolfo-cassaro.png", useImg: true },
+  { name: "Alimentación del Centro SA", logo: "/clientes/alimentacion-del-centro.png", useImg: true },
+  { name: "Canteras Diquecito SA", logo: "/clientes/canteras-diquecito.png", useImg: true },
+  { name: "Cantesur SA", logo: null, useImg: false },
+  { name: "Dicca ICSA", logo: null, useImg: false },
+  { name: "Cía. Cervecera Argentina SRL", logo: null, useImg: false },
+  { name: "Clínica de Ojos Reyes Giobellina", logo: "/clientes/clinica-reyes-giobellina.png", useImg: true },
+  { name: "La Casa de las Chopperas SRL", logo: null, useImg: false },
+  { name: "Ledesma SAIC", logo: "/clientes/ledesma.png", useImg: true },
+  { name: "Servicios de Radio y TV (UNC)", logo: "/clientes/servicios-radio-tv-unc.png", useImg: true },
+  { name: "Maderas Misioneras SRL", logo: "/clientes/maderas-misioneras.png", useImg: true },
+  { name: "Peri S.A.", logo: "/clientes/peri.png", useImg: true },
+  { name: "Silcar SAS", logo: "/clientes/silcar.png", useImg: true },
+  { name: "Export Pack SRL", logo: "/clientes/export-pack.png", useImg: true },
+  { name: "Ferrus SRL", logo: "/clientes/ferrus.png", useImg: true },
 ];
 
 function ClientLogo({ name, logo, useImg }: (typeof clients)[0]) {
   if (useImg && logo) {
     return (
       <div className="flex items-center justify-center px-8 shrink-0">
-        <div className="relative h-8 w-32">
+        <div className="relative h-10 w-36">
           <Image
             src={logo}
             alt={`Logo de ${name}`}
             fill
-            sizes="128px"
-            className="object-contain grayscale opacity-60 hover:opacity-90 hover:grayscale-0 transition-all duration-300"
-            unoptimized
+            sizes="144px"
+            className="object-contain opacity-50 hover:opacity-90 transition-opacity duration-300"
           />
         </div>
       </div>

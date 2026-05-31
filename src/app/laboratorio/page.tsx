@@ -4,7 +4,7 @@ import Footer from "@/components/layout/Footer";
 import ContactCTA from "@/components/home/ContactCTA";
 
 export const metadata: Metadata = {
-  title: "Laboratorio de Análisis — Multilab",
+  title: "Microbiología Integral — Multilab",
   description: "Análisis microbiológicos, bromatológicos y de calidad de agua. Resultados con trazabilidad completa bajo estándares certificados.",
 };
 
@@ -25,7 +25,7 @@ export default function LaboratorioPage() {
             </div>
             
             <h1 className="font-inter text-4xl lg:text-6xl font-bold text-[#1A2E1A] mb-8 leading-tight">
-              Laboratorio de Análisis
+              Microbiología Integral
             </h1>
             
             <p className="text-xl text-[#1A2E1A]/70 leading-relaxed font-medium">

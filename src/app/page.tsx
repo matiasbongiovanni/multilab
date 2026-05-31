@@ -54,7 +54,7 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Laboratorio de Análisis",
+          name: "Microbiología Integral",
           description:
             "Análisis microbiológicos, fisicoquímicos y bromatológicos bajo Código Alimentario Argentino.",
         },
