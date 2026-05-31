@@ -62,7 +62,7 @@ export default function ContactCTA() {
                 />
               </Link>
               <Link
-                href="/mis-estudios"
+                href="/login"
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-white/10 hover:border-[#44A148]/50 bg-white/5 hover:bg-white/10 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 text-sm sm:text-base backdrop-blur-sm hover:-translate-y-1"
               >
                 <FileText 

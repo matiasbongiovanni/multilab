@@ -160,7 +160,7 @@ export default function Navbar() {
                 
                 <div className="mt-4 pt-4 border-t border-[#1A2E1A]/10 flex flex-col gap-3 px-2">
                   <Link
-                    href="/mis-estudios"
+                    href="/login"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center w-full py-3.5 px-4 text-base font-bold text-[#44A148] bg-[#44A148]/10 hover:bg-[#44A148]/20 rounded-xl transition-colors duration-200"
                   >

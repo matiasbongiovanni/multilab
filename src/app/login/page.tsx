@@ -3,6 +3,7 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { loginAction } from "@/lib/supabase/actions";
 import Button from "@/components/ui/Button";
@@ -25,7 +26,7 @@ function LoginForm() {
 
   const validate = () => {
     const e: typeof errors = {};
-    if (!dni.trim()) e.dni = "Ingresá tu DNI.";
+    if (!dni.trim()) e.dni = "Ingresá tu CUIT.";
     if (!password) e.password = "Ingresá tu contraseña.";
     return e;
   };
@@ -64,41 +65,28 @@ function LoginForm() {
       className="w-full max-w-md"
     >
       {/* Logo */}
-      <div className="text-center mb-8">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2.5 justify-center"
-          aria-label="Volver al inicio — Multilab"
-        >
-          <svg
-            width="40"
-            height="40"
-            viewBox="0 0 36 36"
-            fill="none"
-            aria-hidden="true"
-          >
-            <rect width="36" height="36" rx="8" fill="#4CAF50" />
-            <path d="M13 8h4v13a4 4 0 01-8 0V8h4z" fill="white" opacity="0.9" />
-            <circle cx="25" cy="14" r="4" fill="white" opacity="0.9" />
-            <path
-              d="M23 18v6M27 18v6M21 24h8"
-              stroke="white"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-          <span className="font-black text-2xl text-[#1A1A1A] tracking-tight">
-            MULTI<span className="text-[#4CAF50]">LAB</span>
-          </span>
+      <div className="flex flex-col items-center mb-8 gap-3">
+        <Link href="/" aria-label="Volver al inicio — Multilab">
+          <Image
+            src="/Logo-Multilab.webp"
+            alt="Multilab"
+            width={160}
+            height={56}
+            className="object-contain"
+            priority
+          />
         </Link>
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1A2E1A]/50">
+          Portal de pacientes
+        </p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-lg border border-[#E0E0E0] p-7 lg:p-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-[#1A2E1A]/10 p-7 lg:p-8">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-[#1A1A1A]">
+          <h1 className="text-2xl font-bold text-[#1A2E1A]">
             Acceder a mis estudios
           </h1>
-          <p className="text-sm text-[#1a2e1a] mt-1">
+          <p className="text-sm text-[#1A2E1A]/60 mt-1">
             Ingresá con tu DNI y la contraseña que te asignaron.
           </p>
         </div>
@@ -111,7 +99,7 @@ function LoginForm() {
         >
           {errors.general && (
             <div
-              className="p-3.5 bg-[#fef2f2] border border-[#fecaca] rounded-lg text-sm text-[#dc2626] flex items-center gap-2"
+              className="p-3.5 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 flex items-center gap-2"
               role="alert"
               aria-live="polite"
             >
@@ -133,7 +121,7 @@ function LoginForm() {
           )}
 
           <Input
-            label="DNI"
+            label="CUIT"
             name="dni"
             type="text"
             inputMode="numeric"
@@ -142,7 +130,7 @@ function LoginForm() {
               setDni(e.target.value);
               if (errors.dni) setErrors((p) => ({ ...p, dni: undefined }));
             }}
-            placeholder="Ej: 30123456"
+            placeholder="Ej: 20-30123456-4"
             required
             error={errors.dni}
             autoComplete="username"
@@ -164,17 +152,31 @@ function LoginForm() {
             autoComplete="current-password"
           />
 
-          <Button type="submit" isLoading={isLoading} fullWidth size="lg">
-            Ingresar
-          </Button>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full flex items-center justify-center gap-2 bg-[#1A2E1A] hover:bg-[#44A148] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold px-6 py-3.5 rounded-xl transition-colors duration-200 text-sm"
+          >
+            {isLoading ? (
+              <>
+                <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                </svg>
+                Ingresando...
+              </>
+            ) : (
+              "Ingresar"
+            )}
+          </button>
         </form>
 
-        <div className="mt-6 pt-5 border-t border-[#E0E0E0]">
-          <p className="text-sm text-[#1a2e1a] text-center">
+        <div className="mt-6 pt-5 border-t border-[#1A2E1A]/8">
+          <p className="text-sm text-[#1A2E1A]/60 text-center">
             ¿Olvidaste tu contraseña?{" "}
             <Link
               href="/contacto"
-              className="text-[#4CAF50] font-medium hover:underline underline-offset-2"
+              className="text-[#44A148] font-medium hover:underline underline-offset-2"
             >
               Contactanos
             </Link>{" "}
@@ -183,9 +185,9 @@ function LoginForm() {
         </div>
       </div>
 
-      <p className="text-center text-sm text-[#1a2e1a] mt-6">
-        <Link href="/" className="hover:text-[#4CAF50] transition-colors">
-          Volver al inicio
+      <p className="text-center text-sm text-[#1A2E1A]/50 mt-6">
+        <Link href="/" className="hover:text-[#44A148] transition-colors">
+          ← Volver al inicio
         </Link>
       </p>
     </motion.div>
@@ -194,16 +196,13 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4 py-16"
-      style={{ backgroundColor: "#F5F5F5" }}
-    >
+    <div className="min-h-screen flex items-center justify-center px-4 py-16 bg-[#FAFAF8]">
       <Suspense
         fallback={
-          <div className="w-full max-w-md bg-white rounded-2xl shadow-lg border border-[#E0E0E0] p-8 flex items-center justify-center h-64">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-sm border border-[#1A2E1A]/10 p-8 flex items-center justify-center h-64">
             <div
-              className="w-8 h-8 border-4 border-t-transparent rounded-full animate-spin"
-              style={{ borderColor: "#4CAF50", borderTopColor: "transparent" }}
+              className="w-8 h-8 border-4 rounded-full animate-spin"
+              style={{ borderColor: "#44A148", borderTopColor: "transparent" }}
               aria-label="Cargando..."
             />
           </div>

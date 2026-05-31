@@ -114,7 +114,7 @@ export default function Hero() {
               </Link>
 
               <Link
-                href="/mis-estudios"
+                href="/login"
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl border border-[#1A2E1A]/10 bg-white/60 backdrop-blur-md text-[#1A2E1A] font-bold text-sm sm:text-base transition-all duration-300 hover:border-[#44A148]/40 hover:bg-white hover:-translate-y-1 hover:shadow-lg"
               >
                 Ver mis informes
