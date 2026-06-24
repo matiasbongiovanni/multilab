@@ -5,13 +5,13 @@
     { label: "Higiene y Seguridad Laboral", href: "/higiene-seguridad" },
     { label: "Laboratorio de Análisis", href: "/laboratorio" },
     { label: "Laboratorio Ambiental", href: "/medioambiente" },
-    { label: "I+D en Ciencias y Medicina", href: "/servicios" },
+    { label: "I+D en Ciencias y Medicina", href: "/servicios/investigacion" },
   ];
 
   const empresaLinks = [
     { label: "Quiénes somos", href: "/quienes-somos" },
     { label: "Portal de resultados", href: "/mis-estudios" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Contacto", href: "/contacto" },
     { label: "Política de privacidad", href: "/privacidad" },
   ];
 
@@ -28,18 +28,18 @@
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[1px] bg-gradient-to-r from-transparent via-[#44A148]/50 to-transparent" aria-hidden="true" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#44A148]/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
             {/* ── Brand & Info (Ocupa más espacio en desktop) ── */}
             <div className="sm:col-span-2 lg:col-span-4 flex flex-col">
-              <Link href="/" className="flex items-center gap-3 group" aria-label="Inicio — Multilab">
+              <Link href="/" className="flex items-center gap-3 group mb-4" aria-label="Inicio — Multilab">
                 <img
-                  src="/Multilab-Blanco.webp"
+                  src="/MultiLab-Blanco.webp"
                   alt="Multilab Logo"
-                  className="w-46 h-46 object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 />
               </Link>
-              <p className="text-sm text-white/60 leading-relaxed max-w-sm mb-6 font-medium">
+              <p className="text-sm text-white/60 leading-relaxed max-w-sm mb-5 font-medium">
                 Higiene y Seguridad Laboral, Laboratorio de Análisis y Control Ambiental para empresas e industrias desde 2014.
               </p>
               {/* Social */}
@@ -75,7 +75,7 @@
               >
                 Servicios
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {serviciosLinks.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -99,7 +99,7 @@
               >
                 Empresa
               </h3>
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {empresaLinks.map((link) => (
                   <li key={link.label}>
                     <Link
@@ -123,7 +123,7 @@
               >
                 Contacto
               </h3>
-              <ul className="space-y-5">
+              <ul className="space-y-3">
                 <li className="flex items-start gap-3 group">
                   <div className="p-1.5 rounded-md bg-white/5 border border-white/10 group-hover:border-[#44A148]/50 transition-colors shrink-0">
                     <Mail size={14} className="text-[#44A148]" aria-hidden="true" />
@@ -159,7 +159,7 @@
           </div>
 
           {/* ── Bottom bar ── */}
-          <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-xs text-white/40 text-center md:text-left font-medium">
               &copy; {year} Multilab Risk Prevention. Todos los derechos reservados.
             </p>

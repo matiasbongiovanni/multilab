@@ -110,36 +110,45 @@ export default function Contact() {
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[#1A2E1A]/5 rounded-full blur-[150px] translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
-          
+        {/* Header */}
+        <motion.div
+          initial={reduce ? {} : { opacity: 0, y: 20 }}
+          whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-2xl mb-12 lg:mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
+            <span className="font-inter text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
+              Contacto
+            </span>
+          </div>
+
+          <h2
+            id="contacto-heading"
+            className="font-inter text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A2E1A] leading-tight tracking-tight"
+          >
+            Hablemos de lo que tu empresa necesita
+          </h2>
+
+          <p className="mt-5 text-[#1A2E1A]/70 text-lg leading-relaxed">
+            Completá el formulario y te respondemos en menos de 24 horas hábiles. El diagnóstico inicial es <strong className="text-[#1A2E1A]">gratuito y sin compromiso</strong>.
+          </p>
+        </motion.div>
+
+        {/* Grid body */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
           {/* Columna Izquierda — Información */}
           <motion.div
             initial={reduce ? {} : { opacity: 0, x: -24 }}
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5 self-start">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
-              <span className="font-inter text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
-                Contacto
-              </span>
-            </div>
-
-            <h2
-              id="contacto-heading"
-              className="font-inter text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A2E1A] leading-tight tracking-tight"
-            >
-              Hablemos de lo que tu empresa necesita
-            </h2>
-
-            <p className="mt-5 text-[#1A2E1A]/70 text-lg leading-relaxed max-w-lg">
-              Completá el formulario y te respondemos en menos de 24 horas hábiles. El diagnóstico inicial es <strong className="text-[#1A2E1A]">gratuito y sin compromiso</strong>.
-            </p>
-
             {/* Tarjetas de contacto interactivas */}
-            <div className="mt-10 space-y-4">
+            <div className="space-y-4">
               {[
                 { label: "Laboratorio", email: "laboratorio@multilab.com.ar" },
                 { label: "Higiene y Seguridad", email: "higieneyseguridad@multilab.com.ar" },
@@ -178,7 +187,7 @@ export default function Contact() {
             </div>
 
             {/* Tarjeta Oscura: What happens next */}
-            <div className="mt-auto pt-10">
+            <div className="mt-8">
               <div className="relative overflow-hidden p-8 bg-[#1A2E1A] rounded-[2rem] shadow-xl">
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#44A148]/20 rounded-full blur-3xl" />
                 <p className="font-inter text-xs font-bold uppercase tracking-[0.15em] text-[#44A148] mb-5">
@@ -208,13 +217,13 @@ export default function Contact() {
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-full"
+            className="relative"
           >
             {/* Glow sutil detrás del form para destacarlo */}
             <div className="absolute inset-0 bg-white rounded-[2.5rem] shadow-2xl shadow-[#1A2E1A]/5 transform rotate-1 scale-105 opacity-50" />
-            
+
             {formState === "success" ? (
-              <div className="relative h-full flex flex-col items-center justify-center text-center py-16 px-8 bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 shadow-xl">
+              <div className="relative min-h-[420px] flex flex-col items-center justify-center text-center py-16 px-8 bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 shadow-xl">
                 <div className="w-20 h-20 rounded-full bg-[#44A148]/10 border-4 border-white shadow-sm flex items-center justify-center mb-6">
                   <CheckCircle size={36} className="text-[#44A148]" />
                 </div>
@@ -235,10 +244,9 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="relative h-full flex flex-col justify-between bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 p-8 lg:p-10 shadow-xl"
+                className="relative bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 p-8 lg:p-10 shadow-xl space-y-6"
                 aria-label="Formulario de contacto Multilab"
               >
-              <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Nombre */}
                   <div>
@@ -390,7 +398,6 @@ export default function Contact() {
                     </span>
                   </div>
                 )}
-              </div>
 
                 {/* Submit */}
                 <div className="pt-2">

@@ -11,7 +11,7 @@ const navLinks = [
   { label: "Laboratorio", href: "/laboratorio" },
   { label: "Medioambiente", href: "/medioambiente" },
   { label: "Quiénes somos", href: "/quienes-somos" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export default function Navbar() {
@@ -98,7 +98,7 @@ export default function Navbar() {
           </nav>
 
             <Link
-              href="#contacto"
+              href="/mis-estudios"
               className="inline-flex items-center justify-center bg-[#44A148] hover:bg-[#1A2E1A] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 shadow-sm"
             >
                Ver mis informes
@@ -160,14 +160,14 @@ export default function Navbar() {
                 
                 <div className="mt-4 pt-4 border-t border-[#1A2E1A]/10 flex flex-col gap-3 px-2">
                   <Link
-                    href="/login"
+                    href="/mis-estudios"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center w-full py-3.5 px-4 text-base font-bold text-[#44A148] bg-[#44A148]/10 hover:bg-[#44A148]/20 rounded-xl transition-colors duration-200"
                   >
                     Ver mis informes
                   </Link>
                   <Link
-                    href="#contacto"
+                    href="/contacto"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center w-full py-3.5 px-4 text-base font-bold text-white bg-[#44A148] hover:bg-[#1A2E1A] rounded-xl transition-colors duration-200 shadow-sm"
                   >

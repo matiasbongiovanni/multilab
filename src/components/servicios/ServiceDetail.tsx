@@ -35,59 +35,51 @@ export default function ServiceDetail({
 
   return (
     <>
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section
-        className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden"
+        className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-[#fcfdfc]"
         aria-label={`Área: ${title}`}
-        style={{ backgroundColor: "oklch(98.5% 0.006 143)" }}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className={heroImage ? "grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center" : ""}>
+        {/* Glow decorativo */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#44A148]/6 rounded-full blur-[180px] pointer-events-none" aria-hidden="true" />
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className={heroImage ? "grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center" : ""}>
+            {/* Texto */}
             <motion.div
               initial={reduce ? {} : { opacity: 0, y: 20 }}
               animate={reduce ? {} : { opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className={heroImage ? "flex flex-col gap-5" : "flex flex-col gap-5 max-w-2xl"}
             >
-              <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center"
-                style={{ backgroundColor: "oklch(96% 0.022 143)", color: "oklch(42% 0.13 144)" }}
-              >
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 self-start">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]">
+                  {subtitle}
+                </span>
+              </div>
+
+              {/* Icono */}
+              <div className="w-14 h-14 rounded-2xl bg-[#44A148]/10 border border-[#44A148]/20 flex items-center justify-center text-[#44A148]">
                 {icon}
               </div>
 
-              <span
-                className="text-xs font-semibold uppercase tracking-[0.22em]"
-                style={{ color: "oklch(42% 0.13 144)" }}
-              >
-                {subtitle}
-              </span>
-
               <h1
-                className="leading-[0.95] tracking-[-0.02em]"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2.4rem, 5vw, 4rem)",
-                  color: "oklch(13% 0.015 143)",
-                }}
+                className="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-[1.05] tracking-tight text-[#1A2E1A]"
+                style={{ fontFamily: "var(--font-heading)" }}
               >
                 {title}
               </h1>
 
-              <p
-                className="text-base leading-relaxed max-w-lg"
-                style={{ color: "oklch(44% 0.012 143)", fontFamily: "var(--font-body)" }}
-              >
+              <p className="text-lg text-[#1A2E1A]/70 leading-relaxed max-w-lg">
                 {description}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-1">
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Link
                   href="/contacto"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-white font-semibold rounded-xl transition-colors duration-200 shadow-sm min-h-[52px]"
-                  style={{ backgroundColor: "oklch(42% 0.13 144)" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(33% 0.11 144)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(42% 0.13 144)"; }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#44A148] text-white font-bold text-sm shadow-sm transition-all duration-300 hover:bg-[#38853b] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#44A148]/25 min-h-[52px]"
                 >
                   {ctaText}
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -97,25 +89,20 @@ export default function ServiceDetail({
 
                 <Link
                   href="/contacto"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl border transition-colors duration-200 min-h-[52px]"
-                  style={{
-                    color: "oklch(42% 0.13 144)",
-                    borderColor: "oklch(91% 0.013 143)",
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(96% 0.022 143)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-[#1A2E1A]/10 bg-white text-[#1A2E1A] font-bold text-sm transition-all duration-300 hover:border-[#44A148]/40 hover:-translate-y-0.5 hover:shadow-md min-h-[52px]"
                 >
                   Consultar disponibilidad
                 </Link>
               </div>
             </motion.div>
 
+            {/* Foto */}
             {heroImage && (
               <motion.div
                 initial={reduce ? {} : { opacity: 0, scale: 0.97 }}
                 animate={reduce ? {} : { opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl"
+                className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl ring-1 ring-[#1A2E1A]/5"
               >
                 <Image
                   src={heroImage}
@@ -125,69 +112,62 @@ export default function ServiceDetail({
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
+                {/* Badge flotante de dirección técnica */}
+                <div className="absolute bottom-4 left-4 flex items-center gap-3 bg-white/95 backdrop-blur rounded-xl px-4 py-3 shadow-lg border border-[#1A2E1A]/5">
+                  <span className="w-2 h-2 rounded-full bg-[#44A148] shrink-0" aria-hidden="true" />
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-[#1A2E1A]/40 leading-none mb-1">
+                      Dirección técnica
+                    </p>
+                    <p className="text-sm font-bold text-[#1A2E1A] leading-none">
+                      Lic. Cinthia Degliangioli
+                    </p>
+                  </div>
+                </div>
               </motion.div>
             )}
           </div>
         </div>
       </section>
 
-      {/* Content */}
-      <section
-        className="py-16 lg:py-24"
-        style={{ backgroundColor: "oklch(99.5% 0.003 143)" }}
-      >
+      {/* ── Contenido ── */}
+      <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
-            {/* Analyses list */}
+            {/* Análisis disponibles */}
             <motion.div
               initial={reduce ? {} : { opacity: 0, x: -20 }}
               whileInView={reduce ? {} : { opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2
-                className="mb-7 leading-tight"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  color: "oklch(13% 0.015 143)",
-                }}
-              >
+              <h2 className="text-2xl lg:text-3xl font-bold text-[#1A2E1A] mb-7 leading-tight">
                 Análisis disponibles
               </h2>
 
-              <ul className="space-y-2.5" role="list">
+              <ul className="grid sm:grid-cols-2 gap-3" role="list">
                 {analyses.map((item, i) => (
                   <motion.li
                     key={i}
-                    initial={reduce ? {} : { opacity: 0, x: -12 }}
-                    whileInView={reduce ? {} : { opacity: 1, x: 0 }}
+                    initial={reduce ? {} : { opacity: 0, y: 10 }}
+                    whileInView={reduce ? {} : { opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: i * 0.04 }}
-                    className="flex items-center gap-3 p-3 rounded-xl"
-                    style={{
-                      backgroundColor: "oklch(98.5% 0.006 143)",
-                      border: "1px solid oklch(91% 0.013 143)",
-                    }}
+                    transition={{ duration: 0.3, delay: i * 0.03 }}
+                    className="flex items-center gap-3 p-3.5 rounded-xl bg-[#fcfdfc] border border-[#1A2E1A]/8 hover:border-[#44A148]/30 transition-colors duration-200"
                   >
-                    <div
-                      className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                      style={{ backgroundColor: "oklch(96% 0.022 143)" }}
-                    >
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ stroke: "oklch(42% 0.13 144)" }}>
+                    <span className="w-5 h-5 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M20 6L9 17l-5-5" />
                       </svg>
-                    </div>
-                    <span className="text-sm" style={{ color: "oklch(13% 0.015 143)", fontFamily: "var(--font-body)" }}>
-                      {item}
                     </span>
+                    <span className="text-sm text-[#1A2E1A]/80 leading-snug">{item}</span>
                   </motion.li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* Description + additional info + CTA */}
+            {/* Descripción + info + CTA + sidebar */}
             <motion.div
               initial={reduce ? {} : { opacity: 0, x: 20 }}
               whileInView={reduce ? {} : { opacity: 1, x: 0 }}
@@ -197,41 +177,28 @@ export default function ServiceDetail({
             >
               {longDescription && (
                 <div>
-                  <h2
-                    className="mb-4 leading-tight"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                      color: "oklch(13% 0.015 143)",
-                    }}
-                  >
+                  <h2 className="text-2xl lg:text-3xl font-bold text-[#1A2E1A] mb-4 leading-tight">
                     Descripción del servicio
                   </h2>
-                  <p className="text-sm leading-relaxed" style={{ color: "oklch(44% 0.012 143)", fontFamily: "var(--font-body)" }}>
+                  <p className="text-[#1A2E1A]/70 leading-relaxed">
                     {longDescription}
                   </p>
                 </div>
               )}
 
               {additionalInfo && additionalInfo.length > 0 && (
-                <div
-                  className="rounded-xl p-5"
-                  style={{
-                    backgroundColor: "oklch(96% 0.022 143)",
-                    border: "1px solid oklch(91% 0.013 143)",
-                  }}
-                >
-                  <h3 className="font-semibold text-sm mb-3 flex items-center gap-2" style={{ color: "oklch(42% 0.13 144)" }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <div className="rounded-2xl p-6 bg-[#44A148]/8 border border-[#44A148]/15">
+                  <h3 className="font-bold text-sm text-[#1A2E1A] mb-3 flex items-center gap-2">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="2" aria-hidden="true">
                       <circle cx="12" cy="12" r="10" />
                       <path d="M12 8v4M12 16h.01" />
                     </svg>
                     Información importante
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {additionalInfo.map((info, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm" style={{ color: "oklch(44% 0.012 143)", fontFamily: "var(--font-body)" }}>
-                        <span className="shrink-0 mt-0.5" style={{ color: "oklch(42% 0.13 144)" }}>·</span>
+                      <li key={i} className="flex items-start gap-2.5 text-sm text-[#1A2E1A]/70 leading-relaxed">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#44A148] shrink-0" aria-hidden="true" />
                         {info}
                       </li>
                     ))}
@@ -239,29 +206,24 @@ export default function ServiceDetail({
                 </div>
               )}
 
-              {/* CTA card */}
-              <div
-                className="rounded-xl p-6 text-white"
-                style={{ backgroundColor: "oklch(42% 0.13 144)" }}
-              >
-                <h3 className="font-semibold text-lg mb-2" style={{ fontFamily: "var(--font-display)" }}>
-                  ¿Necesitás más información?
-                </h3>
-                <p className="text-sm mb-4" style={{ color: "rgba(255,255,255,0.8)", fontFamily: "var(--font-body)" }}>
-                  Consultanos sobre requisitos, tiempos de entrega y precios de cada análisis.
-                </p>
-                <Link
-                  href="/contacto"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg transition-colors duration-200"
-                  style={{ backgroundColor: "white", color: "oklch(42% 0.13 144)" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(96% 0.022 143)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "white"; }}
-                >
-                  Ir al formulario
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </Link>
+              {/* CTA card oscura */}
+              <div className="relative overflow-hidden rounded-2xl p-7 bg-[#1A2E1A] text-white shadow-xl">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#44A148]/20 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+                <div className="relative z-10">
+                  <h3 className="font-bold text-lg mb-2">¿Necesitás más información?</h3>
+                  <p className="text-sm text-white/70 mb-5 leading-relaxed">
+                    Consultanos sobre requisitos, tiempos de entrega y precios de cada análisis.
+                  </p>
+                  <Link
+                    href="/contacto"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-lg bg-white text-[#1A2E1A] transition-transform duration-200 hover:-translate-y-0.5"
+                  >
+                    Ir al formulario
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
 
               {sidebar}

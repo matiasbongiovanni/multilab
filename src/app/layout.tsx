@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Syne, Figtree } from "next/font/google";
+import { Syne, Figtree } from "next/font/google";
 import "./globals.css";
-
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-dm-serif",
-  display: "swap",
-});
 
 const syne = Syne({
   subsets: ["latin"],
@@ -92,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${dmSerif.variable} ${syne.variable} ${figtree.variable} h-full`}
+      className={`${syne.variable} ${figtree.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <a href="#main-content" className="skip-to-content">

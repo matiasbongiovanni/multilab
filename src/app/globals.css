@@ -28,9 +28,9 @@
   --color-ml-success:      #16A34A;
 
   /* Fonts */
-  --font-display: var(--font-dm-serif), "DM Serif Display", Georgia, serif;
   --font-heading: var(--font-syne), "Syne", system-ui, sans-serif;
   --font-sans:    var(--font-figtree), "Figtree", system-ui, sans-serif;
+  --font-body:    var(--font-figtree), "Figtree", system-ui, sans-serif;
 }
 
 /* ─── Base ─── */
@@ -71,7 +71,6 @@ body {
 }
 
 /* ─── Font utilities ─── */
-.font-display { font-family: var(--font-display); }
 .font-heading  { font-family: var(--font-heading); }
 
 /* ─── Marquee ─── */

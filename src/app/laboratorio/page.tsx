@@ -18,7 +18,7 @@ const compromisos = [
 
 const sidebar = (
   <div className="rounded-xl p-6 lg:p-7 bg-[#1A2E1A] text-white shadow-xl">
-    <h3 className="font-semibold text-lg mb-5" style={{ fontFamily: "var(--font-display)", color: "#44A148" }}>
+    <h3 className="font-bold text-lg mb-5" style={{ color: "#44A148" }}>
       Compromisos Técnicos
     </h3>
     <ul className="space-y-5">

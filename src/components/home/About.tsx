@@ -69,7 +69,7 @@ export default function About() {
             </div>
 
             {/* Director card */}
-            <div className="mt-10 flex items-start gap-5 p-6 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm hover:border-[#44A148]/30 transition-all duration-300">
+            <div className="mt-10 mb-8 lg:mb-10 flex items-start gap-5 p-6 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm hover:border-[#44A148]/30 transition-all duration-300">
               <div
                 className="w-14 h-14 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0"
                 aria-hidden="true"
