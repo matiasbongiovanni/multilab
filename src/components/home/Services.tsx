@@ -12,7 +12,7 @@ const services = [
     title: "Higiene y Seguridad Laboral",
     description:
       "Gestión técnica enfocada en la prevención de enfermedades profesionales y accidentes, asegurando entornos de trabajo saludables y productivos.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&fit=crop",
+    image: "/images/servicios/higiene-seguridad.jpg",
     href: "/higiene-seguridad",
     variant: "green" as const,
   },
@@ -22,7 +22,7 @@ const services = [
     title: "Microbiología Integral",
     description:
       "Análisis microbiológicos, fisicoquímicos y bromatológicos para industrias alimentarias, clínicas, veterinarias y organismos públicos.",
-    image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80&fit=crop",
+    image: "/images/servicios/microbiologia-integral.jpg",
     href: "/laboratorio",
     variant: "white" as const,
   },
@@ -32,7 +32,7 @@ const services = [
     title: "Laboratorio Ambiental",
     description:
       "Monitoreo de precisión de agua, aire y suelo para garantizar que el entorno cumpla con los estándares de calidad y normativas vigentes.",
-    image: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80&fit=crop",
+    image: "/images/servicios/laboratorio-ambiental.jpg",
     href: "/medioambiente",
     variant: "green" as const,
   },

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Target, Eye, Award } from "lucide-react";
+import Image from "next/image";
 
 const pillars = [
   {
@@ -90,18 +91,14 @@ export default function About() {
             </div>
 
             {/* Photo placeholder (Styled to look premium while empty) */}
-            <div className="mt-8 rounded-[2rem] overflow-hidden bg-[#44A148]/5 border-2 border-dashed border-[#44A148]/20 flex flex-col items-center justify-center py-16 px-6 relative group transition-colors hover:bg-[#44A148]/10 hover:border-[#44A148]/40">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-50 mb-3">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-              <p className="text-sm font-medium text-[#1A2E1A]/50 text-center">
-                [REEMPLAZAR: foto del equipo / instalaciones]
-              </p>
-              <span className="text-xs font-semibold text-[#1A2E1A]/40 mt-2 uppercase tracking-wider">
-                Resolución sugerida: 1200 × 700px
-              </span>
+            <div className="mt-8 rounded-[2rem] overflow-hidden relative w-full" style={{ aspectRatio: "1200/700" }}>
+              <Image
+                src="/images/equipo-multilab.jpg"
+                alt="Equipo e instalaciones de Multilab"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
           </motion.div>
 
