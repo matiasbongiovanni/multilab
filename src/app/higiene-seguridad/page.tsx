@@ -44,6 +44,7 @@ export default function HigieneSeguridadPage() {
             "Adaptados al convenio colectivo de cada actividad.",
           ]}
           ctaText="Solicitar diagnóstico"
+          heroImage="/images/servicios/higiene-seguridad.jpg"
         />
         <ContactCTA />
       </main>

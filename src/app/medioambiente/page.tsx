@@ -43,6 +43,7 @@ export default function MedioambientePage() {
             "Coordinamos muestreo en campo según normativa vigente.",
           ]}
           ctaText="Solicitar monitoreo"
+          heroImage="/images/servicios/laboratorio-ambiental.jpg"
         />
         <ContactCTA />
       </main>

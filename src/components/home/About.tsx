@@ -35,14 +35,15 @@ export default function About() {
       aria-labelledby="about-heading"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+
           {/* Left Column */}
           <motion.div
             initial={reduce ? {} : { opacity: 0, x: -24 }}
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="h-full flex flex-col"
           >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#44A148]" />
@@ -91,7 +92,7 @@ export default function About() {
             </div>
 
             {/* Photo placeholder (Styled to look premium while empty) */}
-            <div className="mt-8 rounded-[2rem] overflow-hidden relative w-full" style={{ aspectRatio: "1200/700" }}>
+            <div className="mt-auto rounded-[2rem] overflow-hidden relative w-full" style={{ aspectRatio: "1200/700" }}>
               <Image
                 src="/images/equipo-multilab.jpg"
                 alt="Equipo e instalaciones de Multilab"
@@ -103,7 +104,7 @@ export default function About() {
           </motion.div>
 
           {/* Right Column — Mission, Vision, Culture */}
-          <div className="flex flex-col gap-5">
+          <div className="h-full flex flex-col gap-5">
             {pillars.map((pillar, i) => {
               const Icon = pillar.icon;
               return (
@@ -142,7 +143,7 @@ export default function About() {
               whileInView={reduce ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.36 }}
-              className="rounded-3xl bg-[#1A2E1A] p-7 lg:p-8 shadow-xl relative overflow-hidden mt-2"
+              className="rounded-3xl bg-[#1A2E1A] p-7 lg:p-8 shadow-xl relative overflow-hidden mt-auto"
             >
               {/* Background Glow */}
               <div className="absolute top-0 right-0 w-40 h-40 bg-[#44A148]/20 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 pointer-events-none" />

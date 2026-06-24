@@ -133,7 +133,7 @@ export default function Services() {
                       alt={service.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-[50%_75%] transition-transform duration-500 group-hover:scale-105"
                     />
                     {isGreen && (
                       <div className="absolute inset-0 bg-[#1A2E1A]/50" />

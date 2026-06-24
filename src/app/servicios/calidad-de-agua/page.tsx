@@ -68,6 +68,7 @@ export default function CalidadDeAguaPage() {
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis de agua"
+          heroImage="/images/servicios/laboratorio-ambiental.jpg"
         />
         <ContactCTA />
       </main>

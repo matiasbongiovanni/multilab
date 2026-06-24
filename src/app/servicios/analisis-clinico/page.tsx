@@ -68,6 +68,7 @@ export default function AnalisisClinicoPage() {
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis clínico"
+          heroImage="/images/servicios/microbiologia-integral.jpg"
         />
         <ContactCTA />
       </main>

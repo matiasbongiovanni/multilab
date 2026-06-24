@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 interface ServiceDetailProps {
@@ -14,6 +15,8 @@ interface ServiceDetailProps {
   analyses: string[];
   additionalInfo?: string[];
   ctaText?: string;
+  heroImage?: string;
+  sidebar?: React.ReactNode;
 }
 
 export default function ServiceDetail({
@@ -25,6 +28,8 @@ export default function ServiceDetail({
   analyses,
   additionalInfo,
   ctaText = "Solicitar análisis",
+  heroImage,
+  sidebar,
 }: ServiceDetailProps) {
   const reduce = useReducedMotion();
 
@@ -37,72 +42,92 @@ export default function ServiceDetail({
         style={{ backgroundColor: "oklch(98.5% 0.006 143)" }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <motion.div
-            initial={reduce ? {} : { opacity: 0, y: 20 }}
-            animate={reduce ? {} : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col gap-5 max-w-2xl"
-          >
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center"
-              style={{ backgroundColor: "oklch(96% 0.022 143)", color: "oklch(42% 0.13 144)" }}
+          <div className={heroImage ? "grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center" : ""}>
+            <motion.div
+              initial={reduce ? {} : { opacity: 0, y: 20 }}
+              animate={reduce ? {} : { opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className={heroImage ? "flex flex-col gap-5" : "flex flex-col gap-5 max-w-2xl"}
             >
-              {icon}
-            </div>
-
-            <span
-              className="text-xs font-semibold uppercase tracking-[0.22em]"
-              style={{ color: "oklch(42% 0.13 144)" }}
-            >
-              {subtitle}
-            </span>
-
-            <h1
-              className="leading-[0.95] tracking-[-0.02em]"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(2.4rem, 5vw, 4rem)",
-                color: "oklch(13% 0.015 143)",
-              }}
-            >
-              {title}
-            </h1>
-
-            <p
-              className="text-base leading-relaxed max-w-lg"
-              style={{ color: "oklch(44% 0.012 143)", fontFamily: "var(--font-body)" }}
-            >
-              {description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-3 pt-1">
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-white font-semibold rounded-xl transition-colors duration-200 shadow-sm min-h-[52px]"
-                style={{ backgroundColor: "oklch(42% 0.13 144)" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(33% 0.11 144)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(42% 0.13 144)"; }}
+              <div
+                className="w-14 h-14 rounded-xl flex items-center justify-center"
+                style={{ backgroundColor: "oklch(96% 0.022 143)", color: "oklch(42% 0.13 144)" }}
               >
-                {ctaText}
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
+                {icon}
+              </div>
 
-              <Link
-                href="/contacto"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl border transition-colors duration-200 min-h-[52px]"
+              <span
+                className="text-xs font-semibold uppercase tracking-[0.22em]"
+                style={{ color: "oklch(42% 0.13 144)" }}
+              >
+                {subtitle}
+              </span>
+
+              <h1
+                className="leading-[0.95] tracking-[-0.02em]"
                 style={{
-                  color: "oklch(42% 0.13 144)",
-                  borderColor: "oklch(91% 0.013 143)",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(2.4rem, 5vw, 4rem)",
+                  color: "oklch(13% 0.015 143)",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(96% 0.022 143)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
               >
-                Consultar disponibilidad
-              </Link>
-            </div>
-          </motion.div>
+                {title}
+              </h1>
+
+              <p
+                className="text-base leading-relaxed max-w-lg"
+                style={{ color: "oklch(44% 0.012 143)", fontFamily: "var(--font-body)" }}
+              >
+                {description}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                <Link
+                  href="/contacto"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-white font-semibold rounded-xl transition-colors duration-200 shadow-sm min-h-[52px]"
+                  style={{ backgroundColor: "oklch(42% 0.13 144)" }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(33% 0.11 144)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(42% 0.13 144)"; }}
+                >
+                  {ctaText}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+
+                <Link
+                  href="/contacto"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 font-semibold rounded-xl border transition-colors duration-200 min-h-[52px]"
+                  style={{
+                    color: "oklch(42% 0.13 144)",
+                    borderColor: "oklch(91% 0.013 143)",
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(96% 0.022 143)"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.backgroundColor = "transparent"; }}
+                >
+                  Consultar disponibilidad
+                </Link>
+              </div>
+            </motion.div>
+
+            {heroImage && (
+              <motion.div
+                initial={reduce ? {} : { opacity: 0, scale: 0.97 }}
+                animate={reduce ? {} : { opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden shadow-xl"
+              >
+                <Image
+                  src={heroImage}
+                  alt={title}
+                  fill
+                  className="object-cover object-[50%_75%]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </motion.div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -238,6 +263,8 @@ export default function ServiceDetail({
                   </svg>
                 </Link>
               </div>
+
+              {sidebar}
             </motion.div>
 
           </div>

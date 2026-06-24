@@ -208,13 +208,13 @@ export default function Contact() {
             whileInView={reduce ? {} : { opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="relative h-full"
           >
             {/* Glow sutil detrás del form para destacarlo */}
             <div className="absolute inset-0 bg-white rounded-[2.5rem] shadow-2xl shadow-[#1A2E1A]/5 transform rotate-1 scale-105 opacity-50" />
             
             {formState === "success" ? (
-              <div className="relative h-full min-h-[500px] flex flex-col items-center justify-center text-center py-16 px-8 bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 shadow-xl">
+              <div className="relative h-full flex flex-col items-center justify-center text-center py-16 px-8 bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 shadow-xl">
                 <div className="w-20 h-20 rounded-full bg-[#44A148]/10 border-4 border-white shadow-sm flex items-center justify-center mb-6">
                   <CheckCircle size={36} className="text-[#44A148]" />
                 </div>
@@ -235,9 +235,10 @@ export default function Contact() {
               <form
                 onSubmit={handleSubmit}
                 noValidate
-                className="relative bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 p-8 lg:p-10 shadow-xl space-y-6"
+                className="relative h-full flex flex-col justify-between bg-white rounded-[2.5rem] border border-[#1A2E1A]/10 p-8 lg:p-10 shadow-xl"
                 aria-label="Formulario de contacto Multilab"
               >
+              <div className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Nombre */}
                   <div>
@@ -389,6 +390,7 @@ export default function Contact() {
                     </span>
                   </div>
                 )}
+              </div>
 
                 {/* Submit */}
                 <div className="pt-2">

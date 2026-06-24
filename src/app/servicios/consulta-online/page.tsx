@@ -60,6 +60,7 @@ export default function ConsultaOnlinePage() {
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Acceder al portal"
+          heroImage="/images/equipo-multilab.jpg"
         />
         <ContactCTA />
       </main>

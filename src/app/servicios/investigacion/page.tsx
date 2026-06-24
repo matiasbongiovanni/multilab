@@ -66,6 +66,7 @@ export default function InvestigacionPage() {
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Consultar sobre colaboración"
+          heroImage="/images/equipo-multilab.jpg"
         />
         <ContactCTA />
       </main>

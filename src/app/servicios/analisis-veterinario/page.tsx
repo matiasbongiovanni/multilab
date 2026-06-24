@@ -67,6 +67,7 @@ export default function AnalisisVeterinarioPage() {
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis veterinario"
+          heroImage="/images/servicios/microbiologia-integral.jpg"
         />
         <ContactCTA />
       </main>

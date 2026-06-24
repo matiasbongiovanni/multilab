@@ -68,6 +68,7 @@ export default function HigieneBromatologiaPage() {
           analyses={analyses}
           additionalInfo={additionalInfo}
           ctaText="Solicitar análisis de alimentos"
+          heroImage="/images/servicios/microbiologia-integral.jpg"
         />
         <ContactCTA />
       </main>
