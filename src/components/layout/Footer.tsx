@@ -36,7 +36,8 @@
                 <img
                   src="/MultiLab-Blanco.webp"
                   alt="Multilab Logo"
-                  className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  className="w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                  style={{ height: "100px" }}
                 />
               </Link>
               <p className="text-sm text-white/60 leading-relaxed max-w-sm mb-5 font-medium">
