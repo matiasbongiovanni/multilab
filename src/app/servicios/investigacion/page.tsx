@@ -28,26 +28,16 @@ const icon = (
   </svg>
 );
 
-const analyses = [
-  "Desarrollo y validación de métodos analíticos nuevos",
-  "Estudios de estabilidad de muestras biológicas",
-  "Investigación en biomarcadores diagnósticos",
-  "Análisis estadístico de datos de laboratorio",
-  "Control de calidad externo e interlaboratorio",
-  "Estudios epidemiológicos con soporte analítico",
-  "Validación de kits y reactivos de diagnóstico",
-  "Investigación en resistencia antimicrobiana",
-  "Caracterización molecular de microorganismos",
-  "Estudios de prevalencia de enfermedades infecciosas",
-  "Soporte analítico para tesis de grado y posgrado",
-  "Colaboración con instituciones universitarias",
-];
-
-const additionalInfo = [
-  "Las colaboraciones de investigación se evalúan de forma individual según los recursos disponibles y la relevancia científica.",
-  "Se priorizan proyectos con impacto en salud pública regional y ambiental.",
-  "Contamos con equipamiento de precisión y protocolos normalizados para garantizar la reproducibilidad.",
-  "Podemos emitir informes técnicos formales para publicaciones científicas y presentaciones académicas.",
+const analysisGroups = [
+  {
+    title: "Servicios ofrecidos",
+    items: [
+      "Investigación en ciencias exactas, físicas y naturales",
+      "Investigación en salud y veterinaria",
+      "Investigación en ciencias agropecuarias",
+      "Investigación en higiene y seguridad laboral",
+    ],
+  },
 ];
 
 export default function InvestigacionPage() {
@@ -58,13 +48,12 @@ export default function InvestigacionPage() {
         <ServiceDetail
           title="Investigación"
           subtitle="Ciencia aplicada con impacto real"
-          description="Líneas activas de investigación científica y desarrollo de metodologías analíticas. Colaboramos con universidades, instituciones y profesionales de la salud en proyectos de alto valor científico."
-          longDescription="Multilab integra la práctica analítica con la investigación aplicada. Bajo la dirección de la Lic. Cinthia Degliangioli, desarrollamos y validamos nuevas metodologías, colaboramos con instituciones académicas y participamos en proyectos de investigación con impacto en salud humana, animal y ambiental. Nuestra capacidad instalada y nuestro equipo técnico nos permiten ser socios estratégicos en proyectos de distinta envergadura."
+          description="Transformamos la ciencia en soluciones para tu negocio. En MultiLab vamos un paso más allá del análisis: creamos conocimiento aplicado. Investigamos para encontrar soluciones innovadoras en higiene laboral, ciencias agropecuarias y salud, siendo el socio tecnológico que necesitás para desarrollar nuevos procesos y mejorar la eficiencia de tu industria."
+          longDescription="Multilab integra la práctica analítica con la investigación aplicada. Desarrollamos y validamos nuevas metodologías, colaboramos con instituciones académicas y participamos en proyectos de investigación con impacto en salud humana, animal y ambiental. Nuestra capacidad instalada y nuestro equipo técnico nos permiten ser socios estratégicos en proyectos de distinta envergadura."
           icon={icon}
           color="bg-[#ede9fe] text-[#7c3aed]"
           bgGradient="bg-gradient-to-br from-[#f5f3ff] via-[#ede9fe] to-white"
-          analyses={analyses}
-          additionalInfo={additionalInfo}
+          analysisGroups={analysisGroups}
           ctaText="Consultar sobre colaboración"
           heroImage="/images/equipo-multilab.jpg"
         />

@@ -61,7 +61,7 @@ export default function AnalisisClinicoPage() {
           title="Análisis Clínico"
           subtitle="Diagnóstico de laboratorio humano"
           description="Estudios de laboratorio para el diagnóstico, seguimiento y prevención de enfermedades en adultos y niños. Metodologías validadas, equipamiento moderno y resultados confiables."
-          longDescription="Nuestro servicio de análisis clínico cubre la totalidad del espectro diagnóstico de laboratorio para medicina humana. Trabajamos con metodologías actualizadas según las normas internacionales y ofrecemos un sistema de calidad que garantiza la precisión y reproducibilidad de cada resultado. La Lic. Cinthia Degliangioli supervisa personalmente los procesos analíticos críticos."
+          longDescription="Nuestro servicio de análisis clínico cubre la totalidad del espectro diagnóstico de laboratorio para medicina humana. Trabajamos con metodologías actualizadas según las normas internacionales y ofrecemos un sistema de calidad que garantiza la precisión y reproducibilidad de cada resultado. La Biol. Cynthia Degliangioli supervisa personalmente los procesos analíticos críticos."
           icon={icon}
           color="bg-[#e0f2fe] text-[#4CAF50]"
           bgGradient="bg-gradient-to-br from-[#f0f9ff] via-[#e0f2fe] to-white"

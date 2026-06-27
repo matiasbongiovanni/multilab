@@ -77,14 +77,14 @@ function LoginForm() {
           />
         </Link>
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#1A2E1A]/50">
-          Portal de pacientes
+          Portal de clientes
         </p>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-[#1A2E1A]/10 p-7 lg:p-8">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-[#1A2E1A]">
-            Acceder a mis estudios
+            Acceder a mis informes
           </h1>
           <p className="text-sm text-[#1A2E1A]/60 mt-1">
             Ingresá con tu DNI y la contraseña que te asignaron.

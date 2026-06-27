@@ -52,7 +52,7 @@ export default function ConsultaOnlinePage() {
         <ServiceDetail
           title="Consulta Online"
           subtitle="Portal digital de pacientes"
-          description="Desde el portal de Multilab podés acceder a todos tus resultados de forma segura, descargarlos en PDF y consultar con la Lic. Cinthia Degliangioli sin necesidad de trasladarte."
+          description="Desde el portal de Multilab podés acceder a todos tus resultados de forma segura, descargarlos en PDF y consultar con la Biol. Cynthia Degliangioli sin necesidad de trasladarte."
           longDescription="El portal de pacientes de Multilab te permite acceder a tus resultados en cualquier momento y desde cualquier dispositivo. Con tu DNI y contraseña ingresás a un espacio privado y seguro donde encontrás todos tus análisis disponibles para ver y descargar."
           icon={icon}
           color="bg-[#fce7f3] text-[#db2777]"

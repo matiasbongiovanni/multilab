@@ -10,6 +10,7 @@ const services = [
   "Higiene y Seguridad Laboral",
   "Microbiología Integral",
   "Laboratorio Ambiental",
+  "Medio Ambiente",
   "I+D en Ciencias y Medicina",
   "Otro / no sé todavía",
 ];
@@ -171,7 +172,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-1">Teléfono / WhatsApp</p>
-                  <p className="text-base font-semibold text-[#1A2E1A]">[REEMPLAZAR: número de contacto]</p>
+                  <p className="text-base font-semibold text-[#1A2E1A]">+54 9 351 734 4443</p>
                 </div>
               </div>
 
@@ -181,7 +182,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-inter text-xs font-bold uppercase tracking-wider text-[#1A2E1A]/40 mb-1">Ubicación</p>
-                  <p className="text-base font-semibold text-[#1A2E1A]">[REEMPLAZAR: dirección · Córdoba]</p>
+                  <p className="text-base font-semibold text-[#1A2E1A]">Juan de Garay 1931, Planta alta, B° Pueyrredón · Córdoba</p>
                 </div>
               </div>
             </div>

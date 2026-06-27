@@ -9,19 +9,19 @@ const pillars = [
     icon: Target,
     title: "Misión",
     content:
-      "Preservar la salud y la seguridad mediante soluciones técnicas y científicas de jerarquía. Nos dedicamos a la prevención de riesgos y al análisis biológico exhaustivo, aplicando estándares de excelencia que garantizan la protección de las personas, la integridad de los alimentos y el equilibrio de los recursos naturales.",
+      "Preservar la salud, el ambiente y la seguridad mediante soluciones técnicas y científicas de jerarquía. Nos dedicamos al medio ambiente, la prevención de riesgos y a los análisis biológicos, aplicando estándares de excelencia que garantizan la protección de las personas, la integridad de los alimentos y el equilibrio de los recursos naturales.",
   },
   {
     icon: Eye,
     title: "Visión",
     content:
-      "Ser el referente líder en ciencias del diagnóstico y prevención, reconocidos por nuestra capacidad técnica para anticipar riesgos y nuestra contribución al avance de la salud y el bienestar en el ámbito industrial y humano.",
+      "Ser el referente líder en ciencias del diagnóstico y prevención, reconocidos por nuestra capacidad técnica para anticipar riesgos y contribuir al avance de la salud y el bienestar en el ámbito industrial y humano.",
   },
   {
     icon: Award,
     title: "Cultura de excelencia",
     content:
-      "La calidad es el puente entre la ciencia y la seguridad. Gestionamos nuestros procesos bajo una estandarización rigurosa que integra la Ley 19.587 y el Código Alimentario Argentino, asegurando trazabilidad absoluta en cada estudio.",
+      "La calidad es el puente entre la ciencia y la seguridad. Gestionamos nuestros procesos bajo una estandarización rigurosa que integra leyes, ordenanzas, normas y el Código Alimentario Argentino, asegurando trazabilidad en cada estudio.",
   },
 ];
 
@@ -61,7 +61,7 @@ export default function About() {
 
             <div className="mt-6 space-y-5 text-[#1A2E1A]/75 leading-relaxed text-lg">
               <p>
-                Una organización de vanguardia dedicada a la protección de la vida y la excelencia en servicios analíticos. Nuestra estructura integra la consultoría técnica en Higiene y Seguridad Laboral con un laboratorio especializado en Análisis Ambientales y Microbiología Integral.
+                Una organización de vanguardia dedicada a la protección de la vida y la excelencia en servicios analíticos. Nuestra estructura integra la consultoría técnica ambiental, en Higiene y Seguridad Laboral, con un laboratorio especializado en Análisis Ambientales y Microbiología Integral.
               </p>
               <p>
                 Con un ADN basado en la I+D en Ciencias y Medicina, operamos bajo una visión sistémica donde la salud ambiental, la inocuidad y el bienestar humano convergen en un diagnóstico único de alta precisión.
@@ -69,7 +69,7 @@ export default function About() {
             </div>
 
             {/* Director card */}
-            <div className="mt-10 mb-8 lg:mb-10 flex items-start gap-5 p-6 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm hover:border-[#44A148]/30 transition-all duration-300">
+            <div className="mt-10 flex items-start gap-5 p-6 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm hover:border-[#44A148]/30 transition-all duration-300">
               <div
                 className="w-14 h-14 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0"
                 aria-hidden="true"
@@ -80,13 +80,36 @@ export default function About() {
               </div>
               <div>
                 <p className="font-inter font-bold text-[#1A2E1A] text-lg">
-                  Lic. Cinthia Degliangioli
+                  Biol. Cynthia Degliangioli
                 </p>
                 <p className="text-sm font-semibold text-[#44A148] mt-0.5">
                   Directora Técnica y Fundadora
                 </p>
                 <p className="text-sm text-[#1A2E1A]/60 mt-2 leading-relaxed">
-                  "Cada informe que emitimos cuenta con un respaldo técnico-científico absoluto."
+                  &ldquo;Cada informe que emitimos cuenta con un respaldo técnico-científico absoluto.&rdquo;
+                </p>
+              </div>
+            </div>
+
+            {/* Especialista card */}
+            <div className="mt-4 mb-8 lg:mb-10 flex items-start gap-5 p-6 bg-white rounded-2xl border border-[#1A2E1A]/10 shadow-sm hover:border-[#44A148]/30 transition-all duration-300">
+              <div
+                className="w-14 h-14 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0"
+                aria-hidden="true"
+              >
+                <span className="font-inter text-lg font-bold text-[#44A148]">
+                  OD
+                </span>
+              </div>
+              <div>
+                <p className="font-inter font-bold text-[#1A2E1A] text-lg">
+                  Ing. Orlando A. Degliangioli
+                </p>
+                <p className="text-sm font-semibold text-[#44A148] mt-0.5">
+                  Especialista en medio ambiente, higiene y seguridad laboral
+                </p>
+                <p className="text-sm text-[#1A2E1A]/60 mt-2 leading-relaxed">
+                  &ldquo;Respaldo profesional fundado en la experiencia.&rdquo;
                 </p>
               </div>
             </div>

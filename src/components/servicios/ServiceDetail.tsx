@@ -4,6 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
+interface AnalysisGroup {
+  title?: string;
+  items: string[];
+  ordered?: boolean;
+}
+
 interface ServiceDetailProps {
   title: string;
   subtitle: string;
@@ -12,11 +18,16 @@ interface ServiceDetailProps {
   icon: React.ReactNode;
   color: string;
   bgGradient: string;
-  analyses: string[];
+  analyses?: string[];
+  analysisGroups?: AnalysisGroup[];
   additionalInfo?: string[];
   ctaText?: string;
   heroImage?: string;
   sidebar?: React.ReactNode;
+  directorLabel?: string;
+  directorName?: string;
+  specialistLabel?: string;
+  specialistName?: string;
 }
 
 export default function ServiceDetail({
@@ -26,10 +37,15 @@ export default function ServiceDetail({
   longDescription,
   icon,
   analyses,
+  analysisGroups,
   additionalInfo,
   ctaText = "Solicitar análisis",
   heroImage,
   sidebar,
+  directorLabel = "Dirección técnica",
+  directorName = "Biol. Cynthia Degliangioli",
+  specialistLabel,
+  specialistName,
 }: ServiceDetailProps) {
   const reduce = useReducedMotion();
 
@@ -117,11 +133,21 @@ export default function ServiceDetail({
                   <span className="w-2 h-2 rounded-full bg-[#44A148] shrink-0" aria-hidden="true" />
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-[#1A2E1A]/40 leading-none mb-1">
-                      Dirección técnica
+                      {directorLabel}
                     </p>
                     <p className="text-sm font-bold text-[#1A2E1A] leading-none">
-                      Lic. Cinthia Degliangioli
+                      {directorName}
                     </p>
+                    {specialistName && (
+                      <>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-[#1A2E1A]/40 leading-none mt-2 mb-1">
+                          {specialistLabel ?? "Especialista"}
+                        </p>
+                        <p className="text-sm font-bold text-[#1A2E1A] leading-none">
+                          {specialistName}
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -146,25 +172,76 @@ export default function ServiceDetail({
                 Análisis disponibles
               </h2>
 
-              <ul className="grid sm:grid-cols-2 gap-3" role="list">
-                {analyses.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={reduce ? {} : { opacity: 0, y: 10 }}
-                    whileInView={reduce ? {} : { opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: i * 0.03 }}
-                    className="flex items-center gap-3 p-3.5 rounded-xl bg-[#fcfdfc] border border-[#1A2E1A]/8 hover:border-[#44A148]/30 transition-colors duration-200"
-                  >
-                    <span className="w-5 h-5 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M20 6L9 17l-5-5" />
-                      </svg>
-                    </span>
-                    <span className="text-sm text-[#1A2E1A]/80 leading-snug">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              {analysisGroups ? (
+                <div className="space-y-6">
+                  {analysisGroups.map((group, gi) => (
+                    <div key={gi}>
+                      {group.title && (
+                        <h3 className="text-base font-bold text-[#1A2E1A] mb-3">{group.title}</h3>
+                      )}
+                      {group.ordered ? (
+                        <ol className="space-y-2" role="list">
+                          {group.items.map((item, i) => (
+                            <motion.li
+                              key={i}
+                              initial={reduce ? {} : { opacity: 0, y: 10 }}
+                              whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: i * 0.03 }}
+                              className="flex items-center gap-3 p-3 rounded-xl bg-[#fcfdfc] border border-[#1A2E1A]/8 hover:border-[#44A148]/30 transition-colors duration-200"
+                            >
+                              <span className="w-6 h-6 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0 text-[10px] font-bold text-[#44A148]">
+                                {i + 1}
+                              </span>
+                              <span className="text-sm text-[#1A2E1A]/80 leading-snug">{item}</span>
+                            </motion.li>
+                          ))}
+                        </ol>
+                      ) : (
+                        <ul className="grid sm:grid-cols-2 gap-3" role="list">
+                          {group.items.map((item, i) => (
+                            <motion.li
+                              key={i}
+                              initial={reduce ? {} : { opacity: 0, y: 10 }}
+                              whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ duration: 0.3, delay: i * 0.03 }}
+                              className="flex items-center gap-3 p-3.5 rounded-xl bg-[#fcfdfc] border border-[#1A2E1A]/8 hover:border-[#44A148]/30 transition-colors duration-200"
+                            >
+                              <span className="w-5 h-5 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                  <path d="M20 6L9 17l-5-5" />
+                                </svg>
+                              </span>
+                              <span className="text-sm text-[#1A2E1A]/80 leading-snug">{item}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : analyses ? (
+                <ul className="grid sm:grid-cols-2 gap-3" role="list">
+                  {analyses.map((item, i) => (
+                    <motion.li
+                      key={i}
+                      initial={reduce ? {} : { opacity: 0, y: 10 }}
+                      whileInView={reduce ? {} : { opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: i * 0.03 }}
+                      className="flex items-center gap-3 p-3.5 rounded-xl bg-[#fcfdfc] border border-[#1A2E1A]/8 hover:border-[#44A148]/30 transition-colors duration-200"
+                    >
+                      <span className="w-5 h-5 rounded-full bg-[#44A148]/10 flex items-center justify-center shrink-0">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#44A148" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                      </span>
+                      <span className="text-sm text-[#1A2E1A]/80 leading-snug">{item}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              ) : null}
             </motion.div>
 
             {/* Descripción + info + CTA + sidebar */}

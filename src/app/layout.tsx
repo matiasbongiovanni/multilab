@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Multilab Risk Prevention",
   },
   description:
-    "Servicios técnicos en Higiene y Seguridad Laboral, Laboratorio de Análisis, Control Ambiental e I+D. Dirigidos por la Lic. Cinthia Degliangioli. Córdoba, Argentina.",
+    "Servicios técnicos en Higiene y Seguridad Laboral, Laboratorio de Análisis, Control Ambiental e I+D. Dirigidos por la Biol. Cynthia Degliangioli. Córdoba, Argentina.",
   keywords: [
     "higiene y seguridad laboral",
     "laboratorio análisis",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "microbiología",
     "Ley 19.587",
     "Código Alimentario Argentino",
-    "Cinthia Degliangioli",
+    "Cynthia Degliangioli",
     "Multilab Risk Prevention",
     "laboratorio Córdoba Argentina",
     "prevención riesgos laborales",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title:
       "Multilab Risk Prevention — Higiene, Seguridad Laboral y Laboratorio",
     description:
-      "Soluciones técnicas en Higiene y Seguridad Laboral, Laboratorio de Análisis y Control Ambiental. Lic. Cinthia Degliangioli. Córdoba, Argentina.",
+      "Soluciones técnicas en Higiene y Seguridad Laboral, Laboratorio de Análisis y Control Ambiental. Biol. Cynthia Degliangioli. Córdoba, Argentina.",
     images: [
       {
         url: "/images/og-default.png",

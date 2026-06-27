@@ -21,7 +21,7 @@ const services = [
     icon: FlaskConical,
     title: "Microbiología Integral",
     description:
-      "Análisis microbiológicos, fisicoquímicos y bromatológicos para industrias alimentarias, clínicas, veterinarias y organismos públicos.",
+      "Análisis microbiológicos y bromatológicos transversales que abarcan procesos, productos y medio ambiente, asegurando la ausencia de riesgos biológicos.",
     image: "/images/servicios/microbiologia-integral.jpg",
     href: "/laboratorio",
     variant: "white" as const,
@@ -31,7 +31,7 @@ const services = [
     icon: Leaf,
     title: "Laboratorio Ambiental",
     description:
-      "Monitoreo de precisión de agua, aire y suelo para garantizar que el entorno cumpla con los estándares de calidad y normativas vigentes.",
+      "Monitoreo y análisis de efluentes, agua, aire y suelo para garantizar la conformidad normativa.",
     image: "/images/servicios/laboratorio-ambiental.jpg",
     href: "/medioambiente",
     variant: "green" as const,
@@ -41,7 +41,7 @@ const services = [
     icon: Microscope,
     title: "I+D en Ciencias y Medicina",
     description:
-      "Motor de innovación que investiga y desarrolla nuevas fronteras del diagnóstico, conectando la ciencia analítica con la salud humana y ambiental.",
+      "Transformamos la ciencia en soluciones para tu negocio: conocimiento aplicado para desarrollar nuevos procesos y mejorar la eficiencia de tu industria.",
     image: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80&fit=crop",
     href: "/servicios",
     variant: "white" as const,
@@ -85,7 +85,7 @@ export default function Services() {
               className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#44A148]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              Ejes estratégicos de servicio
+              Ejes estratégicos de servicios
             </span>
           </div>
 
@@ -98,7 +98,7 @@ export default function Services() {
           </h2>
 
           <p className="mt-4 text-[#1A2E1A]/70 text-lg leading-relaxed">
-            Operamos bajo una visión sistémica donde la salud ambiental, la inocuidad y el bienestar humano convergen en un diagnóstico de alta precisión.
+            Operamos bajo una visión sistémica donde el cuidado ambiental, la inocuidad y el bienestar humano convergen en un diagnóstico de alta precisión.
           </p>
         </motion.div>
 
@@ -160,7 +160,7 @@ export default function Services() {
                     {/* Text */}
                     <div className="flex flex-col gap-3 flex-1">
                       <h3
-                        className={`text-2xl font-bold leading-snug ${
+                        className={`text-2xl font-bold leading-[1.3] pb-1 ${
                           isGreen ? "text-white" : "text-[#1A2E1A]"
                         }`}
                         style={{ fontFamily: "var(--font-heading)" }}

@@ -5,8 +5,8 @@ import ServiceDetail from "@/components/servicios/ServiceDetail";
 import ContactCTA from "@/components/home/ContactCTA";
 
 export const metadata: Metadata = {
-  title: "Microbiología Integral — Multilab",
-  description: "Análisis microbiológicos, bromatológicos y de calidad de agua. Resultados con trazabilidad completa bajo estándares certificados.",
+  title: "Laboratorio — Multilab",
+  description: "Análisis de fisicoquímica y microbiología de agua, suelo y aire. Resultados con trazabilidad completa bajo estándares ISO 17025 y Código Alimentario Argentino.",
   alternates: { canonical: "/laboratorio" },
 };
 
@@ -38,10 +38,12 @@ export default function LaboratorioPage() {
       <Navbar />
       <main id="main-content">
         <ServiceDetail
-          title="Microbiología Integral"
+          title="Laboratorio"
           subtitle="Área 02"
-          description="Análisis microbiológicos, bromatológicos y de calidad de agua para industrias alimentarias, clínicas y municipios."
-          longDescription="Nuestro laboratorio opera bajo estrictos protocolos de calidad, garantizando resultados precisos y trazables. Brindamos soporte analítico fundamental para industrias alimentarias, clínicas veterinarias y organismos públicos que exigen el máximo rigor técnico. Cada análisis, desde una muestra clínica hasta un monitoreo ambiental, es supervisado y firmado directamente por nuestra Directora Técnica, garantizando validez legal y técnica ante auditorías."
+          description="Datos precisos para decisiones estratégicas. Nuestro laboratorio de fisicoquímica y microbiología combina tecnología de punta con rapidez en los resultados para la caracterización de aguas, suelos y aire."
+          longDescription="La calidad de tus procesos comienza con un análisis certero. Te brindamos la información técnica necesaria para optimizar el tratamiento de tus efluentes y garantizar que cada matriz de tu operación cumpla con los estándares de calidad más exigentes según lo establecido en las normas ISO 17025:2017.
+
+Garantía de inocuidad y control biológico total. Analizamos alimentos, cosméticos y recursos hídricos bajo los protocolos del Código Alimentario Argentino (CAA), asegurando que tus productos y procesos estén libres de contaminación. Realizamos análisis de agua, aire y suelo según técnicas del Standard Methods, EPA y normas para la protección de los recursos hídricos; usamos el CAA para alimentos y analizamos efluentes según el Decreto 847/16."
           icon={
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M10 2v7.31M14 9.31V2M8.5 2h7M14 9.31l6.4 9.6A2 2 0 0 1 18.73 22H5.27a2 2 0 0 1-1.66-3.09L10 9.31" />
@@ -50,21 +52,29 @@ export default function LaboratorioPage() {
           }
           color="bg-[oklch(96%_0.022_143)] text-[oklch(42%_0.13_144)]"
           bgGradient="bg-[oklch(98.5%_0.006_143)]"
-          analyses={[
-            "Microbiología de alimentos",
-            "Control bromatológico",
-            "Calidad microbiológica de agua",
-            "Análisis veterinarios",
-            "Antibiogramas y cultivos",
-            "Análisis clínicos (sangre/orina)",
-            "Estudios hormonales",
-            "Parasitología clínica",
+          analysisGroups={[
+            {
+              title: "Laboratorio Fisicoquímica",
+              items: [
+                "Análisis de agua, aire y suelo",
+                "Análisis de efluentes líquidos y sólidos",
+                "Muestreos",
+              ],
+            },
+            {
+              title: "Laboratorio Microbiología",
+              items: [
+                "Análisis microbiológico de agua, aire y suelo",
+                "Análisis microbiológico de efluentes líquidos y sólidos",
+                "Análisis microbiológico de alimentos y cosméticos",
+                "Análisis, identificación, clasificación y cuantificación de microorganismos",
+                "Análisis de fitoplancton",
+                "Análisis de microorganismos filamentosos",
+                "Análisis de hongos (mohos, levaduras, etc.)",
+              ],
+            },
           ]}
-          additionalInfo={[
-            "Informes con firma del director técnico habilitado.",
-            "Validez legal ante organismos reguladores y auditorías.",
-            "Trazabilidad completa bajo estándares certificados.",
-          ]}
+          directorName="Biol. Cynthia Degliangioli"
           ctaText="Solicitar análisis"
           heroImage="/images/servicios/microbiologia-integral.jpg"
           sidebar={sidebar}

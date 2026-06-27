@@ -52,19 +52,6 @@ export default function Hero() {
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
 
-            {/* Badge Premium */}
-            <motion.div {...fadeUp(0)}>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#44A148]/10 border border-[#44A148]/20 mb-6 backdrop-blur-sm shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#44A148] animate-pulse" />
-                <span
-                  className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#44A148]"
-                  style={{ fontFamily: "var(--font-heading)" }}
-                >
-                  Laboratorio de análisis por Risk Prevention
-                </span>
-              </div>
-            </motion.div>
-
             {/* H1 — MULTILAB */}
             <motion.h1 {...fadeUp(0.1)}>
               <span
@@ -86,7 +73,7 @@ export default function Hero() {
               {...fadeUp(0.2)}
               className="mt-6 text-xl lg:text-2xl font-medium text-[#1A2E1A]/80 leading-snug"
             >
-              Calidad, prevención y{" "}
+              Laboratorio ambiental, prevención de riesgos y{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#44A148] to-[#1A2E1A] font-extrabold">
                 diagnóstico avanzado
               </span>
@@ -97,7 +84,7 @@ export default function Hero() {
               {...fadeUp(0.3)}
               className="mt-5 text-base sm:text-lg leading-relaxed text-[#1A2E1A]/70 max-w-lg font-medium"
             >
-              Integramos la consultoría técnica en Higiene y Seguridad Laboral con un laboratorio especializado en Análisis Ambientales y Microbiología Integral. Resultados con trazabilidad absoluta.
+              Combinamos la consultoría técnica estratégica en Medio ambiente, Higiene y Seguridad Laboral con la precisión de nuestro laboratorio especializado en Análisis Ambientales y Bromatológicos. Brindamos soluciones integrales con trazabilidad certificada para garantizar la conformidad normativa.
             </motion.p>
 
             {/* CTAs Interactivas */}
@@ -130,11 +117,10 @@ export default function Hero() {
                 <ShieldCheck size={14} className="text-[#44A148]" aria-hidden="true" />
               </div>
               <p className="text-[13px] text-[#1A2E1A]/50">
-                Dirigido por{" "}
-                <span className="text-[#1A2E1A]/70 font-medium">
-                  Lic. Cinthia Degliangioli
-                </span>
-                {" "}— Directora Técnica desde 2014
+                Dirección técnica:{" "}
+                <strong className="text-[#1A2E1A]/70 font-medium">
+                  Biol. Cynthia Degliangioli
+                </strong>
               </p>
             </motion.div>
 

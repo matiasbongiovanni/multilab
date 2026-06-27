@@ -4,7 +4,7 @@
   const serviciosLinks = [
     { label: "Higiene y Seguridad Laboral", href: "/higiene-seguridad" },
     { label: "Laboratorio de Análisis", href: "/laboratorio" },
-    { label: "Laboratorio Ambiental", href: "/medioambiente" },
+    { label: "Medio Ambiente", href: "/medioambiente" },
     { label: "I+D en Ciencias y Medicina", href: "/servicios/investigacion" },
   ];
 
@@ -141,10 +141,10 @@
                     <Phone size={14} className="text-[#44A148]" aria-hidden="true" />
                   </div>
                   <a
-                    href="tel:+543513913502"
+                    href="tel:+5493517344443"
                     className="text-sm text-white/70 group-hover:text-[#44A148] transition-colors duration-200 font-medium mt-1"
                   >
-                    +54 351 391-3502
+                    +54 9 351 734 4443
                   </a>
                 </li>
                 <li className="flex items-start gap-3 group">
@@ -152,7 +152,7 @@
                     <MapPin size={14} className="text-[#44A148]" aria-hidden="true" />
                   </div>
                   <span className="text-sm text-white/70 font-medium mt-1 leading-relaxed">
-                    Córdoba, Argentina
+                    Juan de Garay 1931, B° Pueyrredón · Córdoba
                   </span>
                 </li>
               </ul>

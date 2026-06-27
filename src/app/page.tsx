@@ -29,9 +29,9 @@ const jsonLd = {
   foundingDate: "2014",
   founder: {
     "@type": "Person",
-    name: "Cinthia Degliangioli",
+    name: "Cynthia Degliangioli",
     jobTitle: "Directora Técnica",
-    honorificPrefix: "Lic.",
+    honorificPrefix: "Biol.",
   },
   areaServed: {
     "@type": "Country",

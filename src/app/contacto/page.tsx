@@ -197,15 +197,15 @@ export default function ContactoPage() {
                   <div className="absolute top-0 right-0 w-32 h-32 bg-[#44A148]/30 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
                   
                   <div className="relative z-10">
-                    <h3 className="font-inter font-bold text-xl mb-3 text-white">Portal de pacientes</h3>
+                    <h3 className="font-inter font-bold text-xl mb-3 text-white">Portal de clientes</h3>
                     <p className="text-white/80 text-base leading-relaxed mb-6">
-                      Si ya sos paciente de Multilab, accedé al portal digital para ver y descargar tus estudios de forma segura.
+                      Si ya sos cliente de Multilab, accedé al portal digital para ver y descargar tus informes de forma segura.
                     </p>
                     <a
                       href="/login"
                       className="inline-flex items-center gap-2 px-5 py-3 bg-[#44A148] text-white font-bold rounded-xl hover:bg-[#38853b] transition-colors text-sm shadow-sm"
                     >
-                      Acceder a mis estudios
+                      Acceder a mis informes
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>

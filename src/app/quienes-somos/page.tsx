@@ -119,7 +119,7 @@ export default function QuienesSomosPage() {
                 </h2>
                 <div className="space-y-4 text-[#1A2E1A]/75 text-lg leading-relaxed">
                   <p>
-                    Multilab fue fundado por la Lic. Cinthia Degliangioli con la idea de integrar el rigor académico con la calidez del servicio. Lo que comenzó como un proyecto orientado a la investigación científica aplicada, creció hasta convertirse en un laboratorio de referencia regional en análisis clínicos, veterinarios y ambientales.
+                    Multilab fue fundado por la Biol. Cynthia Degliangioli con la idea de integrar el rigor académico con la calidez del servicio. Lo que comenzó como un proyecto orientado a la investigación científica aplicada, creció hasta convertirse en un laboratorio de referencia regional en análisis clínicos, veterinarios y ambientales.
                   </p>
                   <p>
                     Hoy contamos con cinco áreas especializadas, equipamiento de última generación y un portal digital que permite a los pacientes acceder a sus resultados de forma segura y en tiempo real.
@@ -160,7 +160,7 @@ export default function QuienesSomosPage() {
                         <span className="text-white font-bold text-lg">CD</span>
                       </div>
                       <div>
-                        <p className="font-inter font-bold text-[#1A2E1A]">Lic. Cinthia Degliangioli</p>
+                        <p className="font-inter font-bold text-[#1A2E1A]">Biol. Cynthia Degliangioli</p>
                         <p className="text-sm font-medium text-[#44A148]">Fundadora y Directora Técnica</p>
                       </div>
                     </div>
@@ -248,7 +248,7 @@ export default function QuienesSomosPage() {
               </div>
               
               <div className="flex-1 text-center md:text-left relative z-10">
-                <h3 className="font-inter text-2xl md:text-3xl font-bold text-white mb-2">Lic. Cinthia Degliangioli</h3>
+                <h3 className="font-inter text-2xl md:text-3xl font-bold text-white mb-2">Biol. Cynthia Degliangioli</h3>
                 <p className="text-lg text-[#44A148] font-medium mb-6">Fundadora & Directora Técnica</p>
                 <p className="text-white/80 text-lg leading-relaxed mb-8">
                   Licenciada en Bioquímica con especialización en diagnóstico clínico. Con más de una década de experiencia liderando análisis clínicos, ambientales y veterinarios, mantiene además un perfil activo como docente e investigadora.

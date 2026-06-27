@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "¿Cuánto tarda en llegar un informe de laboratorio?",
-    a: "El plazo estándar es de 5 a 10 días hábiles desde la toma de muestra, dependiendo de la complejidad del análisis. Para situaciones urgentes contamos con servicio prioritario. Todos los informes son firmados por la Directora Técnica, Lic. Cinthia Degliangioli.",
+    a: "El plazo estándar es de 5 a 10 días hábiles desde la toma de muestra, dependiendo de la complejidad del análisis. Para situaciones urgentes contamos con servicio prioritario. Todos los informes son firmados por la Directora Técnica, Biol. Cynthia Degliangioli.",
   },
   {
     q: "¿Sus informes son válidos para presentar ante organismos regulatorios?",

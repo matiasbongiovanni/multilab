@@ -9,7 +9,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Higiene y Seguridad", href: "/higiene-seguridad" },
   { label: "Laboratorio", href: "/laboratorio" },
-  { label: "Medioambiente", href: "/medioambiente" },
+  { label: "Medio Ambiente", href: "/medioambiente" },
   { label: "Quiénes somos", href: "/quienes-somos" },
   { label: "Contacto", href: "/contacto" },
 ];
